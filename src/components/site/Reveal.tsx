@@ -11,10 +11,6 @@ export function Reveal({
   delay?: number;
   className?: string;
 }) {
-
-  delay?: number;
-  className?: string;
-}) {
   const ref = useRef<HTMLElement>(null);
   useEffect(() => {
     const el = ref.current;
