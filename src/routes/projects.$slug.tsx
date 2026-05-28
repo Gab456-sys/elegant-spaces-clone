@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
@@ -215,6 +215,3 @@ function Carousel({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const _useEffectShim = useEffect;
