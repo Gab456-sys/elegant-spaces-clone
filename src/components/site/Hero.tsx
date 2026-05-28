@@ -9,7 +9,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-dark text-white">
+    <section className="fixed inset-0 h-screen w-full overflow-hidden bg-dark text-white z-0">
       {heroSlides.map((src, idx) => (
         <div
           key={src}

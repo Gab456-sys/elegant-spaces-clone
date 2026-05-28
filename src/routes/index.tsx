@@ -25,11 +25,14 @@ function Index() {
     <main className="bg-background text-foreground">
       <Navbar />
       <Hero />
-      <Reveal><WhoWeAre /></Reveal>
-      <FeaturedProjects />
-      <Reveal><Expertise /></Reveal>
-      <Reveal><Perspectives /></Reveal>
-      <Footer />
+      <div className="relative z-10 mt-[100vh] bg-background">
+        <Reveal><WhoWeAre /></Reveal>
+        <FeaturedProjects />
+        <Reveal><Expertise /></Reveal>
+        <Reveal><Perspectives /></Reveal>
+        <Footer />
+      </div>
     </main>
+
   );
 }
