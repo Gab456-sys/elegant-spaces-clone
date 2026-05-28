@@ -1,29 +1,38 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Navbar } from "@/components/site/Navbar";
+import { Hero } from "@/components/site/Hero";
+import { WhoWeAre } from "@/components/site/WhoWeAre";
+import { FeaturedProjects } from "@/components/site/FeaturedProjects";
+import { Expertise } from "@/components/site/Expertise";
+import { Perspectives } from "@/components/site/Perspectives";
+import { CollectiveExcellence } from "@/components/site/CollectiveExcellence";
+import { LeadershipTeam } from "@/components/site/LeadershipTeam";
+import { Footer } from "@/components/site/Footer";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "HBA — Design that gives form to emotion" },
+      { name: "description", content: "HBA is a global hospitality interior design collective shaping unforgettable spaces for the world's most iconic brands." },
+      { property: "og:title", content: "HBA — Design that gives form to emotion" },
+      { property: "og:description", content: "A multidisciplinary creative collective with 1,500 professionals across 29 offices." },
     ],
   }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <main className="bg-background text-foreground">
+      <Navbar />
+      <Hero />
+      <WhoWeAre />
+      <FeaturedProjects />
+      <Expertise />
+      <Perspectives />
+      <CollectiveExcellence />
+      <LeadershipTeam />
+      <Footer />
+    </main>
   );
 }
