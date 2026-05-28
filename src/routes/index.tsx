@@ -5,7 +5,6 @@ import { WhoWeAre } from "@/components/site/WhoWeAre";
 import { FeaturedProjects } from "@/components/site/FeaturedProjects";
 import { Expertise } from "@/components/site/Expertise";
 import { Perspectives } from "@/components/site/Perspectives";
-import { CollectiveExcellence } from "@/components/site/CollectiveExcellence";
 import { LeadershipTeam } from "@/components/site/LeadershipTeam";
 import { Footer } from "@/components/site/Footer";
 
@@ -34,5 +33,4 @@ function Index() {
       <LeadershipTeam />
       <Footer />
     </main>
-  );
 }
