@@ -34,7 +34,7 @@ export const Route = createFileRoute("/projects/$slug")({
 
 function ProjectDetail() {
   const { project } = Route.useLoaderData();
-  const gallery = project.gallery?.length ? project.gallery : [project.image];
+  const gallery: string[] = project.gallery?.length ? project.gallery : [project.image];
   const [idx, setIdx] = useState(0);
   const next = () => setIdx((i) => (i + 1) % gallery.length);
   const prev = () => setIdx((i) => (i - 1 + gallery.length) % gallery.length);
