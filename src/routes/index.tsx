@@ -6,6 +6,7 @@ import { FeaturedProjects } from "@/components/site/FeaturedProjects";
 import { Expertise } from "@/components/site/Expertise";
 import { Perspectives } from "@/components/site/Perspectives";
 import { Footer } from "@/components/site/Footer";
+import { Reveal } from "@/components/site/Reveal";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,10 +25,10 @@ function Index() {
     <main className="bg-background text-foreground">
       <Navbar />
       <Hero />
-      <WhoWeAre />
+      <Reveal><WhoWeAre /></Reveal>
       <FeaturedProjects />
-      <Expertise />
-      <Perspectives />
+      <Reveal><Expertise /></Reveal>
+      <Reveal><Perspectives /></Reveal>
       <Footer />
     </main>
   );
