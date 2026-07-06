@@ -9,6 +9,7 @@ import { MobileMenuButton } from "@/sections/Header/components/MobileMenuButton"
 import { FamilySuitePage } from "@/sections/FamilySuitePage";
 import { ComfortSuitePage } from "@/sections/ComfortSuitePage";
 import { BasicRoomPage } from "@/sections/BasicRoomPage";
+import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 
 const AppShell = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -292,8 +293,10 @@ const AppShell = () => {
 
 export const App = () => {
   return (
-    <BrowserRouter>
-      <AppShell />
-    </BrowserRouter>
+    <LanguageProvider>
+      <BrowserRouter>
+        <AppShell />
+      </BrowserRouter>
+    </LanguageProvider>
   );
 };
