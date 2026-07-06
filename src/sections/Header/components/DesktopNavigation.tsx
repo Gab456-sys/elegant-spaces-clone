@@ -21,12 +21,11 @@ export const DesktopNavigation = () => {
         </li>
 
         <li className="group md:relative md:px-3">
-          <a
-            href="/suite"
-            className="header-nav-link md:inline-flex md:items-center md:whitespace-nowrap md:text-xs md:leading-[15px] md:tracking-[1.2px] md:uppercase"
+          <span
+            className="header-nav-link cursor-default md:inline-flex md:items-center md:whitespace-nowrap md:text-xs md:leading-[15px] md:tracking-[1.2px] md:uppercase"
           >
             Suite
-          </a>
+          </span>
           <div className="pointer-events-none absolute left-1/2 top-full z-[1001] -translate-x-1/2 pt-3 opacity-0 -translate-y-2 transition-all duration-300 ease-out group-hover:pointer-events-auto group-hover:opacity-100 group-hover:translate-y-0">
             <ul className="m-0 flex w-max list-none flex-col items-center p-0 text-center text-inherit">
               <li>
