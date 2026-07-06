@@ -4,13 +4,6 @@ type SuiteSlide = {
   caption: string;
 };
 
-type TeamMember = {
-  name: string;
-  studio: string;
-  role: string;
-  image: string;
-};
-
 const suiteSlides: SuiteSlide[] = [
   {
     src: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1800&q=80",
@@ -36,38 +29,6 @@ const suiteSlides: SuiteSlide[] = [
     src: "https://images.unsplash.com/photo-1616047006789-b7af5afb8c20?auto=format&fit=crop&w=1800&q=80",
     alt: "Architectural detail of textured wall, fabric and soft ambient light.",
     caption: "DETAIL",
-  },
-];
-
-
-const _teamMembers: TeamMember[] = [
-  {
-    name: "Elena Ricci",
-    studio: "Horizon Atelier",
-    role: "Design Director",
-    image:
-      "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1000&q=80",
-  },
-  {
-    name: "Matteo Vannini",
-    studio: "Horizon Atelier",
-    role: "Senior Interior Designer",
-    image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1000&q=80",
-  },
-  {
-    name: "Claire Dubois",
-    studio: "Horizon Atelier",
-    role: "FF&amp;E Lead",
-    image:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=1000&q=80",
-  },
-  {
-    name: "Noah Sinclair",
-    studio: "Horizon Atelier",
-    role: "Project Architect",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1000&q=80",
   },
 ];
 
