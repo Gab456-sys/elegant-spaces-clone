@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { HeaderLogo } from "@/sections/Header/components/HeaderLogo";
 import { DesktopNavigation } from "@/sections/Header/components/DesktopNavigation";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 type HeaderTheme = "light" | "dark";
 
 export const Header = () => {
+  const { language, toggle, t } = useLanguage();
   const [headerTheme, setHeaderTheme] = useState<HeaderTheme>("light");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDesktopMenuOpen, setIsDesktopMenuOpen] = useState(false);
@@ -118,16 +120,28 @@ export const Header = () => {
           <div className="hidden md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 md:flex md:items-center md:gap-6 text-inherit">
             <button
               type="button"
+              onClick={toggle}
+              aria-label={t("nav.language")}
+              aria-pressed={language === "en"}
+              className="header-nav-link md:inline-flex md:items-center md:justify-center md:gap-1.5 md:text-xs md:tracking-[1.2px] md:leading-[15px] md:uppercase md:whitespace-nowrap text-inherit md:opacity-100 md:pointer-events-auto"
+            >
+              <span className={language === "it" ? "opacity-100" : "opacity-40"}>IT</span>
+              <span className="opacity-40">·</span>
+              <span className={language === "en" ? "opacity-100" : "opacity-40"}>EN</span>
+            </button>
+
+            <button
+              type="button"
               onClick={() => setIsDesktopMenuOpen((current) => !current)}
               aria-expanded={isDesktopMenuOpen}
-              aria-label={isDesktopMenuOpen ? "Chiudi menu" : "Apri menu"}
+              aria-label={isDesktopMenuOpen ? t("nav.close") : t("nav.menu")}
               className={`header-nav-link md:inline-flex md:items-center md:justify-center md:text-xs md:tracking-[1.2px] md:leading-[15px] md:uppercase md:whitespace-nowrap md:transition-all md:duration-300 text-inherit ${
                 isScrolled
                   ? "md:opacity-100 md:pointer-events-auto"
                   : "md:opacity-0 md:pointer-events-none"
               }`}
             >
-              {isDesktopMenuOpen ? "Close" : "Menu"}
+              {isDesktopMenuOpen ? t("nav.close") : t("nav.menu")}
             </button>
 
             <a
