@@ -65,6 +65,19 @@ export const it = {
   "footerSec.rights": "Tutti i diritti riservati",
   "footerSec.privacy": "Privacy Policy",
 
+  // Rooms
+  "room.family.name": "Family Suite",
+  "room.comfort.name": "Comfort Suite",
+  "room.basic.name": "Basic Room",
+  "room.family.price": "80 euro a notte",
+  "room.comfort.price": "50 euro a notte",
+  "room.basic.price": "40 euro a notte",
+  "room.guests.4": "4 ospiti",
+  "room.guests.2": "2 ospiti",
+  "room.avail.1": "1 camera disponibile",
+  "room.avail.3": "3 camere disponibili",
+  "room.extraBed": "1 letto aggiuntivo disponibile",
+
 
 
   // Who we are
