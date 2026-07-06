@@ -39,7 +39,8 @@ const suiteSlides: SuiteSlide[] = [
   },
 ];
 
-const teamMembers: TeamMember[] = [
+
+const _teamMembers: TeamMember[] = [
   {
     name: "Elena Ricci",
     studio: "Horizon Atelier",
