@@ -83,11 +83,22 @@ export const Header = () => {
     headerTheme === "dark" ? "md:text-stone-950" : "md:text-stone-50";
 
   return (
-    <header
-      className={`header-shell hidden md:fixed md:inset-x-0 md:top-0 md:z-[1000] md:flex md:justify-center md:bg-transparent md:transition-[padding,color] md:duration-300 md:ease-out ${headerTextClass} ${
-        isScrolled ? "md:py-5" : "md:py-[32.8889px]"
-      }`}
-    >
+    <>
+      <div
+        aria-hidden="true"
+        onClick={() => setIsDesktopMenuOpen(false)}
+        className={`hidden md:block md:fixed md:inset-0 md:z-[999] md:bg-black md:transition-opacity md:duration-300 md:ease-out ${
+          isDesktopMenuOpen
+            ? "md:opacity-40 md:pointer-events-auto"
+            : "md:opacity-0 md:pointer-events-none"
+        }`}
+      />
+      <header
+        className={`header-shell hidden md:fixed md:inset-x-0 md:top-0 md:z-[1000] md:flex md:justify-center md:bg-transparent md:transition-[padding,color] md:duration-300 md:ease-out ${headerTextClass} ${
+          isScrolled ? "md:py-5" : "md:py-[32.8889px]"
+        }`}
+      >
+
       <div className="md:relative md:w-full md:px-6 lg:md:px-8 text-inherit">
         <div className="md:relative md:flex md:items-center md:justify-center text-inherit">
           <div className="md:absolute md:left-0 md:top-1/2 md:-translate-y-1/2 text-inherit">
