@@ -1,4 +1,7 @@
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+
 export function WhoWeAre() {
+  const { t } = useLanguage();
   return (
     <section className="bg-background text-foreground px-6 md:px-10 py-24 md:py-32">
       <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center max-w-7xl mx-auto">
@@ -10,15 +13,12 @@ export function WhoWeAre() {
           />
         </div>
         <div className="order-1 md:order-2">
-          <p className="eyebrow text-muted-foreground mb-7">Overview</p>
-          <h2 className="serif text-5xl md:text-6xl mb-8 leading-[1.05] font-light">Who we are</h2>
+          <p className="eyebrow text-muted-foreground mb-7">{t("who.eyebrow")}</p>
+          <h2 className="serif text-5xl md:text-6xl mb-8 leading-[1.05] font-light">{t("who.title")}</h2>
           <p className="text-base md:text-[17px] leading-[1.75] text-foreground/75 mb-9 max-w-xl font-light">
-            For over half a century, HBA has been a leading voice in the world of
-            hospitality and design. Today, we are a dynamic and multidisciplinary
-            creative collective, bringing decades of experience to bear across
-            specialisms, markets and industries.
+            {t("who.body")}
           </p>
-          <a href="#" className="pill text-foreground"><span>Our Practice</span></a>
+          <a href="#" className="pill text-foreground"><span>{t("who.cta")}</span></a>
         </div>
       </div>
     </section>

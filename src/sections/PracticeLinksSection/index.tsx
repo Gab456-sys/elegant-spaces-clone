@@ -1,82 +1,21 @@
 import { useState } from "react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import type { TranslationKey } from "@/lib/i18n/dictionaries/it";
 
-const faqs = [
-  {
-    question: "Dove si trova la struttura? Quanto dista dal centro di Firenze?",
-    answer:
-      "Villa Sesto si trova nel centro di Sesto Fiorentino, in Viale Giulio Cesare 21, una zona tranquilla e residenziale. Si può raggiungere Firenze tramite auto in circa 30 minuti o tramite treno in 15 minuti. La stazione più vicina è Zambra e si raggiunge in 8 minuti a piedi dalla struttura.",
-  },
-  {
-    question: "Come posso arrivare da aeroporto o stazione?",
-    answer:
-      "Dall’aeroporto di Firenze Amerigo Vespucci siamo a circa 10 minuti in auto/taxi. Dalla stazione di Firenze Santa Maria Novella puoi prendere il treno e scendere alla fermata Zambra; da lì la struttura dista 8 minuti a piedi.",
-  },
-  {
-    question: "Posso arrivare in auto? Come funziona il parcheggio e la ZTL?",
-    answer:
-      "Villa Sesto non si trova in ZTL, quindi puoi raggiungerci comodamente in auto. Disponiamo di posti auto privati non custoditi e aperti 24h: ti invieremo le indicazioni dettagliate al momento della prenotazione.",
-  },
-  {
-    question:
-      "Quali sono gli orari di check-in e check-out? Posso arrivare tardi la sera?",
-    answer:
-      "Il check-in è previsto dalle 14:00 alle 19:00, il check-out entro le 10:30. Se arrivi in tarda serata, offriamo late check-in su richiesta, anche con self check-in: ti chiediamo solo di comunicarci in anticipo l’orario di arrivo.",
-  },
-  {
-    question:
-      "È possibile lasciare i bagagli prima del check-in o dopo il check-out?",
-    answer:
-      "Sì, possiamo custodire i bagagli gratuitamente qualche ora prima del check-in o dopo il check-out, così puoi goderti la giornata senza valigie.",
-  },
-  {
-    question: "La tassa di soggiorno è inclusa nel prezzo?",
-    answer:
-      "No, la tassa di soggiorno del Comune di Firenze non è inclusa nelle tariffe e va saldata separatamente al momento dell’arrivo, in contanti o con le modalità indicate nella conferma di prenotazione. L’importo varia in base al numero di notti e alla tipologia di struttura, secondo il regolamento comunale in vigore.",
-  },
-  {
-    question: "Che tipo di colazione offrite?",
-    answer:
-      "Offriamo una colazione italiana / continentale con prodotti dolci e salati, servita dalle 08:00 alle 10:00. In caso di esigenze particolari (vegetariano, intolleranze, senza glutine) ti chiediamo di avvisarci in anticipo.",
-  },
-  {
-    question: "Le camere sono dotate di biancheria e servizi?",
-    answer:
-      "Sì, tutte le camere includono lenzuola, coperte e set di asciugamani. Ogni camera è dotata di bagno privato, aria condizionata, Wi-Fi gratuito, asciugacapelli e prodotti di cortesia.",
-  },
-  {
-    question: "Accettate bambini? Posso richiedere una culla/lettino?",
-    answer:
-      "I bambini sono i benvenuti. Su richiesta possiamo fornire una culla/lettino per bimbi piccoli (secondo disponibilità). Ti invitiamo a segnalarlo al momento della prenotazione.",
-  },
-  {
-    question: "Sono ammessi animali domestici?",
-    answer:
-      "Accogliamo animali di piccola taglia su richiesta e previa conferma, con un piccolo supplemento di pulizia. Ti chiediamo solo di rispettare gli ambienti comuni e il riposo degli altri ospiti.",
-  },
-  {
-    question: "C'è il Wi-Fi? Lo staff parla inglese?",
-    answer:
-      "Sì, il Wi-Fi è disponibile gratuitamente in tutte le camere e nelle aree comuni. Il nostro staff parla italiano e inglese, e può aiutarti con consigli su ristoranti ed esperienze in zona.",
-  },
-  {
-    question: "Quali metodi di pagamento accettate? Richiedete un acconto?",
-    answer:
-      "Accettiamo carte di credito/debito principali e pagamenti digitali. Per confermare la prenotazione può essere richiesto un acconto / pre-autorizzazione, indicato in fase di prenotazione; il saldo avviene all’arrivo o prima dell’arrivo secondo le condizioni tariffarie.",
-  },
-  {
-    question: "Qual è la vostra politica di cancellazione?",
-    answer:
-      "Le condizioni di cancellazione possono variare in base alla tariffa scelta (flessibile, non rimborsabile, offerte speciali). Prima di confermare ti invitiamo a leggere con attenzione i termini riportati nella pagina di prenotazione e nell’email di conferma.",
-  },
-  {
-    question: "C'è un supermercato vicino?",
-    answer:
-      "Sì, nelle immediate vicinanze della struttura è presente un supermercato raggiungibile comodamente a piedi in 5 minuti.",
-  },
-];
+const faqKeys: Array<{ q: TranslationKey; a: TranslationKey }> = Array.from(
+  { length: 14 },
+  (_, i) => ({
+    q: `faq.q${i + 1}` as TranslationKey,
+    a: `faq.a${i + 1}` as TranslationKey,
+  }),
+);
+
+
 
 export const PracticeLinksSection = () => {
+  const { t } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+
 
   return (
     <section
@@ -99,29 +38,28 @@ export const PracticeLinksSection = () => {
           <header className="md:col-span-4">
             <div className="text-center md:sticky md:top-24 md:text-left">
               <p className="mb-5 text-[11px] uppercase tracking-[1.6px] text-stone-300">
-                FAQ
+                {t("faq.eyebrow")}
               </p>
 
               <h2 className="mx-auto mb-7 max-w-[11ch] font-beausite_slick text-[40px] font-light leading-[0.98] md:mx-0 md:text-[64px]">
-                Informazioni utili
+                {t("faq.title")}
               </h2>
 
               <p className="mx-auto max-w-[34ch] text-[15px] leading-7 text-stone-200 md:mx-0 md:text-base">
-                Tutto quello che serve per organizzare il soggiorno con più
-                semplicità, in continuità con il ritmo calmo e l’atmosfera
-                essenziale del resto della pagina.
+                {t("faq.intro")}
               </p>
+
             </div>
           </header>
 
           <div className="md:col-span-8">
             <ol className="border-y border-stone-50/30">
-              {faqs.map((faq, index) => {
+              {faqKeys.map((faq, index) => {
                 const isOpen = openIndex === index;
 
                 return (
                   <li
-                    key={faq.question}
+                    key={faq.q}
                     className="border-b border-stone-50/25 last:border-b-0"
                     data-reveal-order={index + 1}
                   >
@@ -137,7 +75,7 @@ export const PracticeLinksSection = () => {
                             {String(index + 1).padStart(2, "0")}
                           </span>
                           <h3 className="font-beausite_classic text-[19px] leading-[1.25] text-stone-50 md:text-[24px]">
-                            {faq.question}
+                            {t(faq.q)}
                           </h3>
                         </div>
 
@@ -169,7 +107,7 @@ export const PracticeLinksSection = () => {
                               isOpen ? "opacity-100" : "opacity-0"
                             }`}
                           >
-                            {faq.answer}
+                            {t(faq.a)}
                           </p>
                         </div>
                       </div>
