@@ -67,6 +67,19 @@ export const en: Record<TranslationKey, string> = {
   "footerSec.rights": "All Rights Reserved",
   "footerSec.privacy": "Privacy Policy",
 
+  // Rooms
+  "room.family.name": "Family Suite",
+  "room.comfort.name": "Comfort Suite",
+  "room.basic.name": "Basic Room",
+  "room.family.price": "€80 per night",
+  "room.comfort.price": "€50 per night",
+  "room.basic.price": "€40 per night",
+  "room.guests.4": "4 guests",
+  "room.guests.2": "2 guests",
+  "room.avail.1": "1 room available",
+  "room.avail.3": "3 rooms available",
+  "room.extraBed": "1 extra bed available",
+
 
 
   // Who we are

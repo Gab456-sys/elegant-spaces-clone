@@ -105,9 +105,8 @@ export const ProjectGallery = ({
   }, [galleryImages.length]);
 
   const heroImage = heroImages[0];
-  const extraBedLabel = "1 letto aggiuntivo disponibile";
-  const isPrimaryExtraBed = metaPrimary === extraBedLabel;
-  const isYearExtraBed = metaYear === extraBedLabel;
+  const isPrimaryExtraBed = Boolean(metaPrimary && /letto aggiuntivo|extra bed/i.test(metaPrimary));
+  const isYearExtraBed = Boolean(metaYear && /letto aggiuntivo|extra bed/i.test(metaYear));
   const hasExtraBedLabel = isPrimaryExtraBed || isYearExtraBed;
   const extraBedValue = isPrimaryExtraBed
     ? metaPrimary

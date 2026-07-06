@@ -2,34 +2,36 @@ import { Hero } from "@/sections/Hero";
 import { IntroSection } from "@/sections/IntroSection";
 import { ProjectGallery } from "@/sections/ProjectGallery";
 import { PracticeLinksSection } from "@/sections/PracticeLinksSection";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import type { TranslationKey } from "@/lib/i18n/dictionaries/it";
 
 type RoomData = {
-  nome: string;
-  prezzo: string;
-  ospiti: string;
-  note: string;
-  dettaglio?: string;
+  nameKey: TranslationKey;
+  priceKey: TranslationKey;
+  guestsKey: TranslationKey;
+  noteKey: TranslationKey;
+  detailKey?: TranslationKey;
 };
 
 const roomsData: RoomData[] = [
   {
-    nome: "Family Suite",
-    prezzo: "80 euro a notte",
-    ospiti: "4 ospiti",
-    note: "1 camera disponibile",
+    nameKey: "room.family.name",
+    priceKey: "room.family.price",
+    guestsKey: "room.guests.4",
+    noteKey: "room.avail.1",
   },
   {
-    nome: "Comfort Suite",
-    prezzo: "50 euro a notte",
-    ospiti: "2 ospiti",
-    note: "3 camere disponibili",
-    dettaglio: "1 letto aggiuntivo disponibile",
+    nameKey: "room.comfort.name",
+    priceKey: "room.comfort.price",
+    guestsKey: "room.guests.2",
+    noteKey: "room.avail.3",
+    detailKey: "room.extraBed",
   },
   {
-    nome: "Basic Room",
-    prezzo: "40 euro a notte",
-    ospiti: "2 ospiti",
-    note: "1 camera disponibile",
+    nameKey: "room.basic.name",
+    priceKey: "room.basic.price",
+    guestsKey: "room.guests.2",
+    noteKey: "room.avail.1",
   },
 ];
 
@@ -54,6 +56,8 @@ const roomGalleryImages = [
 ];
 
 export const MainContent = () => {
+  const { t } = useLanguage();
+
   return (
     <main className="box-border caret-transparent text-stone-50 outline-[3px] no-underline">
       <Hero />
@@ -61,14 +65,14 @@ export const MainContent = () => {
 
       {roomsData.map((room, index) => (
         <ProjectGallery
-          key={`${room.nome}-${index}`}
+          key={`${room.nameKey}-${index}`}
           sectionId={roomSectionIds[index]}
           backgroundVariant="inset-0"
-          title={room.nome}
-          metaPrimary={room.note}
-          metaSecondary={room.prezzo}
-          metaLocation={room.ospiti}
-          metaYear={room.dettaglio}
+          title={t(room.nameKey)}
+          metaPrimary={t(room.noteKey)}
+          metaSecondary={t(room.priceKey)}
+          metaLocation={t(room.guestsKey)}
+          metaYear={room.detailKey ? t(room.detailKey) : undefined}
           heroImages={roomHeroImages.map((image) => ({ ...image }))}
           galleryImages={roomGalleryImages.map((image) => ({ ...image }))}
         />
