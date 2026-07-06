@@ -136,7 +136,7 @@ export const PracticeLinksSection = () => {
                           <span className="pt-1 text-[10px] uppercase tracking-[1.2px] text-stone-300 md:text-[11px]">
                             {String(index + 1).padStart(2, "0")}
                           </span>
-                          <h3 className="font-beausite_classic text-[24px] leading-[1.2] text-stone-50 md:text-[32px]">
+                          <h3 className="font-beausite_classic text-[19px] leading-[1.25] text-stone-50 md:text-[24px]">
                             {faq.question}
                           </h3>
                         </div>
