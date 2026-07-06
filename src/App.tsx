@@ -6,7 +6,9 @@ import { Footer } from "@/sections/Footer";
 import { MobileOverlay } from "@/components/MobileOverlay";
 import { HiddenAssets } from "@/components/HiddenAssets";
 import { MobileMenuButton } from "@/sections/Header/components/MobileMenuButton";
-import { SuitePage } from "@/sections/SuitePage";
+import { FamilySuitePage } from "@/sections/FamilySuitePage";
+import { ComfortSuitePage } from "@/sections/ComfortSuitePage";
+import { BasicRoomPage } from "@/sections/BasicRoomPage";
 
 const AppShell = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -241,7 +243,10 @@ const AppShell = () => {
       />
       <Routes>
         <Route path="/" element={<MainContent />} />
-        <Route path="/suite" element={<SuitePage />} />
+        <Route path="/suite" element={<FamilySuitePage />} />
+        <Route path="/suite/family" element={<FamilySuitePage />} />
+        <Route path="/suite/comfort" element={<ComfortSuitePage />} />
+        <Route path="/suite/basic" element={<BasicRoomPage />} />
         <Route path="*" element={<MainContent />} />
       </Routes>
       <Footer />
