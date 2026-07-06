@@ -20,34 +20,34 @@ export const DesktopNavigation = () => {
           </a>
         </li>
 
-        <li className="md:relative md:px-3 md:group">
+        <li className="group md:relative md:px-3">
           <a
             href="/suite"
             className="header-nav-link md:inline-flex md:items-center md:whitespace-nowrap md:text-xs md:leading-[15px] md:tracking-[1.2px] md:uppercase"
           >
             Suite
           </a>
-          <ul className="invisible pointer-events-none opacity-0 md:absolute md:left-1/2 md:top-full md:-translate-x-1/2 md:mt-4 md:min-w-[200px] md:list-none md:m-0 md:p-3 md:bg-stone-50 md:text-stone-900 md:shadow-lg md:transition-opacity md:duration-200 md:group-hover:visible md:group-hover:opacity-100 md:group-hover:pointer-events-auto">
-            <li>
+          <ul className="invisible pointer-events-none opacity-0 group-hover:visible group-hover:opacity-100 group-hover:pointer-events-auto md:absolute md:left-1/2 md:top-full md:z-[1001] md:-translate-x-1/2 md:pt-4 md:min-w-[200px] md:list-none md:m-0 md:p-0 md:transition-opacity md:duration-200">
+            <li className="md:bg-stone-50 md:shadow-lg">
               <a
                 href="/suite/family"
-                className="md:block md:whitespace-nowrap md:px-3 md:py-2 md:text-xs md:tracking-[1.2px] md:uppercase md:no-underline md:text-stone-900 hover:md:bg-stone-100"
+                className="md:block md:whitespace-nowrap md:px-4 md:py-3 md:text-xs md:tracking-[1.2px] md:uppercase md:text-stone-900 md:hover:bg-stone-100"
               >
                 Family Suite
               </a>
             </li>
-            <li>
+            <li className="md:bg-stone-50 md:shadow-lg">
               <a
                 href="/suite/comfort"
-                className="md:block md:whitespace-nowrap md:px-3 md:py-2 md:text-xs md:tracking-[1.2px] md:uppercase md:no-underline md:text-stone-900 hover:md:bg-stone-100"
+                className="md:block md:whitespace-nowrap md:px-4 md:py-3 md:text-xs md:tracking-[1.2px] md:uppercase md:text-stone-900 md:hover:bg-stone-100"
               >
                 Comfort Suite
               </a>
             </li>
-            <li>
+            <li className="md:bg-stone-50 md:shadow-lg">
               <a
                 href="/suite/basic"
-                className="md:block md:whitespace-nowrap md:px-3 md:py-2 md:text-xs md:tracking-[1.2px] md:uppercase md:no-underline md:text-stone-900 hover:md:bg-stone-100"
+                className="md:block md:whitespace-nowrap md:px-4 md:py-3 md:text-xs md:tracking-[1.2px] md:uppercase md:text-stone-900 md:hover:bg-stone-100"
               >
                 Basic Room
               </a>
