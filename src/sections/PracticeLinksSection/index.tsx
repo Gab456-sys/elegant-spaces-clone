@@ -54,12 +54,12 @@ export const PracticeLinksSection = () => {
 
           <div className="md:col-span-8">
             <ol className="border-y border-stone-50/30">
-              {faqs.map((faq, index) => {
+              {faqKeys.map((faq, index) => {
                 const isOpen = openIndex === index;
 
                 return (
                   <li
-                    key={faq.question}
+                    key={faq.q}
                     className="border-b border-stone-50/25 last:border-b-0"
                     data-reveal-order={index + 1}
                   >
@@ -75,7 +75,7 @@ export const PracticeLinksSection = () => {
                             {String(index + 1).padStart(2, "0")}
                           </span>
                           <h3 className="font-beausite_classic text-[19px] leading-[1.25] text-stone-50 md:text-[24px]">
-                            {faq.question}
+                            {t(faq.q)}
                           </h3>
                         </div>
 
@@ -107,7 +107,7 @@ export const PracticeLinksSection = () => {
                               isOpen ? "opacity-100" : "opacity-0"
                             }`}
                           >
-                            {faq.answer}
+                            {t(faq.a)}
                           </p>
                         </div>
                       </div>
