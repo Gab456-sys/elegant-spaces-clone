@@ -30,6 +30,45 @@ export const en: Record<TranslationKey, string> = {
   "hero.title.line2": "form to",
   "hero.title.em": "emotion",
 
+  // Intro section (La Villa)
+  "intro.eyebrow": "Welcome",
+  "intro.title": "The Villa",
+  "intro.copy":
+    "Villa Sesto is a haven of hospitality where light, quiet and attention to detail accompany every stay. A place designed to slow down, breathe and experience the land with authenticity.",
+  "intro.cta": "Discover the villa",
+  "intro.caption.villa": "Villa Sesto",
+  "intro.caption.atmosphere": "Villa Sesto atmospheres",
+
+  // Footer (sections)
+  "footerSec.intro":
+    "Villa Sesto welcomes guests with authentic hospitality, blending contemporary comfort with the charm of the region. Every stay is designed to offer time, quiet and beauty.",
+  "footerSec.intro2":
+    "Discover availability, local experiences and dedicated services by contacting the property directly.",
+  "footerSec.contact": "Contact",
+  "footerSec.follow": "Follow us",
+  "footerSec.region.villa": "Villa Sesto",
+  "footerSec.region.stay": "Stay",
+  "footerSec.region.experiences": "Experiences",
+  "footerSec.region.contact": "Contact",
+  "footerSec.link.villa": "The Villa",
+  "footerSec.link.suite": "Suite",
+  "footerSec.link.tips": "Our tips",
+  "footerSec.link.contact": "Contact",
+  "footerSec.link.availability": "Availability",
+  "footerSec.link.checkin": "Check-in / Check-out",
+  "footerSec.link.services": "Included services",
+  "footerSec.link.itineraries": "Itineraries",
+  "footerSec.link.restaurants": "Restaurants",
+  "footerSec.link.wellness": "Wellness",
+  "footerSec.link.email": "Email",
+  "footerSec.link.phone": "Phone",
+  "footerSec.link.directions": "How to reach us",
+  "footerSec.copyright": "Copyright © 2026 Villa Sesto.",
+  "footerSec.rights": "All Rights Reserved",
+  "footerSec.privacy": "Privacy Policy",
+
+
+
   // Who we are
   "who.eyebrow": "Overview",
   "who.title": "Who we are",

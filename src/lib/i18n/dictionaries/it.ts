@@ -28,6 +28,45 @@ export const it = {
   "hero.title.line2": "forma all'",
   "hero.title.em": "emozione",
 
+  // Intro section (La Villa)
+  "intro.eyebrow": "Benvenuti",
+  "intro.title": "La Villa",
+  "intro.copy":
+    "Villa Sesto è un rifugio di ospitalità dove luce, quiete e cura del dettaglio accompagnano ogni soggiorno. Un luogo pensato per rallentare, respirare e vivere il territorio con autenticità.",
+  "intro.cta": "Scopri la villa",
+  "intro.caption.villa": "Villa Sesto",
+  "intro.caption.atmosphere": "Atmosfere di Villa Sesto",
+
+  // Footer (sections)
+  "footerSec.intro":
+    "Villa Sesto accoglie gli ospiti con un'ospitalità autentica, tra comfort contemporaneo e fascino del territorio. Ogni soggiorno è pensato per offrire tempo, quiete e bellezza.",
+  "footerSec.intro2":
+    "Scopri disponibilità, esperienze locali e servizi dedicati contattando direttamente la struttura.",
+  "footerSec.contact": "Contatti",
+  "footerSec.follow": "Seguici",
+  "footerSec.region.villa": "Villa Sesto",
+  "footerSec.region.stay": "Soggiorno",
+  "footerSec.region.experiences": "Esperienze",
+  "footerSec.region.contact": "Contatti",
+  "footerSec.link.villa": "La Villa",
+  "footerSec.link.suite": "Suite",
+  "footerSec.link.tips": "I nostri consigli",
+  "footerSec.link.contact": "Contatti",
+  "footerSec.link.availability": "Disponibilità",
+  "footerSec.link.checkin": "Check-in / Check-out",
+  "footerSec.link.services": "Servizi inclusi",
+  "footerSec.link.itineraries": "Itinerari",
+  "footerSec.link.restaurants": "Ristoranti",
+  "footerSec.link.wellness": "Benessere",
+  "footerSec.link.email": "Email",
+  "footerSec.link.phone": "Telefono",
+  "footerSec.link.directions": "Come arrivare",
+  "footerSec.copyright": "Copyright © 2026 Villa Sesto.",
+  "footerSec.rights": "Tutti i diritti riservati",
+  "footerSec.privacy": "Privacy Policy",
+
+
+
   // Who we are
   "who.eyebrow": "Panoramica",
   "who.title": "Chi siamo",

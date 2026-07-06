@@ -1,7 +1,9 @@
 import { SectionImage } from "@/components/SectionImage";
 import { SectionCta } from "@/components/SectionCta";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export const IntroSection = () => {
+  const { t } = useLanguage();
   return (
     <section
       id="la-villa"
@@ -18,7 +20,7 @@ export const IntroSection = () => {
                 data-reveal-order={1}
                 className="reveal reveal-editorial box-border caret-transparent text-4xl font-light leading-10 outline-[3px] no-underline mb-6 font-beausite_slick md:text-[44.8889px] md:leading-[48.8889px]"
               >
-                La Villa
+                {t("intro.title")}
               </h2>
             </div>
 
@@ -27,7 +29,7 @@ export const IntroSection = () => {
               figureClassName="box-border caret-transparent outline-[3px] no-underline mt-[60px] md:mt-[93.3333px]"
               imageSrc="https://c.animaapp.com/mq6uygebb47riI/assets/OneOnly-Portonovi-Chenot-Spa.png"
               imageAlt="Luxurious resort spa interior with arched golden doorways and marble walls. A person in a white robe walks through the opulent, serene hallway."
-              caption="Villa Sesto"
+              caption={t("intro.caption.villa")}
             />
           </div>
 
@@ -42,7 +44,7 @@ export const IntroSection = () => {
                   data-reveal-order={0}
                   className="reveal reveal-editorial-tight box-border caret-transparent text-xs tracking-[1.2px] leading-[15px] outline-[3px] no-underline uppercase mb-3"
                 >
-                  Benvenuti
+                  {t("intro.eyebrow")}
                 </h5>
               </div>
 
@@ -52,16 +54,13 @@ export const IntroSection = () => {
                   data-reveal-order={2}
                   className="reveal reveal-editorial box-border caret-transparent shrink-0 text-xl font-light leading-6 outline-[3px] no-underline w-full mb-5 font-beausite_slick md:text-[25.5556px] md:leading-[31.7778px] md:mb-[22.2222px]"
                 >
-                  Villa Sesto è un rifugio di ospitalità dove luce, quiete e
-                  cura del dettaglio accompagnano ogni soggiorno. Un luogo
-                  pensato per rallentare, respirare e vivere il territorio con
-                  autenticità.
+                  {t("intro.copy")}
                 </h3>
 
                 <div data-intro-cta="true">
                   <SectionCta
                     href="#contatti"
-                    label="Scopri la villa"
+                    label={t("intro.cta")}
                     revealOrder={3}
                   />
                 </div>
@@ -73,7 +72,7 @@ export const IntroSection = () => {
               figureClassName="box-border caret-transparent outline-[3px] no-underline mt-9 md:mt-[186.667px]"
               imageSrc="https://c.animaapp.com/mq6uygebb47riI/assets/04-Chedi-Xinchang-1536x864.jpg"
               imageAlt="Rooftop terrace at dusk with soft lighting, framed by a modern building on the left and a cozy seating area on the right. Surrounded by a forested mountain backdrop."
-              caption="Atmosfere di Villa Sesto"
+              caption={t("intro.caption.atmosphere")}
             />
           </div>
         </div>
