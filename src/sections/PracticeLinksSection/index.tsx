@@ -83,16 +83,14 @@ export const PracticeLinksSection = () => {
       id="faq"
       className="relative z-[2] overflow-hidden border-b border-stone-300/35 bg-stone-100 text-gray-900"
     >
-      <div className="absolute inset-0 z-[1]">
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.68)_0%,rgba(0,0,0,0.42)_52%,rgba(0,0,0,0.28)_100%)] md:bg-[linear-gradient(90deg,rgba(0,0,0,0.7)_0%,rgba(0,0,0,0.4)_46%,rgba(0,0,0,0.22)_100%)]" />
-        <figure className="h-full min-h-[920px] w-full md:min-h-[980px]">
-          <img
-            src="https://c.animaapp.com/mq6uygebb47riI/assets/HBA-home-seo-img.jpg"
-            alt="Villa Sesto vista esterna"
-            className="h-full w-full object-cover"
-          />
-        </figure>
-      </div>
+      <div
+        className="absolute inset-0 z-[1] bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage:
+            "linear-gradient(90deg,rgba(0,0,0,0.68) 0%,rgba(0,0,0,0.42) 52%,rgba(0,0,0,0.28) 100%), url('https://c.animaapp.com/mq6uygebb47riI/assets/HBA-home-seo-img.jpg')",
+        }}
+        aria-label="Villa Sesto vista esterna"
+      />
 
       <div className="relative z-[2] mx-auto w-full px-6 py-20 text-stone-50 md:px-[32.8889px] md:py-28 lg:py-32">
         <div className="mx-auto grid w-full max-w-[1400px] gap-14 md:grid-cols-12 md:gap-10 lg:gap-14">
