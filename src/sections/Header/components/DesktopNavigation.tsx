@@ -27,32 +27,34 @@ export const DesktopNavigation = () => {
           >
             Suite
           </a>
-          <ul className="invisible pointer-events-none opacity-0 group-hover:visible group-hover:opacity-100 group-hover:pointer-events-auto md:absolute md:left-1/2 md:top-full md:z-[1001] md:-translate-x-1/2 md:pt-4 md:min-w-[200px] md:list-none md:m-0 md:p-0 md:transition-opacity md:duration-200">
-            <li className="md:bg-stone-50 md:shadow-lg">
-              <a
-                href="/suite/family"
-                className="md:block md:whitespace-nowrap md:px-4 md:py-3 md:text-xs md:tracking-[1.2px] md:uppercase md:text-stone-900 md:hover:bg-stone-100"
-              >
-                Family Suite
-              </a>
-            </li>
-            <li className="md:bg-stone-50 md:shadow-lg">
-              <a
-                href="/suite/comfort"
-                className="md:block md:whitespace-nowrap md:px-4 md:py-3 md:text-xs md:tracking-[1.2px] md:uppercase md:text-stone-900 md:hover:bg-stone-100"
-              >
-                Comfort Suite
-              </a>
-            </li>
-            <li className="md:bg-stone-50 md:shadow-lg">
-              <a
-                href="/suite/basic"
-                className="md:block md:whitespace-nowrap md:px-4 md:py-3 md:text-xs md:tracking-[1.2px] md:uppercase md:text-stone-900 md:hover:bg-stone-100"
-              >
-                Basic Room
-              </a>
-            </li>
-          </ul>
+          <div className="pointer-events-none absolute left-1/2 top-full z-[1001] -translate-x-1/2 pt-3 opacity-0 -translate-y-2 transition-all duration-300 ease-out group-hover:pointer-events-auto group-hover:opacity-100 group-hover:translate-y-0">
+            <ul className="m-0 flex min-w-[180px] list-none flex-col p-0 text-inherit">
+              <li>
+                <a
+                  href="/suite/family"
+                  className="header-nav-link block whitespace-nowrap px-4 py-3 text-xs uppercase tracking-[1.2px] text-inherit"
+                >
+                  Family Suite
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/suite/comfort"
+                  className="header-nav-link block whitespace-nowrap px-4 py-3 text-xs uppercase tracking-[1.2px] text-inherit"
+                >
+                  Comfort Suite
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/suite/basic"
+                  className="header-nav-link block whitespace-nowrap px-4 py-3 text-xs uppercase tracking-[1.2px] text-inherit"
+                >
+                  Basic Room
+                </a>
+              </li>
+            </ul>
+          </div>
         </li>
 
         <li className="md:px-3">
