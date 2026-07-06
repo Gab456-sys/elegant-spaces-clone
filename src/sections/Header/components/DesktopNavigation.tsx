@@ -28,7 +28,7 @@ export const DesktopNavigation = () => {
             Suite
           </a>
           <div className="pointer-events-none absolute left-1/2 top-full z-[1001] -translate-x-1/2 pt-3 opacity-0 -translate-y-2 transition-all duration-300 ease-out group-hover:pointer-events-auto group-hover:opacity-100 group-hover:translate-y-0">
-            <ul className="m-0 flex min-w-[180px] list-none flex-col p-0 text-inherit">
+            <ul className="m-0 flex w-max list-none flex-col items-center p-0 text-center text-inherit">
               <li>
                 <a
                   href="/suite/family"
