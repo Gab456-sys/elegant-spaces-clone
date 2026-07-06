@@ -1,8 +1,10 @@
 import { useRef } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { articles } from "./data";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export function Perspectives() {
+  const { t } = useLanguage();
   const ref = useRef<HTMLDivElement>(null);
   const scroll = (dir: 1 | -1) => {
     ref.current?.scrollBy({ left: dir * (ref.current.clientWidth * 0.7), behavior: "smooth" });
@@ -12,14 +14,14 @@ export function Perspectives() {
     <section className="bg-background text-foreground px-6 md:px-10 py-24 md:py-32">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-end justify-between mb-14 gap-6 flex-wrap">
-          <h2 className="serif text-5xl md:text-7xl font-light">Perspectives</h2>
+          <h2 className="serif text-5xl md:text-7xl font-light">{t("perspectives.title")}</h2>
           <div className="flex items-center gap-5">
-            <a href="#" className="pill text-foreground"><span>View All</span></a>
+            <a href="#" className="pill text-foreground"><span>{t("perspectives.viewAll")}</span></a>
             <div className="flex gap-2">
-              <button onClick={() => scroll(-1)} aria-label="Previous" className="h-10 w-10 rounded-full border border-foreground/30 flex items-center justify-center hover:bg-foreground hover:text-background transition-colors duration-300">
+              <button onClick={() => scroll(-1)} aria-label={t("perspectives.prev")} className="h-10 w-10 rounded-full border border-foreground/30 flex items-center justify-center hover:bg-foreground hover:text-background transition-colors duration-300">
                 <ArrowLeft className="h-3.5 w-3.5" strokeWidth={1.4} />
               </button>
-              <button onClick={() => scroll(1)} aria-label="Next" className="h-10 w-10 rounded-full border border-foreground/30 flex items-center justify-center hover:bg-foreground hover:text-background transition-colors duration-300">
+              <button onClick={() => scroll(1)} aria-label={t("perspectives.next")} className="h-10 w-10 rounded-full border border-foreground/30 flex items-center justify-center hover:bg-foreground hover:text-background transition-colors duration-300">
                 <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.4} />
               </button>
             </div>

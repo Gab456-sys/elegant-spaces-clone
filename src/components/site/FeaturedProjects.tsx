@@ -1,7 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { projects } from "./data";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export function FeaturedProjects() {
+  const { t } = useLanguage();
   return (
     <section className="bg-dark text-white">
       {projects.slice(0, 4).map((p) => (
@@ -28,7 +30,7 @@ export function FeaturedProjects() {
               <span>{p.year}</span>
             </div>
             <Link to="/projects/$slug" params={{ slug: p.slug }} className="pill text-white">
-              <span>View Project</span>
+              <span>{t("projects.cta")}</span>
             </Link>
           </div>
         </article>

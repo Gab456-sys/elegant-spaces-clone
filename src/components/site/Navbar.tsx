@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { offices } from "./data";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const expertiseList = [
   "interiors","architecture","art","digital","f&b","graphics","landscape",
@@ -15,6 +16,7 @@ const specialistsList = ["Light Directions","Canvas","Illuminate","Studio HBA"];
 type Section = "expertise" | "practice" | "studios" | "specialists" | null;
 
 export function Navbar() {
+  const { language, toggle, t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -32,7 +34,7 @@ export function Navbar() {
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
-  const toggle = (s: Exclude<Section, null>) =>
+  const toggleSection = (s: Exclude<Section, null>) =>
     setOpenSection((cur) => (cur === s ? null : s));
 
   return (
@@ -54,14 +56,26 @@ export function Navbar() {
           </a>
           <div className="flex items-center gap-6">
             <button
+              type="button"
+              onClick={toggle}
+              aria-label={t("nav.language")}
+              aria-pressed={language === "en"}
+              className="text-white text-[12px] uppercase cursor-pointer hover:opacity-70 transition-opacity flex items-center gap-1.5"
+              style={{ letterSpacing: "0.2em" }}
+            >
+              <span className={language === "it" ? "opacity-100" : "opacity-40"}>IT</span>
+              <span className="opacity-40">·</span>
+              <span className={language === "en" ? "opacity-100" : "opacity-40"}>EN</span>
+            </button>
+            <button
               onClick={() => setMenuOpen((v) => !v)}
               className="text-white text-[12px] uppercase cursor-pointer hover:opacity-70 transition-opacity"
               style={{ letterSpacing: "0.2em" }}
             >
-              {menuOpen ? "Close" : "Menu"}
+              {menuOpen ? t("nav.close") : t("nav.menu")}
             </button>
             <button
-              aria-label="Search"
+              aria-label={t("nav.search")}
               onClick={() => setSearchOpen((v) => !v)}
               className="cursor-pointer hover:opacity-70 transition-opacity"
             >
@@ -78,7 +92,7 @@ export function Navbar() {
             <input
               autoFocus
               type="text"
-              placeholder="Search…"
+              placeholder={t("nav.searchPlaceholder")}
               className="w-full bg-transparent text-white placeholder:text-white/40 serif text-2xl md:text-3xl outline-none border-b border-white/30 pb-3"
             />
           </div>
@@ -96,27 +110,27 @@ export function Navbar() {
           {/* PROJECTS direct link */}
           <MenuRow>
             <a href="#" className="serif lowercase text-white block w-full text-[1.4rem] md:text-[2rem]">
-              projects
+              {t("menu.projects")}
             </a>
           </MenuRow>
 
           {/* EXPERTISE accordion */}
           <Accordion
-            label="expertise"
+            label={t("menu.expertise")}
             open={openSection === "expertise"}
-            onClick={() => toggle("expertise")}
+            onClick={() => toggleSection("expertise")}
           >
             <div className="grid md:grid-cols-2 gap-10 py-6">
-              <ColumnList label="Expertise" items={expertiseList} />
-              <ColumnList label="Sectors" items={sectorsList} />
+              <ColumnList label={t("menu.expertise.label")} items={expertiseList} />
+              <ColumnList label={t("menu.sectors.label")} items={sectorsList} />
             </div>
           </Accordion>
 
           {/* PRACTICE */}
           <Accordion
-            label="practice"
+            label={t("menu.practice")}
             open={openSection === "practice"}
-            onClick={() => toggle("practice")}
+            onClick={() => toggleSection("practice")}
           >
             <ul className="py-6 space-y-3">
               {practiceList.map((p) => (
@@ -129,9 +143,9 @@ export function Navbar() {
 
           {/* STUDIOS */}
           <Accordion
-            label="studios"
+            label={t("menu.studios")}
             open={openSection === "studios"}
-            onClick={() => toggle("studios")}
+            onClick={() => toggleSection("studios")}
           >
             <div className="grid md:grid-cols-2 gap-10 py-6">
               {Object.entries(offices).map(([region, cities]) => (
@@ -151,9 +165,9 @@ export function Navbar() {
 
           {/* SPECIALISTS */}
           <Accordion
-            label="specialists"
+            label={t("menu.specialists")}
             open={openSection === "specialists"}
-            onClick={() => toggle("specialists")}
+            onClick={() => toggleSection("specialists")}
           >
             <ul className="py-6 space-y-3">
               {specialistsList.map((s) => (

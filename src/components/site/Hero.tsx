@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { heroSlides } from "./data";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export function Hero() {
+  const { t } = useLanguage();
   const [i, setI] = useState(0);
   useEffect(() => {
     const id = setInterval(() => setI((v) => (v + 1) % heroSlides.length), 6000);
@@ -26,8 +28,8 @@ export function Hero() {
           className="serif text-white max-w-5xl leading-[1.02] font-light"
           style={{ fontSize: "clamp(2.4rem, 6.2vw, 5.6rem)" }}
         >
-          Design that gives <br className="hidden md:block" />
-          form to <em className="italic font-light">emotion</em>
+          {t("hero.title.line1")} <br className="hidden md:block" />
+          {t("hero.title.line2")} <em className="italic font-light">{t("hero.title.em")}</em>
         </h1>
       </div>
 
