@@ -13,7 +13,9 @@ const faqKeys: Array<{ q: TranslationKey; a: TranslationKey }> = Array.from(
 
 
 export const PracticeLinksSection = () => {
+  const { t } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+
 
   return (
     <section
@@ -36,18 +38,17 @@ export const PracticeLinksSection = () => {
           <header className="md:col-span-4">
             <div className="text-center md:sticky md:top-24 md:text-left">
               <p className="mb-5 text-[11px] uppercase tracking-[1.6px] text-stone-300">
-                FAQ
+                {t("faq.eyebrow")}
               </p>
 
               <h2 className="mx-auto mb-7 max-w-[11ch] font-beausite_slick text-[40px] font-light leading-[0.98] md:mx-0 md:text-[64px]">
-                Informazioni utili
+                {t("faq.title")}
               </h2>
 
               <p className="mx-auto max-w-[34ch] text-[15px] leading-7 text-stone-200 md:mx-0 md:text-base">
-                Tutto quello che serve per organizzare il soggiorno con più
-                semplicità, in continuità con il ritmo calmo e l’atmosfera
-                essenziale del resto della pagina.
+                {t("faq.intro")}
               </p>
+
             </div>
           </header>
 
