@@ -70,7 +70,7 @@ const teamMembers: TeamMember[] = [
   },
 ];
 
-export const SuitePage = () => {
+export const ComfortSuitePage = () => {
   return (
     <main className="bg-[#f5f1ea] text-stone-900">
       <section
@@ -86,7 +86,7 @@ export const SuitePage = () => {
               <li>Year / 2026</li>
             </ul>
             <h1 className="m-0 font-beausite_classic text-[56px] leading-[0.9] tracking-[-0.03em] text-stone-900 sm:text-[72px] md:text-center md:text-[108px] lg:text-[138px]">
-              FAMILY SUITE
+              COMFORT SUITE
             </h1>
           </div>
 
@@ -216,7 +216,7 @@ export const SuitePage = () => {
         <div className="mx-auto grid w-full max-w-[1680px] grid-cols-1 gap-y-12 px-6 py-20 md:grid-cols-12 md:gap-y-14 md:px-10 md:py-28 lg:px-16">
           <div className="reveal reveal-editorial md:col-span-12">
             <p className="m-0 text-[10px] uppercase tracking-[0.24em] text-stone-600 md:text-center">
-              FAMILY SUITE
+              COMFORT SUITE
             </p>
           </div>
 

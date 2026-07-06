@@ -70,7 +70,7 @@ const teamMembers: TeamMember[] = [
   },
 ];
 
-export const SuitePage = () => {
+export const FamilySuitePage = () => {
   return (
     <main className="bg-[#f5f1ea] text-stone-900">
       <section
