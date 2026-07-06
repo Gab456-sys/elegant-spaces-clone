@@ -1,4 +1,7 @@
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+
 export const DesktopNavigation = () => {
+  const { t } = useLanguage();
   return (
     <nav className="hidden md:flex md:w-full md:justify-center">
       <ul className="m-0 hidden list-none p-0 md:flex md:flex-nowrap md:items-center md:justify-center md:gap-10">
@@ -7,7 +10,7 @@ export const DesktopNavigation = () => {
             href="/"
             className="header-nav-link md:inline md:whitespace-nowrap md:text-xs md:leading-[15px] md:tracking-[1.2px] md:uppercase"
           >
-            Home
+            {t("nav.home")}
           </a>
         </li>
 
@@ -16,7 +19,7 @@ export const DesktopNavigation = () => {
             href="/#la-villa"
             className="header-nav-link md:inline md:whitespace-nowrap md:text-xs md:leading-[15px] md:tracking-[1.2px] md:uppercase"
           >
-            La Villa
+            {t("nav.villa")}
           </a>
         </li>
 
@@ -24,7 +27,7 @@ export const DesktopNavigation = () => {
           <span
             className="header-nav-link cursor-default md:inline-flex md:items-center md:whitespace-nowrap md:text-xs md:leading-[15px] md:tracking-[1.2px] md:uppercase"
           >
-            Suite
+            {t("nav.suite")}
           </span>
           <div className="pointer-events-none absolute left-1/2 top-full z-[1001] -translate-x-1/2 pt-3 opacity-0 -translate-y-2 transition-all duration-300 ease-out group-hover:pointer-events-auto group-hover:opacity-100 group-hover:translate-y-0">
             <ul className="m-0 flex w-max list-none flex-col items-center p-0 text-center text-inherit">
@@ -33,7 +36,7 @@ export const DesktopNavigation = () => {
                   href="/suite/family"
                   className="header-nav-link block whitespace-nowrap px-4 py-3 text-xs uppercase tracking-[1.2px] text-inherit"
                 >
-                  Family Suite
+                  {t("nav.suite.family")}
                 </a>
               </li>
               <li>
@@ -41,7 +44,7 @@ export const DesktopNavigation = () => {
                   href="/suite/comfort"
                   className="header-nav-link block whitespace-nowrap px-4 py-3 text-xs uppercase tracking-[1.2px] text-inherit"
                 >
-                  Comfort Suite
+                  {t("nav.suite.comfort")}
                 </a>
               </li>
               <li>
@@ -49,7 +52,7 @@ export const DesktopNavigation = () => {
                   href="/suite/basic"
                   className="header-nav-link block whitespace-nowrap px-4 py-3 text-xs uppercase tracking-[1.2px] text-inherit"
                 >
-                  Basic Room
+                  {t("nav.suite.basic")}
                 </a>
               </li>
             </ul>
@@ -61,7 +64,7 @@ export const DesktopNavigation = () => {
             href="/#faq"
             className="header-nav-link md:inline md:whitespace-nowrap md:text-xs md:leading-[15px] md:tracking-[1.2px] md:uppercase"
           >
-            I nostri consigli
+            {t("nav.tips")}
           </a>
         </li>
 
@@ -70,7 +73,7 @@ export const DesktopNavigation = () => {
             href="/#contatti"
             className="header-nav-link md:inline md:whitespace-nowrap md:text-xs md:leading-[15px] md:tracking-[1.2px] md:uppercase"
           >
-            Contatti
+            {t("nav.contact")}
           </a>
         </li>
       </ul>
