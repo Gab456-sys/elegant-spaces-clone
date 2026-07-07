@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export type ProjectGalleryImage = {
   src: string;
