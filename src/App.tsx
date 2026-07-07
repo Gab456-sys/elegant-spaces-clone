@@ -248,6 +248,9 @@ const AppShell = () => {
         <Route path="/suite/family" element={<FamilySuitePage />} />
         <Route path="/suite/comfort" element={<ComfortSuitePage />} />
         <Route path="/suite/basic" element={<BasicRoomPage />} />
+        <Route path="/family-suite" element={<FamilySuitePage />} />
+        <Route path="/comfort-suite" element={<ComfortSuitePage />} />
+        <Route path="/basic-room" element={<BasicRoomPage />} />
         <Route path="*" element={<MainContent />} />
       </Routes>
       <Footer />
