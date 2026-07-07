@@ -171,7 +171,7 @@ export const ProjectGallery = ({
           </div>
 
           <a
-            href={sectionId ? `/projects/${sectionId}` : "#"}
+            href={sectionId ? `/${sectionId}` : "#"}
             className="pointer-events-auto group absolute inset-x-0 bottom-0 z-[3] block px-6 pb-8 no-underline text-stone-50 md:px-[32.8889px] md:pb-10"
           >
             <div className="relative">
