@@ -6,7 +6,7 @@ import { useLanguage } from "@/lib/i18n/LanguageContext";
 type HeaderTheme = "light" | "dark";
 
 export const Header = () => {
-  const { t } = useLanguage();
+  const { language, toggle, t } = useLanguage();
   const [headerTheme, setHeaderTheme] = useState<HeaderTheme>("light");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDesktopMenuOpen, setIsDesktopMenuOpen] = useState(false);
