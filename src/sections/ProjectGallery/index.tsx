@@ -170,41 +170,36 @@ export const ProjectGallery = ({
             </div>
           </div>
 
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] px-6 pb-8 md:px-[32.8889px] md:pb-10">
-            <div className="flex w-full items-end justify-between gap-6 text-stone-50">
+          <a
+            href={sectionId ? `/projects/${sectionId}` : "#"}
+            className="pointer-events-auto group absolute inset-x-0 bottom-0 z-[3] block px-6 pb-8 no-underline text-stone-50 md:px-[32.8889px] md:pb-10"
+          >
+            <div className="flex w-full items-end justify-between gap-6">
               <div>
                 <h2 className="font-beausite_slick text-[40px] font-light leading-none md:text-[64px]">
-                  {title}
+                  <span className="relative inline-block after:absolute after:bottom-1 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-stone-50 after:transition-transform after:duration-500 after:ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:after:origin-left group-hover:after:scale-x-100">
+                    {title}
+                  </span>
                 </h2>
+                <span className="mt-3 inline-flex items-center gap-2 text-[11px] uppercase tracking-[1.2px] opacity-100 transition-all duration-500 ease-out md:mt-4 md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
+                  {t("room.cta.discover")}
+                  <span aria-hidden="true">→</span>
+                </span>
               </div>
 
-              <div className="flex items-end gap-6 md:gap-10">
-                <div className="hidden md:flex md:items-end md:gap-10 md:text-xs md:uppercase md:tracking-[1.2px]">
-                  {metaPrimary && !isPrimaryExtraBed ? (
-                    <span>{metaPrimary}</span>
-                  ) : null}
-                  {metaSecondary ? <span>{metaSecondary}</span> : null}
-                  {metaLocation ? <span>{metaLocation}</span> : null}
-                  {metaYear && !isYearExtraBed ? <span>{metaYear}</span> : null}
-                  {hasExtraBedLabel && extraBedValue ? (
-                    <span className="self-end text-right">
-                      {extraBedValue}
-                    </span>
-                  ) : null}
-                </div>
-
-                <a
-                  href={sectionId ? `/projects/${sectionId}` : "#"}
-                  className="pointer-events-auto group antialiased relative inline-flex w-fit items-center overflow-hidden rounded-[30px] border border-solid border-stone-50 px-5 pt-3 pb-2.5 text-[11px] uppercase leading-[13px] tracking-[1.1px] no-underline text-stone-50 transition-colors duration-500 hover:text-stone-900"
-                >
-                  <span className="relative z-[1] block [transform:translateZ(0)] [-webkit-font-smoothing:antialiased]">
-                    {t("room.cta.discover")}
-                  </span>
-                  <span className="absolute left-0 top-full z-0 block h-full w-full bg-stone-50 transition-transform duration-500 ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:-translate-y-full [backface-visibility:hidden]" />
-                </a>
+              <div className="hidden md:flex md:items-end md:gap-10 md:text-xs md:uppercase md:tracking-[1.2px]">
+                {metaPrimary && !isPrimaryExtraBed ? (
+                  <span>{metaPrimary}</span>
+                ) : null}
+                {metaSecondary ? <span>{metaSecondary}</span> : null}
+                {metaLocation ? <span>{metaLocation}</span> : null}
+                {metaYear && !isYearExtraBed ? <span>{metaYear}</span> : null}
+                {hasExtraBedLabel && extraBedValue ? (
+                  <span className="self-end text-right">{extraBedValue}</span>
+                ) : null}
               </div>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </section>
