@@ -208,8 +208,5 @@ export const ProjectGallery = ({
         </div>
       </div>
     </section>
-        </div>
-      </div>
-    </section>
   );
 };
