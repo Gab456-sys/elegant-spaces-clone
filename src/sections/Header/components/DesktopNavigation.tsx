@@ -1,7 +1,7 @@
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export const DesktopNavigation = () => {
-  const { t, language, toggle } = useLanguage();
+  const { t } = useLanguage();
   return (
     <nav className="hidden md:flex md:w-full md:justify-center">
       <ul className="m-0 hidden list-none p-0 md:flex md:flex-nowrap md:items-center md:justify-center md:gap-10">
@@ -74,39 +74,6 @@ export const DesktopNavigation = () => {
             className="header-nav-link md:inline md:whitespace-nowrap md:text-xs md:leading-[15px] md:tracking-[1.2px] md:uppercase"
           >
             {t("nav.contact")}
-          </a>
-        </li>
-
-        <li className="md:px-3">
-          <button
-            type="button"
-            onClick={toggle}
-            aria-label={t("nav.language")}
-            aria-pressed={language === "en"}
-            className="header-nav-link md:inline-flex md:items-center md:justify-center md:gap-1.5 md:whitespace-nowrap md:text-xs md:leading-[15px] md:tracking-[1.2px] md:uppercase"
-          >
-            <span className={language === "it" ? "opacity-100" : "opacity-40"}>IT</span>
-            <span className="opacity-40">·</span>
-            <span className={language === "en" ? "opacity-100" : "opacity-40"}>EN</span>
-          </button>
-        </li>
-
-        <li className="md:px-3">
-          <a
-            href="#contatti"
-            aria-label="Ricerca"
-            className="header-nav-link md:inline-flex md:items-center md:justify-center md:whitespace-nowrap md:text-xs md:leading-[15px] md:tracking-[1.2px] md:uppercase"
-          >
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 24 24"
-              className="block h-[18px] w-[18px] text-current"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle cx="11" cy="11" r="6.5" stroke="currentColor" strokeWidth="1.5" />
-              <path d="M16 16L20 20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-            </svg>
           </a>
         </li>
       </ul>
