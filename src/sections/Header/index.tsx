@@ -123,7 +123,7 @@ export const Header = () => {
               onClick={toggle}
               aria-label={t("nav.language")}
               aria-pressed={language === "en"}
-              className="header-nav-link md:inline-flex md:items-center md:justify-center md:gap-1.5 md:text-xs md:tracking-[1.2px] md:leading-[15px] md:uppercase md:whitespace-nowrap text-inherit md:opacity-100 md:pointer-events-auto"
+              className="header-nav-link md:inline-flex md:items-center md:justify-center md:gap-1.5 md:text-[13px] md:tracking-[1.3px] md:leading-[16px] md:uppercase md:whitespace-nowrap text-inherit md:opacity-100 md:pointer-events-auto"
             >
               <span className={language === "it" ? "opacity-100" : "opacity-40"}>IT</span>
               <span className="opacity-40">·</span>
@@ -152,7 +152,7 @@ export const Header = () => {
               <svg
                 aria-hidden="true"
                 viewBox="0 0 24 24"
-                className="block h-[16px] w-[16px] text-current"
+                className="block h-[19px] w-[19px] text-current"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
