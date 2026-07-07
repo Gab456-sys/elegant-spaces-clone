@@ -11,12 +11,12 @@ export const SectionCta = (props: SectionCtaProps) => {
       href={props.href}
       data-reveal-order={props.revealOrder}
       data-reveal-delay={props.revealDelay}
-      className="reveal reveal-editorial-tight box-border caret-transparent inline-flex text-[11px] justify-self-start tracking-[1.1px] leading-[13px] outline-[3px] relative no-underline uppercase w-fit border border-gray-900 overflow-hidden pt-3 pb-2.5 px-5 rounded-[30px] border-solid transition-colors duration-500 hover:text-stone-100"
+      className="reveal reveal-editorial-tight group box-border caret-transparent inline-flex text-[11px] justify-self-start tracking-[1.1px] leading-[13px] outline-[3px] relative no-underline uppercase w-fit border border-gray-900 overflow-hidden pt-3 pb-2.5 px-5 rounded-[30px] border-solid transition-colors duration-500 hover:text-stone-100"
     >
       <span className="box-border caret-transparent block min-h-[auto] min-w-[auto] outline-[3px] relative no-underline z-[1]">
         {props.label}
       </span>
-      <span className="bg-gray-900 box-border caret-transparent block h-full outline-[3px] absolute no-underline w-full z-0 left-0 top-full"></span>
+      <span className="bg-gray-900 box-border caret-transparent block h-full outline-[3px] absolute no-underline w-full z-0 left-0 top-full transition-transform duration-500 ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:-translate-y-full"></span>
     </a>
   );
 };
