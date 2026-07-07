@@ -102,13 +102,13 @@ export const Header = () => {
       >
 
       <div className="md:relative md:w-full md:px-6 lg:md:px-8 text-inherit">
-        <div className="md:relative md:flex md:items-center md:justify-center text-inherit">
-          <div className="md:absolute md:left-0 md:top-1/2 md:-translate-y-1/2 text-inherit">
+        <div className="md:flex md:items-center md:justify-between md:gap-6 text-inherit">
+          <div className="md:flex md:items-center text-inherit">
             <HeaderLogo />
           </div>
 
           <div
-            className={`md:transition-all md:duration-300 md:ease-out ${
+            className={`md:flex-1 md:flex md:justify-center md:transition-all md:duration-300 md:ease-out ${
               showFullDesktopNav
                 ? "md:opacity-100 md:translate-y-0 md:pointer-events-auto"
                 : "md:opacity-0 md:-translate-y-2 md:pointer-events-none"
@@ -117,13 +117,13 @@ export const Header = () => {
             <DesktopNavigation />
           </div>
 
-          <div className="hidden md:absolute md:right-0 md:top-1/2 md:-mt-px md:-translate-y-1/2 md:flex md:items-center md:gap-6 text-inherit">
+          <div className="hidden md:flex md:items-center md:gap-6 text-inherit">
             <button
               type="button"
               onClick={toggle}
               aria-label={t("nav.language")}
               aria-pressed={language === "en"}
-              className="header-nav-link md:inline-flex md:items-center md:justify-center md:gap-1.5 md:text-[13px] md:tracking-[1.3px] md:leading-[16px] md:uppercase md:whitespace-nowrap text-inherit md:opacity-100 md:pointer-events-auto"
+              className="header-nav-link md:inline-flex md:items-center md:justify-center md:gap-1.5 md:text-xs md:tracking-[1.2px] md:leading-[15px] md:uppercase md:whitespace-nowrap text-inherit md:opacity-100 md:pointer-events-auto"
             >
               <span className={language === "it" ? "opacity-100" : "opacity-40"}>IT</span>
               <span className="opacity-40">·</span>
@@ -152,7 +152,7 @@ export const Header = () => {
               <svg
                 aria-hidden="true"
                 viewBox="0 0 24 24"
-                className="block h-[19px] w-[19px] text-current"
+                className="block h-4 w-4 text-current"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -163,6 +163,7 @@ export const Header = () => {
           </div>
         </div>
       </div>
+
     </header>
     </>
   );
