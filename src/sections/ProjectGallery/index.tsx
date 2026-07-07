@@ -198,7 +198,7 @@ export const ProjectGallery = ({
 
               {/* Hover state: centered "Scopri di più →" */}
               <div className="pointer-events-none absolute inset-0 hidden items-end justify-center opacity-0 translate-y-2 transition-all duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] md:flex md:group-hover:translate-y-0 md:group-hover:opacity-100 md:delay-100">
-                <span className="inline-flex items-center gap-3 text-xs uppercase tracking-[1.2px]">
+                <span className="inline-flex items-center gap-3 text-sm uppercase tracking-[1.4px] md:text-base">
                   <span className="relative">
                     {t("room.cta.discover")}
                     <span
