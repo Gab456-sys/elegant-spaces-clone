@@ -214,6 +214,7 @@ export const ProjectGallery = ({
                   </span>
                 </span>
               </div>
+            </div>
           </a>
         </div>
       </div>
