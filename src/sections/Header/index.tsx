@@ -152,7 +152,7 @@ export const Header = () => {
               <svg
                 aria-hidden="true"
                 viewBox="0 0 24 24"
-                className="block h-[16px] w-[16px] text-current"
+                className="block h-[19px] w-[19px] text-current"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
