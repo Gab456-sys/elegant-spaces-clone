@@ -172,10 +172,19 @@ export const ProjectGallery = ({
 
           <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] px-6 pb-8 md:px-[32.8889px] md:pb-10">
             <div className="flex w-full items-end justify-between gap-6 text-stone-50">
-              <div>
+              <div className="flex flex-col gap-5">
                 <h2 className="font-beausite_slick text-[40px] font-light leading-none md:text-[64px]">
                   {title}
                 </h2>
+                <a
+                  href={sectionId ? `/projects/${sectionId}` : "#"}
+                  className="pointer-events-auto reveal-editorial-tight group antialiased inline-flex w-fit items-center overflow-hidden rounded-[30px] border border-solid border-stone-50 px-5 pt-3 pb-2.5 text-[11px] uppercase leading-[13px] tracking-[1.1px] no-underline text-stone-50 transition-colors duration-500 hover:text-stone-900 relative"
+                >
+                  <span className="relative z-[1] block [transform:translateZ(0)] [-webkit-font-smoothing:antialiased]">
+                    {t("room.cta.discover")}
+                  </span>
+                  <span className="absolute left-0 top-full z-0 block h-full w-full bg-stone-50 transition-transform duration-500 ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:-translate-y-full [backface-visibility:hidden]" />
+                </a>
               </div>
 
               <div className="hidden md:flex md:items-end md:gap-10 md:text-xs md:uppercase md:tracking-[1.2px]">
