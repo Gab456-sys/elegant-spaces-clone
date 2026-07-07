@@ -79,6 +79,7 @@ export const en: Record<TranslationKey, string> = {
   "room.avail.1": "1 room available",
   "room.avail.3": "3 rooms available",
   "room.extraBed": "1 extra bed available",
+  "room.cta.discover": "Discover more",
 
 
 

@@ -77,6 +77,7 @@ export const it = {
   "room.avail.1": "1 camera disponibile",
   "room.avail.3": "3 camere disponibili",
   "room.extraBed": "1 letto aggiuntivo disponibile",
+  "room.cta.discover": "Scopri di più",
 
 
 
