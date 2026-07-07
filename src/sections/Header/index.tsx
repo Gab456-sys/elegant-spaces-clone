@@ -120,6 +120,18 @@ export const Header = () => {
           <div className="hidden md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 md:flex md:items-center md:gap-6 text-inherit">
             <button
               type="button"
+              onClick={toggle}
+              aria-label={t("nav.language")}
+              aria-pressed={language === "en"}
+              className="header-nav-link md:inline-flex md:items-center md:justify-center md:gap-1.5 md:text-xs md:tracking-[1.2px] md:leading-[15px] md:uppercase md:whitespace-nowrap text-inherit md:opacity-100 md:pointer-events-auto"
+            >
+              <span className={language === "it" ? "opacity-100" : "opacity-40"}>IT</span>
+              <span className="opacity-40">·</span>
+              <span className={language === "en" ? "opacity-100" : "opacity-40"}>EN</span>
+            </button>
+
+            <button
+              type="button"
               onClick={() => setIsDesktopMenuOpen((current) => !current)}
               aria-expanded={isDesktopMenuOpen}
               aria-label={isDesktopMenuOpen ? t("nav.close") : t("nav.menu")}
@@ -131,6 +143,23 @@ export const Header = () => {
             >
               {isDesktopMenuOpen ? t("nav.close") : t("nav.menu")}
             </button>
+
+            <a
+              href="#contatti"
+              aria-label="Ricerca"
+              className="header-nav-link hidden md:inline-flex md:items-center md:justify-center md:text-xs md:tracking-[1.2px] md:leading-[15px] md:uppercase md:whitespace-nowrap text-inherit"
+            >
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                className="block h-[16px] w-[16px] text-current"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="11" cy="11" r="6.5" stroke="currentColor" strokeWidth="1.5" />
+                <path d="M16 16L20 20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              </svg>
+            </a>
           </div>
         </div>
       </div>
