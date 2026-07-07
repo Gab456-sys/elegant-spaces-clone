@@ -174,29 +174,34 @@ export const ProjectGallery = ({
             href={sectionId ? `/projects/${sectionId}` : "#"}
             className="pointer-events-auto group absolute inset-x-0 bottom-0 z-[3] block px-6 pb-8 no-underline text-stone-50 md:px-[32.8889px] md:pb-10"
           >
-            <div className="flex w-full items-end justify-between gap-6">
-              <div>
-                <h2 className="font-beausite_slick text-[40px] font-light leading-none md:text-[64px]">
-                  <span className="relative inline-block after:absolute after:bottom-1 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-stone-50 after:transition-transform after:duration-500 after:ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:after:origin-left group-hover:after:scale-x-100">
+            <div className="relative">
+              {/* Default state: title + meta */}
+              <div className="flex w-full items-end justify-between gap-6 transition-opacity duration-500 ease-out md:group-hover:opacity-0">
+                <div>
+                  <h2 className="font-beausite_slick text-[40px] font-light leading-none md:text-[64px]">
                     {title}
-                  </span>
-                </h2>
-                <span className="mt-3 inline-flex items-center gap-2 text-[11px] uppercase tracking-[1.2px] opacity-100 transition-all duration-500 ease-out md:mt-4 md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
-                  {t("room.cta.discover")}
-                  <span aria-hidden="true">→</span>
-                </span>
+                  </h2>
+                </div>
+
+                <div className="hidden md:flex md:items-end md:gap-10 md:text-xs md:uppercase md:tracking-[1.2px]">
+                  {metaPrimary && !isPrimaryExtraBed ? (
+                    <span>{metaPrimary}</span>
+                  ) : null}
+                  {metaSecondary ? <span>{metaSecondary}</span> : null}
+                  {metaLocation ? <span>{metaLocation}</span> : null}
+                  {metaYear && !isYearExtraBed ? <span>{metaYear}</span> : null}
+                  {hasExtraBedLabel && extraBedValue ? (
+                    <span className="self-end text-right">{extraBedValue}</span>
+                  ) : null}
+                </div>
               </div>
 
-              <div className="hidden md:flex md:items-end md:gap-10 md:text-xs md:uppercase md:tracking-[1.2px]">
-                {metaPrimary && !isPrimaryExtraBed ? (
-                  <span>{metaPrimary}</span>
-                ) : null}
-                {metaSecondary ? <span>{metaSecondary}</span> : null}
-                {metaLocation ? <span>{metaLocation}</span> : null}
-                {metaYear && !isYearExtraBed ? <span>{metaYear}</span> : null}
-                {hasExtraBedLabel && extraBedValue ? (
-                  <span className="self-end text-right">{extraBedValue}</span>
-                ) : null}
+              {/* Hover state: full-width "Scopri di più →" */}
+              <div className="pointer-events-none absolute inset-0 hidden items-end opacity-0 transition-opacity duration-500 ease-out md:flex md:group-hover:opacity-100">
+                <span className="inline-flex items-baseline gap-4 font-beausite_slick text-[40px] font-light leading-none md:text-[64px]">
+                  {t("room.cta.discover")}
+                  <span aria-hidden="true" className="text-[32px] md:text-[48px]">→</span>
+                </span>
               </div>
             </div>
           </a>
