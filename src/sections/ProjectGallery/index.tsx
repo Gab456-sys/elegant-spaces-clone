@@ -28,6 +28,7 @@ export const ProjectGallery = ({
   heroImages,
   galleryImages,
 }: ProjectGalleryProps) => {
+  const { t } = useLanguage();
   const sectionRef = useRef<HTMLElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
   const overlayRef = useRef<HTMLDivElement | null>(null);
