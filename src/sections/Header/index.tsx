@@ -118,7 +118,7 @@ export const Header = () => {
             <DesktopNavigation />
           </div>
 
-          <div className="hidden md:flex md:items-center md:gap-6 md:leading-none text-inherit">
+          <div className="hidden md:flex md:items-center md:gap-6 md:leading-none md:mt-[2px] text-inherit">
             <button
               type="button"
               onClick={toggle}
