@@ -198,7 +198,7 @@ export const ProjectGallery = ({
 
               {/* Hover state: centered "Scopri di più →" */}
               <div className="pointer-events-none absolute inset-0 hidden items-end justify-center opacity-0 translate-y-2 transition-all duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] md:flex md:group-hover:translate-y-0 md:group-hover:opacity-100 md:delay-100">
-                <span className="inline-flex items-baseline gap-5 font-beausite_slick text-[40px] font-light italic leading-none tracking-[-0.01em] md:text-[64px]">
+                <span className="inline-flex items-center gap-3 text-xs uppercase tracking-[1.2px]">
                   <span className="relative">
                     {t("room.cta.discover")}
                     <span
@@ -208,7 +208,7 @@ export const ProjectGallery = ({
                   </span>
                   <span
                     aria-hidden="true"
-                    className="inline-block text-[28px] leading-none transition-transform duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] md:text-[40px] md:delay-150 md:group-hover:translate-x-2"
+                    className="inline-block transition-transform duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] md:delay-150 md:group-hover:translate-x-1.5"
                   >
                     →
                   </span>
