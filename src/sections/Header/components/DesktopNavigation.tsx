@@ -8,7 +8,7 @@ export const DesktopNavigation = () => {
         <li className="md:px-3">
           <a
             href="/"
-            className="header-nav-link md:inline md:whitespace-nowrap md:text-xs md:leading-[15px] md:tracking-[1.2px] md:uppercase"
+            className="header-nav-link md:inline md:whitespace-nowrap md:text-xs md:tracking-[1.2px] md:uppercase"
           >
             {t("nav.home")}
           </a>
@@ -17,7 +17,7 @@ export const DesktopNavigation = () => {
         <li className="md:px-3">
           <a
             href="/#la-villa"
-            className="header-nav-link md:inline md:whitespace-nowrap md:text-xs md:leading-[15px] md:tracking-[1.2px] md:uppercase"
+            className="header-nav-link md:inline md:whitespace-nowrap md:text-xs md:tracking-[1.2px] md:uppercase"
           >
             {t("nav.villa")}
           </a>
@@ -25,7 +25,7 @@ export const DesktopNavigation = () => {
 
         <li className="group md:relative md:px-3">
           <span
-            className="header-nav-link cursor-default md:inline-flex md:items-center md:whitespace-nowrap md:text-xs md:leading-[15px] md:tracking-[1.2px] md:uppercase"
+            className="header-nav-link cursor-default md:inline-flex md:items-center md:whitespace-nowrap md:text-xs md:tracking-[1.2px] md:uppercase"
           >
             {t("nav.suite")}
           </span>
@@ -62,7 +62,7 @@ export const DesktopNavigation = () => {
         <li className="md:px-3">
           <a
             href="/#faq"
-            className="header-nav-link md:inline md:whitespace-nowrap md:text-xs md:leading-[15px] md:tracking-[1.2px] md:uppercase"
+            className="header-nav-link md:inline md:whitespace-nowrap md:text-xs md:tracking-[1.2px] md:uppercase"
           >
             {t("nav.tips")}
           </a>
@@ -71,7 +71,7 @@ export const DesktopNavigation = () => {
         <li className="md:px-3">
           <a
             href="/#contatti"
-            className="header-nav-link md:inline md:whitespace-nowrap md:text-xs md:leading-[15px] md:tracking-[1.2px] md:uppercase"
+            className="header-nav-link md:inline md:whitespace-nowrap md:text-xs md:tracking-[1.2px] md:uppercase"
           >
             {t("nav.contact")}
           </a>
