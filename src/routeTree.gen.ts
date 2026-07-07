@@ -12,6 +12,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
 import { Route as ProjectsSlugRouteImport } from './routes/projects.$slug'
+import { Route as FamilySuiteRouteImport } from './routes/family-suite'
+import { Route as ComfortSuiteRouteImport } from './routes/comfort-suite'
+import { Route as BasicRoomRouteImport } from './routes/basic-room'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,33 +31,60 @@ const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
   path: '/projects/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FamilySuiteRoute = FamilySuiteRouteImport.update({
+  id: '/family-suite',
+  path: '/family-suite',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComfortSuiteRoute = ComfortSuiteRouteImport.update({
+  id: '/comfort-suite',
+  path: '/comfort-suite',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BasicRoomRoute = BasicRoomRouteImport.update({
+  id: '/basic-room',
+  path: '/basic-room',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/family-suite': typeof FamilySuiteRoute
+  '/comfort-suite': typeof ComfortSuiteRoute
+  '/basic-room': typeof BasicRoomRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/projects/': typeof ProjectsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/family-suite': typeof FamilySuiteRoute
+  '/comfort-suite': typeof ComfortSuiteRoute
+  '/basic-room': typeof BasicRoomRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/projects': typeof ProjectsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/family-suite': typeof FamilySuiteRoute
+  '/comfort-suite': typeof ComfortSuiteRoute
+  '/basic-room': typeof BasicRoomRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/projects/': typeof ProjectsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/projects/$slug' | '/projects/'
+  fullPaths: '/' | '/family-suite' | '/comfort-suite' | '/basic-room' | '/projects/$slug' | '/projects/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/projects/$slug' | '/projects'
-  id: '__root__' | '/' | '/projects/$slug' | '/projects/'
+  to: '/' | '/family-suite' | '/comfort-suite' | '/basic-room' | '/projects/$slug' | '/projects'
+  id: '__root__' | '/' | '/family-suite' | '/comfort-suite' | '/basic-room' | '/projects/$slug' | '/projects/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FamilySuiteRoute: typeof FamilySuiteRoute
+  ComfortSuiteRoute: typeof ComfortSuiteRoute
+  BasicRoomRoute: typeof BasicRoomRoute
   ProjectsSlugRoute: typeof ProjectsSlugRoute
   ProjectsIndexRoute: typeof ProjectsIndexRoute
 }
@@ -66,6 +96,27 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/family-suite': {
+      id: '/family-suite'
+      path: '/family-suite'
+      fullPath: '/family-suite'
+      preLoaderRoute: typeof FamilySuiteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/comfort-suite': {
+      id: '/comfort-suite'
+      path: '/comfort-suite'
+      fullPath: '/comfort-suite'
+      preLoaderRoute: typeof ComfortSuiteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/basic-room': {
+      id: '/basic-room'
+      path: '/basic-room'
+      fullPath: '/basic-room'
+      preLoaderRoute: typeof BasicRoomRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects/': {
@@ -87,6 +138,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FamilySuiteRoute: FamilySuiteRoute,
+  ComfortSuiteRoute: ComfortSuiteRoute,
+  BasicRoomRoute: BasicRoomRoute,
   ProjectsSlugRoute: ProjectsSlugRoute,
   ProjectsIndexRoute: ProjectsIndexRoute,
 }
