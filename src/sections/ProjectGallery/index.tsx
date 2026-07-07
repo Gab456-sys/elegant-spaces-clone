@@ -176,7 +176,7 @@ export const ProjectGallery = ({
           >
             <div className="relative">
               {/* Default state: title + meta */}
-              <div className="flex w-full items-end justify-between gap-6 transition-opacity duration-500 ease-out md:group-hover:opacity-0">
+              <div className="flex w-full items-end justify-between gap-6 transition-all duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] md:group-hover:-translate-y-1 md:group-hover:opacity-0 md:group-hover:blur-[2px]">
                 <div>
                   <h2 className="font-beausite_slick text-[40px] font-light leading-none md:text-[64px]">
                     {title}
@@ -196,11 +196,22 @@ export const ProjectGallery = ({
                 </div>
               </div>
 
-              {/* Hover state: full-width "Scopri di più →" */}
-              <div className="pointer-events-none absolute inset-0 hidden items-end opacity-0 transition-opacity duration-500 ease-out md:flex md:group-hover:opacity-100">
-                <span className="inline-flex items-baseline gap-4 font-beausite_slick text-[40px] font-light leading-none md:text-[64px]">
-                  {t("room.cta.discover")}
-                  <span aria-hidden="true" className="text-[32px] md:text-[48px]">→</span>
+              {/* Hover state: centered "Scopri di più →" */}
+              <div className="pointer-events-none absolute inset-0 hidden items-end justify-center opacity-0 translate-y-2 transition-all duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] md:flex md:group-hover:translate-y-0 md:group-hover:opacity-100 md:delay-100">
+                <span className="inline-flex items-baseline gap-5 font-beausite_slick text-[40px] font-light italic leading-none tracking-[-0.01em] md:text-[64px]">
+                  <span className="relative">
+                    {t("room.cta.discover")}
+                    <span
+                      aria-hidden="true"
+                      className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-stone-50 transition-transform duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] md:delay-200 md:group-hover:scale-x-100"
+                    />
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className="inline-block text-[28px] leading-none transition-transform duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] md:text-[40px] md:delay-150 md:group-hover:translate-x-2"
+                  >
+                    →
+                  </span>
                 </span>
               </div>
             </div>
