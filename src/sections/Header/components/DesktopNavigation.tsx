@@ -70,7 +70,7 @@ export const DesktopNavigation = () => {
 
         <li className="md:px-3">
           <a
-            href="/#contatti"
+            href="/contatti"
             className="header-nav-link md:inline md:whitespace-nowrap md:text-xs md:tracking-[1.2px] md:uppercase"
           >
             {t("nav.contact")}
