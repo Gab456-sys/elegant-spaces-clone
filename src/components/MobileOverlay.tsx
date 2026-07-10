@@ -44,7 +44,7 @@ export const MobileOverlay = ({ isOpen, onClose }: MobileOverlayProps) => {
                 </li>
                 <li className="mb-5">
                   <a
-                    href="/#la-villa"
+                    href="/la-villa"
                     onClick={onClose}
                     className="box-border caret-transparent block outline-[3px] no-underline"
                   >
@@ -62,7 +62,7 @@ export const MobileOverlay = ({ isOpen, onClose }: MobileOverlayProps) => {
                 </li>
                 <li className="mb-5">
                   <a
-                    href="/#faq"
+                    href="/consigli"
                     onClick={onClose}
                     className="box-border caret-transparent block outline-[3px] no-underline"
                   >
@@ -71,7 +71,7 @@ export const MobileOverlay = ({ isOpen, onClose }: MobileOverlayProps) => {
                 </li>
                 <li>
                   <a
-                    href="/#contatti"
+                    href="/contatti"
                     onClick={onClose}
                     className="box-border caret-transparent block outline-[3px] no-underline"
                   >
