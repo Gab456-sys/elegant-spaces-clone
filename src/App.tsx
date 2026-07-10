@@ -9,6 +9,9 @@ import { MobileMenuButton } from "@/sections/Header/components/MobileMenuButton"
 import { FamilySuitePage } from "@/sections/FamilySuitePage";
 import { ComfortSuitePage } from "@/sections/ComfortSuitePage";
 import { BasicRoomPage } from "@/sections/BasicRoomPage";
+import { LaVillaPage } from "@/sections/LaVillaPage";
+import { ConsigliPage } from "@/sections/ConsigliPage";
+import { ContattiPage } from "@/sections/ContattiPage";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 
 const AppShell = () => {
