@@ -50,8 +50,8 @@ export const FooterNavigation = () => {
           regionName={t("footerSec.region.contact")}
           regionClassName="list-item min-h-[auto] min-w-[auto] md:hidden md:min-h-0 md:min-w-0 md:w-[9.5%]"
           links={[
-            { href: "#contatti", label: t("footerSec.link.email") },
-            { href: "#contatti", label: t("footerSec.link.phone") },
+            { href: "/contatti", label: t("footerSec.link.email") },
+            { href: "/contatti", label: t("footerSec.link.phone") },
           ]}
         />
       </ul>
