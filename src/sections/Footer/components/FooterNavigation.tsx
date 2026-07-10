@@ -13,37 +13,37 @@ export const FooterNavigation = () => {
           regionName={t("footerSec.region.villa")}
           regionClassName="min-h-[auto] min-w-[auto] md:w-[22.625%]"
           links={[
-            { href: "#la-villa", label: t("footerSec.link.villa") },
-            { href: "#suite", label: t("footerSec.link.suite") },
-            { href: "#consigli", label: t("footerSec.link.tips") },
-            { href: "#contatti", label: t("footerSec.link.contact") },
+            { href: "/la-villa", label: t("footerSec.link.villa") },
+            { href: "/#suite", label: t("footerSec.link.suite") },
+            { href: "/consigli", label: t("footerSec.link.tips") },
+            { href: "/contatti", label: t("footerSec.link.contact") },
           ]}
         />
         <FooterRegion
           regionName={t("footerSec.region.stay")}
           regionClassName="min-h-[auto] min-w-[auto] md:w-[22.625%]"
           links={[
-            { href: "#contatti", label: t("footerSec.link.availability") },
-            { href: "#contatti", label: t("footerSec.link.checkin") },
-            { href: "#contatti", label: t("footerSec.link.services") },
+            { href: "/contatti", label: t("footerSec.link.availability") },
+            { href: "/contatti", label: t("footerSec.link.checkin") },
+            { href: "/la-villa", label: t("footerSec.link.services") },
           ]}
         />
         <FooterRegion
           regionName={t("footerSec.region.experiences")}
           regionClassName="min-h-[auto] min-w-[auto] md:w-[22.625%]"
           links={[
-            { href: "#consigli", label: t("footerSec.link.itineraries") },
-            { href: "#consigli", label: t("footerSec.link.restaurants") },
-            { href: "#consigli", label: t("footerSec.link.wellness") },
+            { href: "/consigli", label: t("footerSec.link.itineraries") },
+            { href: "/consigli", label: t("footerSec.link.restaurants") },
+            { href: "/consigli", label: t("footerSec.link.wellness") },
           ]}
         />
         <FooterRegion
           regionName={t("footerSec.region.contact")}
           regionClassName="hidden min-h-0 min-w-0 md:block md:min-h-[auto] md:min-w-[auto] md:w-[22.625%]"
           links={[
-            { href: "#contatti", label: t("footerSec.link.email") },
-            { href: "#contatti", label: t("footerSec.link.phone") },
-            { href: "#contatti", label: t("footerSec.link.directions") },
+            { href: "/contatti", label: t("footerSec.link.email") },
+            { href: "/contatti", label: t("footerSec.link.phone") },
+            { href: "/contatti", label: t("footerSec.link.directions") },
           ]}
         />
         <FooterRegion
