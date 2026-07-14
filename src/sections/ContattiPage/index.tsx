@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const IconTrain = () => (
   <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.4">
@@ -23,6 +24,8 @@ const IconPlane = () => (
 );
 
 export const ContattiPage = () => {
+  const { language } = useLanguage();
+  const isEn = language === "en";
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -56,26 +59,27 @@ export const ContattiPage = () => {
       >
         <img
           src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2200&q=80"
-          alt="Interno accogliente di Villa Sesto"
+          alt="Villa Sesto"
           className="absolute inset-0 -z-10 h-full w-full object-cover"
         />
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/30 via-black/25 to-black/60" />
         <div className="mx-auto w-full max-w-[1680px] px-6 pb-20 pt-40 text-stone-50 md:px-10 md:pb-28 md:pt-48 lg:px-16">
           <p className="reveal reveal-editorial-tight m-0 text-[11px] uppercase tracking-[0.28em] text-stone-100/90">
-            Siamo qui
+            {isEn ? "We are here" : "Siamo qui"}
           </p>
           <h1
             data-reveal-order={1}
             className="reveal reveal-editorial m-0 mt-4 max-w-[14ch] font-beausite_classic text-[56px] leading-[0.95] tracking-[-0.02em] sm:text-[76px] md:text-[104px] lg:text-[128px]"
           >
-            Contatti
+            {isEn ? "Contact" : "Contatti"}
           </h1>
           <p
             data-reveal-order={2}
             className="reveal reveal-editorial mt-8 max-w-[52ch] text-[17px] leading-[1.55] text-stone-100/95 md:text-[20px]"
           >
-            Scrivici o chiamaci per qualsiasi informazione. Risponderemo con
-            piacere.
+            {isEn
+              ? "Write or call us for any information. We'll be happy to reply."
+              : "Scrivici o chiamaci per qualsiasi informazione. Risponderemo con piacere."}
           </p>
         </div>
       </section>
@@ -89,17 +93,17 @@ export const ContattiPage = () => {
           {/* FORM */}
           <div className="reveal reveal-editorial">
             <p className="m-0 text-[11px] uppercase tracking-[0.24em] text-stone-600">
-              Scrivici
+              {isEn ? "Write to us" : "Scrivici"}
             </p>
             <h2 className="m-0 mt-5 max-w-[14ch] font-beausite_classic text-[36px] leading-[1] tracking-[-0.02em] text-stone-900 sm:text-[44px] md:text-[52px]">
-              Richiedi informazioni
+              {isEn ? "Request information" : "Richiedi informazioni"}
             </h2>
             <form
               onSubmit={handleSubmit}
               className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2"
             >
               <label className="flex flex-col gap-2 text-[10px] uppercase tracking-[0.22em] text-stone-600 md:col-span-2">
-                Nome completo
+                {isEn ? "Full name" : "Nome completo"}
                 <input
                   required
                   name="name"
@@ -120,7 +124,7 @@ export const ContattiPage = () => {
                 />
               </label>
               <label className="flex flex-col gap-2 text-[10px] uppercase tracking-[0.22em] text-stone-600">
-                Telefono (opzionale)
+                {isEn ? "Phone (optional)" : "Telefono (opzionale)"}
                 <input
                   type="tel"
                   name="phone"
@@ -130,7 +134,7 @@ export const ContattiPage = () => {
                 />
               </label>
               <label className="flex flex-col gap-2 text-[10px] uppercase tracking-[0.22em] text-stone-600">
-                Data di arrivo
+                {isEn ? "Arrival date" : "Data di arrivo"}
                 <input
                   type="date"
                   name="arrival"
@@ -140,7 +144,7 @@ export const ContattiPage = () => {
                 />
               </label>
               <label className="flex flex-col gap-2 text-[10px] uppercase tracking-[0.22em] text-stone-600">
-                Data di partenza
+                {isEn ? "Departure date" : "Data di partenza"}
                 <input
                   type="date"
                   name="departure"
@@ -150,7 +154,7 @@ export const ContattiPage = () => {
                 />
               </label>
               <label className="flex flex-col gap-2 text-[10px] uppercase tracking-[0.22em] text-stone-600 md:col-span-2">
-                Messaggio
+                {isEn ? "Message" : "Messaggio"}
                 <textarea
                   required
                   name="message"
@@ -165,7 +169,9 @@ export const ContattiPage = () => {
                   type="submit"
                   className="group relative inline-flex w-fit items-center overflow-hidden rounded-[30px] border border-stone-900 px-5 pb-2.5 pt-3 text-[11px] uppercase tracking-[1.1px] leading-[13px] transition-colors duration-500 hover:text-stone-100"
                 >
-                  <span className="relative z-[1]">Invia richiesta</span>
+                  <span className="relative z-[1]">
+                    {isEn ? "Send request" : "Invia richiesta"}
+                  </span>
                   <span className="absolute left-0 top-full z-0 h-full w-full bg-gray-900 transition-transform duration-500 ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:-translate-y-full" />
                 </button>
               </div>
@@ -175,7 +181,7 @@ export const ContattiPage = () => {
           {/* INFO */}
           <div className="reveal reveal-editorial md:pl-10">
             <p className="m-0 text-[11px] uppercase tracking-[0.24em] text-stone-600">
-              La struttura
+              {isEn ? "The property" : "La struttura"}
             </p>
             <h2 className="m-0 mt-5 font-beausite_classic text-[36px] leading-[1] tracking-[-0.02em] text-stone-900 sm:text-[44px] md:text-[52px]">
               Villa Sesto
@@ -183,7 +189,7 @@ export const ContattiPage = () => {
             <dl className="mt-10 border-t border-stone-300/80">
               <div className="border-b border-stone-300/80 py-5">
                 <dt className="text-[10px] uppercase tracking-[0.22em] text-stone-600">
-                  Indirizzo
+                  {isEn ? "Address" : "Indirizzo"}
                 </dt>
                 <dd className="m-0 mt-2 text-[16px] leading-[1.5] text-stone-900">
                   Viale Giulio Cesare 21, Sesto Fiorentino (FI)
@@ -194,7 +200,7 @@ export const ContattiPage = () => {
                     rel="noreferrer"
                     className="mt-2 inline-block text-[11px] uppercase tracking-[0.22em] text-stone-700 underline underline-offset-4 transition-colors hover:text-stone-900"
                   >
-                    Apri in Google Maps
+                    {isEn ? "Open in Google Maps" : "Apri in Google Maps"}
                   </a>
                 </dd>
               </div>
@@ -224,7 +230,7 @@ export const ContattiPage = () => {
                   Check-out
                 </dt>
                 <dd className="m-0 mt-2 text-[16px] leading-[1.5] text-stone-900">
-                  Entro le 10:30
+                  {isEn ? "By 10:30" : "Entro le 10:30"}
                 </dd>
               </div>
             </dl>
@@ -232,7 +238,7 @@ export const ContattiPage = () => {
         </div>
       </section>
 
-      {/* COME ARRIVARE */}
+      {/* HOW TO REACH */}
       <section
         data-header-theme="dark"
         className="border-b border-stone-300/70 bg-[#ece5da]"
@@ -240,28 +246,34 @@ export const ContattiPage = () => {
         <div className="mx-auto w-full max-w-[1680px] px-6 py-20 md:px-10 md:py-28 lg:px-16">
           <div className="reveal reveal-editorial mb-14 md:mb-20 md:text-center">
             <p className="m-0 text-[11px] uppercase tracking-[0.24em] text-stone-600">
-              Come arrivare
+              {isEn ? "How to reach us" : "Come arrivare"}
             </p>
             <h2 className="m-0 mt-5 font-beausite_classic text-[40px] leading-[0.98] tracking-[-0.02em] text-stone-900 sm:text-[52px] md:text-[64px]">
-              A pochi minuti da tutto
+              {isEn ? "Minutes away from everything" : "A pochi minuti da tutto"}
             </h2>
           </div>
           <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
             {[
               {
                 icon: <IconTrain />,
-                title: "In treno",
-                text: "Stazione Zambra, 8 minuti a piedi dalla struttura.",
+                title: isEn ? "By train" : "In treno",
+                text: isEn
+                  ? "Zambra station, 8 minutes on foot from the property."
+                  : "Stazione Zambra, 8 minuti a piedi dalla struttura.",
               },
               {
                 icon: <IconCar />,
-                title: "In auto",
-                text: "Nessuna ZTL. Parcheggio privato gratuito 24h riservato agli ospiti.",
+                title: isEn ? "By car" : "In auto",
+                text: isEn
+                  ? "No ZTL. Free private 24h parking reserved for guests."
+                  : "Nessuna ZTL. Parcheggio privato gratuito 24h riservato agli ospiti.",
               },
               {
                 icon: <IconPlane />,
-                title: "In aereo",
-                text: "Aeroporto di Firenze Vespucci, 10 minuti in taxi o auto.",
+                title: isEn ? "By plane" : "In aereo",
+                text: isEn
+                  ? "Florence Vespucci Airport, 10 minutes by taxi or car."
+                  : "Aeroporto di Firenze Vespucci, 10 minuti in taxi o auto.",
               },
             ].map((block, index) => (
               <div
