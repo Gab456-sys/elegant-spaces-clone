@@ -10,6 +10,7 @@ type RoomData = {
   priceKey: TranslationKey;
   guestsKey: TranslationKey;
   noteKey: TranslationKey;
+  detailHref: string;
   detailKey?: TranslationKey;
 };
 
@@ -19,12 +20,14 @@ const roomsData: RoomData[] = [
     priceKey: "room.family.price",
     guestsKey: "room.guests.4",
     noteKey: "room.avail.1",
+    detailHref: "/suite/family",
   },
   {
     nameKey: "room.comfort.name",
     priceKey: "room.comfort.price",
     guestsKey: "room.guests.2",
     noteKey: "room.avail.3",
+    detailHref: "/suite/comfort",
     detailKey: "room.extraBed",
   },
   {
@@ -32,6 +35,7 @@ const roomsData: RoomData[] = [
     priceKey: "room.basic.price",
     guestsKey: "room.guests.2",
     noteKey: "room.avail.1",
+    detailHref: "/suite/basic",
   },
 ];
 
@@ -73,6 +77,7 @@ export const MainContent = () => {
           metaSecondary={t(room.priceKey)}
           metaLocation={t(room.guestsKey)}
           metaYear={room.detailKey ? t(room.detailKey) : undefined}
+          detailHref={room.detailHref}
           heroImages={roomHeroImages.map((image) => ({ ...image }))}
           galleryImages={roomGalleryImages.map((image) => ({ ...image }))}
         />
