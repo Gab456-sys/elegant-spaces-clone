@@ -124,11 +124,14 @@ const PlaceModal = ({
       >
         <button
           type="button"
-          onClick={onClose}
+          onClick={(e) => {
+            e.stopPropagation();
+            onClose();
+          }}
           aria-label={labels.close}
-          className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-stone-900 shadow-md transition hover:bg-white"
+          className="absolute right-4 top-4 z-20 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border-0 bg-white text-stone-900 shadow-lg transition hover:bg-stone-100"
         >
-          <span className="text-lg leading-none">×</span>
+          <span aria-hidden className="pointer-events-none text-2xl leading-none">×</span>
         </button>
         <div className="relative h-[38svh] w-full shrink-0 md:h-auto md:w-[55%]">
           <img
