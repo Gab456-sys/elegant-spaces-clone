@@ -115,7 +115,7 @@ const PlaceModal = ({
       role="dialog"
       aria-modal="true"
       aria-label={place.name}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm animate-in fade-in duration-300 md:p-10"
+      className="fixed inset-0 z-[2000] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm animate-in fade-in duration-300 md:p-10"
       onClick={onClose}
     >
       <button
