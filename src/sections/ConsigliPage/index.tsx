@@ -115,24 +115,30 @@ const PlaceModal = ({
       role="dialog"
       aria-modal="true"
       aria-label={place.name}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 md:p-10 animate-in fade-in duration-300"
+      className="fixed inset-0 z-[2000] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm animate-in fade-in duration-300 md:p-10"
       onClick={onClose}
     >
+      <button
+        type="button"
+        onPointerDown={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          onClose();
+        }}
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          onClose();
+        }}
+        aria-label={labels.close}
+        className="absolute right-4 top-4 z-30 flex h-14 w-14 cursor-pointer touch-manipulation items-center justify-center rounded-full border-0 bg-white text-stone-900 shadow-xl transition hover:bg-stone-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 focus-visible:ring-offset-2 focus-visible:ring-offset-white md:right-10 md:top-10"
+      >
+        <span aria-hidden className="pointer-events-none text-3xl leading-none">×</span>
+      </button>
       <div
         className="relative flex max-h-[92svh] w-full max-w-[1200px] flex-col overflow-hidden bg-[#f5f1ea] shadow-2xl md:flex-row"
         onClick={(e) => e.stopPropagation()}
       >
-        <button
-          type="button"
-          onClick={(e) => {
-            e.stopPropagation();
-            onClose();
-          }}
-          aria-label={labels.close}
-          className="absolute right-4 top-4 z-20 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border-0 bg-white text-stone-900 shadow-lg transition hover:bg-stone-100"
-        >
-          <span aria-hidden className="pointer-events-none text-2xl leading-none">×</span>
-        </button>
         <div className="relative h-[38svh] w-full shrink-0 md:h-auto md:w-[55%]">
           <img
             src={place.src}
