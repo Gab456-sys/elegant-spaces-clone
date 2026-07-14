@@ -168,7 +168,7 @@ export const ConsigliPage = () => {
           </p>
           <h1
             data-reveal-order={1}
-            className="reveal reveal-editorial m-0 mt-4 max-w-[16ch] pb-2 font-beausite_classic text-[52px] leading-[1.05] tracking-[-0.02em] sm:text-[70px] md:text-[96px] lg:text-[118px]"
+            className="reveal reveal-editorial m-0 mt-4 block max-w-[16ch] overflow-visible pb-6 pt-1 font-beausite_classic text-[52px] leading-[1.18] tracking-[-0.02em] sm:text-[70px] md:text-[96px] lg:text-[118px]"
           >
             {isEn ? "Our Tips" : "I Nostri Consigli"}
           </h1>
