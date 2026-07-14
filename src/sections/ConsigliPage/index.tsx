@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { SectionCta } from "@/components/SectionCta";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
@@ -6,6 +7,8 @@ type Place = {
   name: string;
   desc: string;
   meta: string;
+  long?: string;
+  highlights?: string[];
 };
 
 const PlaceGrid = ({
@@ -13,11 +16,15 @@ const PlaceGrid = ({
   title,
   places,
   bg,
+  onOpen,
+  readMoreLabel,
 }: {
   eyebrow: string;
   title: string;
   places: Place[];
   bg: string;
+  onOpen: (place: Place) => void;
+  readMoreLabel: string;
 }) => (
   <section
     data-header-theme="dark"
@@ -39,24 +46,38 @@ const PlaceGrid = ({
             data-reveal-order={index}
             className="reveal-crop"
           >
-            <div className="overflow-hidden">
-              <img
-                src={place.src}
-                alt={place.name}
-                className="reveal-media-inner block h-[52svh] w-full object-cover md:h-[46svh]"
-              />
-            </div>
-            <div className="reveal reveal-editorial mt-5">
-              <p className="m-0 text-[10px] uppercase tracking-[0.24em] text-stone-600">
-                {place.meta}
-              </p>
-              <h3 className="m-0 mt-2 font-beausite_classic text-[26px] leading-[1.05] tracking-[-0.01em] text-stone-900 md:text-[30px]">
-                {place.name}
-              </h3>
-              <p className="m-0 mt-3 text-[15px] leading-[1.55] text-stone-800/90">
-                {place.desc}
-              </p>
-            </div>
+            <button
+              type="button"
+              onClick={() => onOpen(place)}
+              className="group block w-full cursor-pointer text-left"
+              aria-label={`${readMoreLabel}: ${place.name}`}
+            >
+              <div className="overflow-hidden">
+                <img
+                  src={place.src}
+                  alt={place.name}
+                  className="reveal-media-inner block h-[52svh] w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-[1.04] md:h-[46svh]"
+                />
+              </div>
+              <div className="reveal reveal-editorial mt-5">
+                <p className="m-0 text-[10px] uppercase tracking-[0.24em] text-stone-600">
+                  {place.meta}
+                </p>
+                <h3 className="m-0 mt-2 font-beausite_classic text-[26px] leading-[1.05] tracking-[-0.01em] text-stone-900 md:text-[30px]">
+                  {place.name}
+                </h3>
+                <p className="m-0 mt-3 text-[15px] leading-[1.55] text-stone-800/90">
+                  {place.desc}
+                </p>
+                <span className="mt-4 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-stone-900">
+                  <span className="relative">
+                    {readMoreLabel}
+                    <span className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-100 bg-stone-900 transition-transform duration-500 group-hover:scale-x-0" />
+                  </span>
+                  <span aria-hidden className="transition-transform duration-500 group-hover:translate-x-1">→</span>
+                </span>
+              </div>
+            </button>
           </article>
         ))}
       </div>
@@ -64,9 +85,96 @@ const PlaceGrid = ({
   </section>
 );
 
+const PlaceModal = ({
+  place,
+  onClose,
+  labels,
+}: {
+  place: Place | null;
+  onClose: () => void;
+  labels: { close: string; highlights: string; distance: string };
+}) => {
+  useEffect(() => {
+    if (!place) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [place, onClose]);
+
+  if (!place) return null;
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={place.name}
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 md:p-10 animate-in fade-in duration-300"
+      onClick={onClose}
+    >
+      <div
+        className="relative flex max-h-[92svh] w-full max-w-[1200px] flex-col overflow-hidden bg-[#f5f1ea] shadow-2xl md:flex-row"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label={labels.close}
+          className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-stone-900 shadow-md transition hover:bg-white"
+        >
+          <span className="text-lg leading-none">×</span>
+        </button>
+        <div className="relative h-[38svh] w-full shrink-0 md:h-auto md:w-[55%]">
+          <img
+            src={place.src}
+            alt={place.name}
+            className="h-full w-full object-cover"
+          />
+        </div>
+        <div className="flex-1 overflow-y-auto p-6 md:p-10">
+          <p className="m-0 text-[10px] uppercase tracking-[0.24em] text-stone-600">
+            {labels.distance}: {place.meta}
+          </p>
+          <h3 className="m-0 mt-3 font-beausite_classic text-[30px] leading-[1.05] tracking-[-0.01em] text-stone-900 md:text-[40px]">
+            {place.name}
+          </h3>
+          <p className="m-0 mt-5 text-[15px] leading-[1.65] text-stone-800/90 md:text-[16px]">
+            {place.long ?? place.desc}
+          </p>
+          {place.highlights && place.highlights.length > 0 && (
+            <div className="mt-8 border-t border-stone-300/70 pt-6">
+              <p className="m-0 text-[10px] uppercase tracking-[0.24em] text-stone-600">
+                {labels.highlights}
+              </p>
+              <ul className="mt-4 space-y-2">
+                {place.highlights.map((h) => (
+                  <li
+                    key={h}
+                    className="flex gap-3 text-[14px] leading-[1.55] text-stone-800"
+                  >
+                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-stone-500" />
+                    {h}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export const ConsigliPage = () => {
   const { language } = useLanguage();
   const isEn = language === "en";
+  const [active, setActive] = useState<Place | null>(null);
 
   const sesto: Place[] = [
     {
@@ -76,6 +184,12 @@ export const ConsigliPage = () => {
         ? "The historic Tuscan porcelain manufactory, among archives and masterpieces of ceramic design."
         : "La storica manifattura della porcellana toscana, tra archivi e capolavori del design ceramico.",
       meta: isEn ? "12 min on foot" : "12 min a piedi",
+      long: isEn
+        ? "Founded in 1735, the Richard-Ginori Museum preserves nearly three centuries of Italian porcelain heritage. Its collection ranges from Baroque tableware to iconic 20th-century designs by Gio Ponti, offering a rare window into Tuscan craftsmanship and industrial art."
+        : "Fondato nel 1735, il Museo Richard-Ginori custodisce quasi tre secoli di eccellenza della porcellana italiana. La collezione spazia dalle stoviglie barocche alle iconiche creazioni novecentesche di Gio Ponti, offrendo una rara finestra sull'artigianato toscano e sull'arte industriale.",
+      highlights: isEn
+        ? ["Historic Ginori archives", "Gio Ponti collection", "Guided tours available"]
+        : ["Archivi storici Ginori", "Collezione Gio Ponti", "Visite guidate su prenotazione"],
     },
     {
       src: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1400&q=80",
@@ -84,6 +198,12 @@ export const ConsigliPage = () => {
         ? "Quiet squares, artisan workshops and historic cafés, just steps from the villa."
         : "Piazze raccolte, botteghe artigiane e caffè storici a due passi dalla villa.",
       meta: isEn ? "8 min on foot" : "8 min a piedi",
+      long: isEn
+        ? "The old town of Sesto Fiorentino unfolds along elegant piazzas and narrow streets shaped by centuries of Florentine influence. Family-run trattorias, gelaterias and small artisan workshops make it perfect for a slow morning walk or an evening aperitivo."
+        : "Il centro storico di Sesto Fiorentino si snoda tra piazze eleganti e vie strette plasmate da secoli di influenza fiorentina. Trattorie a conduzione familiare, gelaterie e piccole botteghe artigiane lo rendono perfetto per una passeggiata mattutina o un aperitivo serale.",
+      highlights: isEn
+        ? ["Weekly street market", "Historic cafés", "Local trattorias"]
+        : ["Mercato settimanale", "Caffè storici", "Trattorie tipiche"],
     },
     {
       src: "https://images.unsplash.com/photo-1470004914212-05527e49370b?auto=format&fit=crop&w=1400&q=80",
@@ -92,6 +212,12 @@ export const ConsigliPage = () => {
         ? "A historic garden to walk through centuries-old trees with views over the Florentine plain."
         : "Un giardino storico dove passeggiare tra alberi secolari e viste sulla piana fiorentina.",
       meta: isEn ? "15 min on foot" : "15 min a piedi",
+      long: isEn
+        ? "Once a Medici hunting estate, the park surrounding Villa Montalvo is a peaceful expanse of Italian gardens, cedars and holm oaks. Winding paths open onto quiet clearings and long views over the Florentine plain — an ideal reset between city visits."
+        : "Un tempo tenuta di caccia medicea, il parco che circonda Villa Montalvo è una distesa serena di giardini all'italiana, cedri e lecci. Sentieri sinuosi si aprono su radure silenziose e ampie vedute sulla piana fiorentina — perfetto per riprendere fiato tra una visita e l'altra.",
+      highlights: isEn
+        ? ["Italian formal gardens", "Panoramic viewpoints", "Free entry"]
+        : ["Giardini all'italiana", "Punti panoramici", "Ingresso libero"],
     },
   ];
 
@@ -103,6 +229,12 @@ export const ConsigliPage = () => {
         ? "The Renaissance heart of Florence, with unmissable collections and open-air statues."
         : "Il cuore rinascimentale di Firenze, tra collezioni imperdibili e statue all'aperto.",
       meta: isEn ? "30 min by train + on foot" : "30 min in treno + a piedi",
+      long: isEn
+        ? "The Uffizi Gallery holds one of the greatest collections of Renaissance art in the world — Botticelli, Leonardo, Michelangelo, Caravaggio. Just outside, Piazza della Signoria remains Florence's civic stage, framed by Palazzo Vecchio and the open-air sculptures of the Loggia dei Lanzi."
+        : "La Galleria degli Uffizi custodisce una delle più grandi collezioni di arte rinascimentale al mondo — Botticelli, Leonardo, Michelangelo, Caravaggio. Fuori, Piazza della Signoria resta il palcoscenico civico di Firenze, incorniciata da Palazzo Vecchio e dalle sculture all'aperto della Loggia dei Lanzi.",
+      highlights: isEn
+        ? ["Book tickets in advance", "Loggia dei Lanzi (free)", "Palazzo Vecchio nearby"]
+        : ["Biglietti da prenotare in anticipo", "Loggia dei Lanzi (gratuita)", "Palazzo Vecchio accanto"],
     },
     {
       src: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1400&q=80",
@@ -111,6 +243,12 @@ export const ConsigliPage = () => {
         ? "Brunelleschi's dome and the Baptistery of San Giovanni, symbols of the city."
         : "La cupola del Brunelleschi e il Battistero di San Giovanni, simboli della città.",
       meta: isEn ? "25 min by train + on foot" : "25 min in treno + a piedi",
+      long: isEn
+        ? "Brunelleschi's dome still crowns Florence's skyline as one of the great feats of Renaissance engineering. Below, Santa Maria del Fiore, Giotto's Campanile and the octagonal Baptistery — with its bronze Gates of Paradise — form one of the most extraordinary architectural ensembles in Europe."
+        : "La cupola del Brunelleschi domina ancora lo skyline di Firenze come una delle grandi imprese ingegneristiche del Rinascimento. Sotto, Santa Maria del Fiore, il Campanile di Giotto e il Battistero ottagonale — con le sue Porte del Paradiso in bronzo — formano uno degli insiemi architettonici più straordinari d'Europa.",
+      highlights: isEn
+        ? ["Climb the dome", "Baptistery mosaics", "Cathedral museum"]
+        : ["Salita alla cupola", "Mosaici del Battistero", "Museo dell'Opera del Duomo"],
     },
     {
       src: "https://images.unsplash.com/photo-1512564797609-3ea1ee1eab13?auto=format&fit=crop&w=1400&q=80",
@@ -119,6 +257,12 @@ export const ConsigliPage = () => {
         ? "Historic workshops, ateliers and authentic trattorias on the other bank of the Arno."
         : "Botteghe storiche, atelier e trattorie autentiche sull'altra sponda dell'Arno.",
       meta: isEn ? "35 min by train + on foot" : "35 min in treno + a piedi",
+      long: isEn
+        ? "Across the Arno, the Oltrarno keeps Florence's craft soul alive. Leather ateliers, gilders, bookbinders and framers still work behind unassuming doors in San Frediano and Santo Spirito, while the neighbourhood's trattorias and wine bars offer some of the city's most authentic evenings."
+        : "Oltre l'Arno, l'Oltrarno custodisce l'anima artigiana di Firenze. Botteghe di pelle, doratori, legatori e corniciai lavorano ancora dietro portoni discreti a San Frediano e Santo Spirito, mentre trattorie e wine bar del quartiere regalano alcune delle serate più autentiche della città.",
+      highlights: isEn
+        ? ["Santo Spirito square", "Artisan workshops", "Sunset from Piazzale Michelangelo"]
+        : ["Piazza Santo Spirito", "Botteghe artigiane", "Tramonto da Piazzale Michelangelo"],
     },
   ];
 
@@ -130,6 +274,12 @@ export const ConsigliPage = () => {
         ? "A balcony above Florence, with Etruscan and Roman ruins and one of the most celebrated views in Tuscany."
         : "Un balcone sopra Firenze, tra rovine etrusche, romane e uno dei panorami più celebri della Toscana.",
       meta: isEn ? "25 min by car" : "25 min in auto",
+      long: isEn
+        ? "Perched in the hills north of Florence, Fiesole predates the city itself. The Roman theatre still hosts summer concerts, the archaeological area preserves Etruscan walls and thermal baths, and the terrace in front of San Francesco offers one of the most memorable views over Florence."
+        : "Arroccata sulle colline a nord di Firenze, Fiesole è più antica della città stessa. Il teatro romano ospita ancora concerti estivi, l'area archeologica conserva mura etrusche e terme, e la terrazza di fronte a San Francesco regala una delle vedute più memorabili su Firenze.",
+      highlights: isEn
+        ? ["Roman theatre", "Etruscan walls", "Panoramic terrace"]
+        : ["Teatro romano", "Mura etrusche", "Terrazza panoramica"],
     },
     {
       src: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1400&q=80",
@@ -138,6 +288,12 @@ export const ConsigliPage = () => {
         ? "Quiet roads, medieval villages and small farmhouses immersed in the countryside."
         : "Strade tranquille, borghi medievali e piccoli agriturismi immersi nel verde.",
       meta: isEn ? "40 min by car" : "40 min in auto",
+      long: isEn
+        ? "The Mugello valley, birthplace of the Medici, unfolds in gentle hills, chestnut woods and stone villages like Scarperia and Vicchio. It's ideal for slow driving days, farm-to-table lunches and visits to Romanesque parish churches away from the crowds."
+        : "La valle del Mugello, culla dei Medici, si apre in colline dolci, boschi di castagni e borghi di pietra come Scarperia e Vicchio. Perfetta per giornate in auto senza fretta, pranzi in agriturismo e visite a pievi romaniche lontane dalla folla.",
+      highlights: isEn
+        ? ["Scarperia knife workshops", "Farm-to-table lunches", "Romanesque parish churches"]
+        : ["Botteghe dei coltellinai di Scarperia", "Pranzi in agriturismo", "Pievi romaniche"],
     },
     {
       src: "https://images.unsplash.com/photo-1506368249639-73a05d6f6488?auto=format&fit=crop&w=1400&q=80",
@@ -146,8 +302,21 @@ export const ConsigliPage = () => {
         ? "Tuscan oil, wine and cheeses at the weekly markets in the area."
         : "Olio, vino e formaggi toscani nei mercati settimanali della zona.",
       meta: isEn ? "10–30 min by car" : "10–30 min in auto",
+      long: isEn
+        ? "The weekly markets around Sesto and the Florentine countryside are the best way to meet Tuscan producers directly: extra-virgin olive oil from the surrounding hills, Chianti wines, pecorino cheeses, cured meats and seasonal vegetables. We're happy to point you to our favourite stalls."
+        : "I mercati settimanali intorno a Sesto e nella campagna fiorentina sono il modo migliore per incontrare direttamente i produttori toscani: olio extravergine delle colline circostanti, vini del Chianti, pecorini, salumi e verdure di stagione. Su richiesta vi indichiamo i banchi che preferiamo.",
+      highlights: isEn
+        ? ["Extra-virgin olive oil", "Chianti wines", "Pecorino and salumi"]
+        : ["Olio extravergine d'oliva", "Vini del Chianti", "Pecorino e salumi"],
     },
   ];
+
+  const modalLabels = {
+    close: isEn ? "Close" : "Chiudi",
+    highlights: isEn ? "Highlights" : "Da non perdere",
+    distance: isEn ? "Distance" : "Distanza",
+  };
+  const readMoreLabel = isEn ? "Discover more" : "Scopri di più";
 
   return (
     <main className="bg-[#f5f1ea] text-stone-900">
@@ -188,18 +357,24 @@ export const ConsigliPage = () => {
         title="Sesto Fiorentino"
         places={sesto}
         bg="bg-[#f6f2eb]"
+        onOpen={setActive}
+        readMoreLabel={readMoreLabel}
       />
       <PlaceGrid
         eyebrow={isEn ? "30 minutes away" : "A 30 minuti da voi"}
         title={isEn ? "Florence" : "Firenze"}
         places={firenze}
         bg="bg-[#f5f1ea]"
+        onOpen={setActive}
+        readMoreLabel={readMoreLabel}
       />
       <PlaceGrid
         eyebrow={isEn ? "Nearby" : "Nei dintorni"}
         title={isEn ? "Experiences in Tuscany" : "Esperienze in Toscana"}
         places={dintorni}
         bg="bg-[#ece5da]"
+        onOpen={setActive}
+        readMoreLabel={readMoreLabel}
       />
 
       {/* CTA */}
@@ -214,6 +389,8 @@ export const ConsigliPage = () => {
           <SectionCta href="/contatti" label={isEn ? "Book your stay" : "Prenota il tuo soggiorno"} />
         </div>
       </section>
+
+      <PlaceModal place={active} onClose={() => setActive(null)} labels={modalLabels} />
     </main>
   );
 };
