@@ -135,6 +135,10 @@ const AppShell = () => {
   }, [pathname]);
 
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [pathname]);
+
+  useEffect(() => {
     const revealSelector = ".reveal, .reveal-media, .reveal-crop";
     const revealElements = Array.from(
       document.querySelectorAll<HTMLElement>(revealSelector),
