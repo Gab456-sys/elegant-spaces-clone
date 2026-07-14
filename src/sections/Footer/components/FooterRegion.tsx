@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export type FooterRegionLink = {
   href: string;
   label: string;
@@ -23,12 +25,12 @@ export const FooterRegion = (props: FooterRegionProps) => {
             key={`${link.href}-${link.label}`}
             className="box-border caret-transparent text-2xl tracking-[0.48px] leading-[33px] outline-[3px] no-underline w-full md:text-[25.1111px] md:tracking-[0.502222px]"
           >
-            <a
-              href={link.href}
+            <Link
+              to={link.href}
               className="box-border caret-transparent block text-2xl tracking-[0.48px] outline-[3px] no-underline transition-colors duration-200 hover:text-stone-50/80 md:text-[25.1111px] md:tracking-[0.502222px]"
             >
               {link.label}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

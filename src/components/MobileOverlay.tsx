@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 type MobileOverlayProps = {
   isOpen: boolean;
   onClose: () => void;
@@ -34,49 +36,49 @@ export const MobileOverlay = ({ isOpen, onClose }: MobileOverlayProps) => {
             <nav aria-label="Mobile navigation" className="w-full">
               <ul className="box-border caret-transparent font-beausite_slick text-gray-900 text-[34px] leading-[40px] outline-[3px] no-underline pl-0">
                 <li className="mb-5">
-                  <a
-                    href="/"
+                  <Link
+                    to="/"
                     onClick={onClose}
                     className="box-border caret-transparent block outline-[3px] no-underline"
                   >
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li className="mb-5">
-                  <a
-                    href="/la-villa"
+                  <Link
+                    to="/la-villa"
                     onClick={onClose}
                     className="box-border caret-transparent block outline-[3px] no-underline"
                   >
                     La Villa
-                  </a>
+                  </Link>
                 </li>
                 <li className="mb-5">
-                  <a
-                    href="/suite"
+                  <Link
+                    to="/suite"
                     onClick={onClose}
                     className="box-border caret-transparent block outline-[3px] no-underline"
                   >
                     Suite
-                  </a>
+                  </Link>
                 </li>
                 <li className="mb-5">
-                  <a
-                    href="/consigli"
+                  <Link
+                    to="/consigli"
                     onClick={onClose}
                     className="box-border caret-transparent block outline-[3px] no-underline"
                   >
                     I nostri Consigli
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="/contatti"
+                  <Link
+                    to="/contatti"
                     onClick={onClose}
                     className="box-border caret-transparent block outline-[3px] no-underline"
                   >
                     Contatti
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </nav>
