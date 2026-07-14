@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export type ProjectGalleryImage = {
@@ -14,6 +15,7 @@ export type ProjectGalleryProps = {
   metaSecondary?: string;
   metaLocation?: string;
   metaYear?: string;
+  detailHref?: string;
   heroImages: ProjectGalleryImage[];
   galleryImages: ProjectGalleryImage[];
 };
@@ -25,6 +27,7 @@ export const ProjectGallery = ({
   metaSecondary,
   metaLocation,
   metaYear,
+  detailHref,
   heroImages,
   galleryImages,
 }: ProjectGalleryProps) => {
@@ -170,8 +173,8 @@ export const ProjectGallery = ({
             </div>
           </div>
 
-          <a
-            href={sectionId ? `/${sectionId}` : "#"}
+          <Link
+            to={detailHref ?? (sectionId ? `/${sectionId}` : "#")}
             className="pointer-events-auto group absolute inset-x-0 bottom-0 z-[3] block px-6 pb-8 no-underline text-stone-50 md:px-[32.8889px] md:pb-10"
           >
             <div className="relative">
@@ -215,7 +218,7 @@ export const ProjectGallery = ({
                 </span>
               </div>
             </div>
-          </a>
+          </Link>
         </div>
       </div>
     </section>
