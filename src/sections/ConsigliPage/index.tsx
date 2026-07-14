@@ -119,7 +119,7 @@ const PlaceModal = ({
       onClick={onClose}
     >
       <div
-        className="relative flex max-h-[92svh] w-full max-w-[1200px] flex-col overflow-hidden bg-[#f5f1ea] shadow-2xl md:flex-row"
+        className="relative flex max-h-[92svh] w-full max-w-[1200px] animate-scale-in flex-col overflow-hidden bg-[#f5f1ea] shadow-2xl duration-300 md:flex-row"
         onClick={(e) => e.stopPropagation()}
       >
         <button
