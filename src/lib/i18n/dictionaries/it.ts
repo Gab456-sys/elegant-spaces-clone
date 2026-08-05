@@ -6,7 +6,7 @@ export const it = {
   "nav.searchPlaceholder": "Cerca…",
   "nav.language": "Cambia lingua",
   "nav.home": "Home",
-  "nav.villa": "La Villa",
+  "nav.villa": "La Struttura",
   "nav.suite": "Suite",
   "nav.suite.family": "Family Suite",
   "nav.suite.comfort": "Comfort Suite",
@@ -30,10 +30,10 @@ export const it = {
 
   // Intro section (La Villa)
   "intro.eyebrow": "Benvenuti",
-  "intro.title": "La Villa",
+  "intro.title": "La Struttura",
   "intro.copy":
     "Villa Sesto è un rifugio di ospitalità dove luce, quiete e cura del dettaglio accompagnano ogni soggiorno. Un luogo pensato per rallentare, respirare e vivere il territorio con autenticità.",
-  "intro.cta": "Scopri la villa",
+  "intro.cta": "Scopri la struttura",
   "intro.caption.villa": "Villa Sesto",
   "intro.caption.atmosphere": "Atmosfere di Villa Sesto",
 
@@ -48,7 +48,7 @@ export const it = {
   "footerSec.region.stay": "Soggiorno",
   "footerSec.region.experiences": "Esperienze",
   "footerSec.region.contact": "Contatti",
-  "footerSec.link.villa": "La Villa",
+  "footerSec.link.villa": "La Struttura",
   "footerSec.link.suite": "Suite",
   "footerSec.link.tips": "I nostri consigli",
   "footerSec.link.contact": "Contatti",
@@ -171,7 +171,7 @@ export const it = {
     "Sì, nelle immediate vicinanze della struttura è presente un supermercato raggiungibile comodamente a piedi in 5 minuti.",
   "faq.q15": "Offrite servizio di ristorazione?",
   "faq.a15":
-    "La struttura non dispone di cucina interna, ma all'interno della Villa sono presenti macchinette automatiche per snack e bevande calde e fredde, disponibili per gli ospiti.",
+    "La struttura non dispone di cucina interna, ma all'interno della struttura sono presenti macchinette automatiche per snack e bevande calde e fredde, disponibili per gli ospiti.",
 } as const;
 
 export type TranslationKey = keyof typeof it;
