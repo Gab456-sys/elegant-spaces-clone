@@ -169,6 +169,9 @@ export const it = {
   "faq.q14": "C'è un supermercato vicino?",
   "faq.a14":
     "Sì, nelle immediate vicinanze della struttura è presente un supermercato raggiungibile comodamente a piedi in 5 minuti.",
+  "faq.q15": "Offrite servizio di ristorazione?",
+  "faq.a15":
+    "La struttura non dispone di cucina interna, ma all'interno della Villa sono presenti macchinette automatiche per snack e bevande calde e fredde, disponibili per gli ospiti.",
 } as const;
 
 export type TranslationKey = keyof typeof it;

@@ -3,7 +3,7 @@ import { useLanguage } from "@/lib/i18n/LanguageContext";
 import type { TranslationKey } from "@/lib/i18n/dictionaries/it";
 
 const faqKeys: Array<{ q: TranslationKey; a: TranslationKey }> = Array.from(
-  { length: 14 },
+  { length: 15 },
   (_, i) => ({
     q: `faq.q${i + 1}` as TranslationKey,
     a: `faq.a${i + 1}` as TranslationKey,
