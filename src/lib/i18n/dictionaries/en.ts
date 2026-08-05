@@ -171,4 +171,7 @@ export const en: Record<TranslationKey, string> = {
   "faq.q14": "Is there a supermarket nearby?",
   "faq.a14":
     "Yes, there is a supermarket just a short 5-minute walk from the property.",
+  "faq.q15": "Do you offer restaurant services?",
+  "faq.a15":
+    "The property does not have an internal kitchen, but Villa Sesto has vending machines for snacks and hot and cold drinks, available for guests.",
 };
