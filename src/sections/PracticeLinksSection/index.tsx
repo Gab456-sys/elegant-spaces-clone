@@ -14,7 +14,7 @@ const faqKeys: Array<{ q: TranslationKey; a: TranslationKey }> = Array.from(
 
 export const PracticeLinksSection = () => {
   const { t } = useLanguage();
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
 
   return (
