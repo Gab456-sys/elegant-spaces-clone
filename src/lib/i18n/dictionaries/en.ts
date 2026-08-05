@@ -8,7 +8,7 @@ export const en: Record<TranslationKey, string> = {
   "nav.searchPlaceholder": "Search…",
   "nav.language": "Change language",
   "nav.home": "Home",
-  "nav.villa": "The Villa",
+  "nav.villa": "The Property",
   "nav.suite": "Suite",
   "nav.suite.family": "Family Suite",
   "nav.suite.comfort": "Comfort Suite",
@@ -32,10 +32,10 @@ export const en: Record<TranslationKey, string> = {
 
   // Intro section (La Villa)
   "intro.eyebrow": "Welcome",
-  "intro.title": "The Villa",
+  "intro.title": "The Property",
   "intro.copy":
     "Villa Sesto is a haven of hospitality where light, quiet and attention to detail accompany every stay. A place designed to slow down, breathe and experience the land with authenticity.",
-  "intro.cta": "Discover the villa",
+  "intro.cta": "Discover the property",
   "intro.caption.villa": "Villa Sesto",
   "intro.caption.atmosphere": "Villa Sesto atmospheres",
 
@@ -50,7 +50,7 @@ export const en: Record<TranslationKey, string> = {
   "footerSec.region.stay": "Stay",
   "footerSec.region.experiences": "Experiences",
   "footerSec.region.contact": "Contact",
-  "footerSec.link.villa": "The Villa",
+  "footerSec.link.villa": "The Property",
   "footerSec.link.suite": "Suite",
   "footerSec.link.tips": "Our tips",
   "footerSec.link.contact": "Contact",

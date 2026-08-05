@@ -154,7 +154,7 @@ export const LaVillaPage = () => {
             data-reveal-order={1}
             className="reveal reveal-editorial m-0 mt-4 max-w-[14ch] font-beausite_classic text-[56px] leading-[0.95] tracking-[-0.02em] sm:text-[76px] md:text-[104px] lg:text-[128px]"
           >
-            {isEn ? "The Villa" : "La Villa"}
+            {isEn ? "The Property" : "La Struttura"}
           </h1>
           <p
             data-reveal-order={2}

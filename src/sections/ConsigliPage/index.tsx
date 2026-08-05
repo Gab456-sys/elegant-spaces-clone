@@ -204,8 +204,8 @@ export const ConsigliPage = () => {
       src: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1400&q=80",
       name: isEn ? "Historic centre of Sesto Fiorentino" : "Centro storico di Sesto Fiorentino",
       desc: isEn
-        ? "Quiet squares, artisan workshops and historic cafés, just steps from the villa."
-        : "Piazze raccolte, botteghe artigiane e caffè storici a due passi dalla villa.",
+        ? "Quiet squares, artisan workshops and historic cafés, just steps from the property."
+        : "Piazze raccolte, botteghe artigiane e caffè storici a due passi dalla struttura.",
       meta: isEn ? "8 min on foot" : "8 min a piedi",
       long: isEn
         ? "The old town of Sesto Fiorentino unfolds along elegant piazzas and narrow streets shaped by centuries of Florentine influence. Family-run trattorias, gelaterias and small artisan workshops make it perfect for a slow morning walk or an evening aperitivo."

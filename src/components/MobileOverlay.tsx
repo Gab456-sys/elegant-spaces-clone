@@ -50,7 +50,7 @@ export const MobileOverlay = ({ isOpen, onClose }: MobileOverlayProps) => {
                     onClick={onClose}
                     className="box-border caret-transparent block outline-[3px] no-underline"
                   >
-                    La Villa
+                    La Struttura
                   </Link>
                 </li>
                 <li className="mb-5">
