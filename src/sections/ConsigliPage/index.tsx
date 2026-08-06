@@ -1,16 +1,6 @@
 import { useEffect, useState } from "react";
 import { SectionCta } from "@/components/SectionCta";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
-import heroTuscany from "@/assets/consigli/hero_tuscany.jpg";
-import richardGinori from "@/assets/consigli/richard_ginori.jpg";
-import sestoCentro from "@/assets/consigli/sesto_centro.jpg";
-import villaMontalvo from "@/assets/consigli/villa_montalvo.jpg";
-import uffiziSignoria from "@/assets/consigli/uffizi_signoria.jpg";
-import duomoBattistero from "@/assets/consigli/duomo_battistero.jpg";
-import oltrarno from "@/assets/consigli/oltrarno.jpg";
-import fiesole from "@/assets/consigli/fiesole.jpg";
-import mugello from "@/assets/consigli/mugello.jpg";
-import mercati from "@/assets/consigli/mercati.jpg";
 
 type Place = {
   src: string;
@@ -197,7 +187,7 @@ export const ConsigliPage = () => {
 
   const sesto: Place[] = [
     {
-      src: richardGinori,
+      src: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1400&q=80",
       name: "Museo Richard-Ginori",
       desc: isEn
         ? "The historic Tuscan porcelain manufactory, among archives and masterpieces of ceramic design."
@@ -211,7 +201,7 @@ export const ConsigliPage = () => {
         : ["Archivi storici Ginori", "Collezione Gio Ponti", "Visite guidate su prenotazione"],
     },
     {
-      src: sestoCentro,
+      src: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1400&q=80",
       name: isEn ? "Historic centre of Sesto Fiorentino" : "Centro storico di Sesto Fiorentino",
       desc: isEn
         ? "Quiet squares, artisan workshops and historic cafés, just steps from the property."
@@ -225,7 +215,7 @@ export const ConsigliPage = () => {
         : ["Mercato settimanale", "Caffè storici", "Trattorie tipiche"],
     },
     {
-      src: villaMontalvo,
+      src: "https://images.unsplash.com/photo-1470004914212-05527e49370b?auto=format&fit=crop&w=1400&q=80",
       name: isEn ? "Villa Montalvo Park" : "Parco di Villa Montalvo",
       desc: isEn
         ? "A historic garden to walk through centuries-old trees with views over the Florentine plain."
@@ -242,7 +232,7 @@ export const ConsigliPage = () => {
 
   const firenze: Place[] = [
     {
-      src: uffiziSignoria,
+      src: "https://images.unsplash.com/photo-1543429257-1eb020c33380?auto=format&fit=crop&w=1400&q=80",
       name: isEn ? "Uffizi and Piazza della Signoria" : "Uffizi e Piazza della Signoria",
       desc: isEn
         ? "The Renaissance heart of Florence, with unmissable collections and open-air statues."
@@ -256,7 +246,7 @@ export const ConsigliPage = () => {
         : ["Biglietti da prenotare in anticipo", "Loggia dei Lanzi (gratuita)", "Palazzo Vecchio accanto"],
     },
     {
-      src: duomoBattistero,
+      src: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1400&q=80",
       name: isEn ? "Duomo and Baptistery" : "Duomo e Battistero",
       desc: isEn
         ? "Brunelleschi's dome and the Baptistery of San Giovanni, symbols of the city."
@@ -270,7 +260,7 @@ export const ConsigliPage = () => {
         : ["Salita alla cupola", "Mosaici del Battistero", "Museo dell'Opera del Duomo"],
     },
     {
-      src: oltrarno,
+      src: "https://images.unsplash.com/photo-1512564797609-3ea1ee1eab13?auto=format&fit=crop&w=1400&q=80",
       name: isEn ? "Oltrarno and local craftsmanship" : "Oltrarno e artigianato locale",
       desc: isEn
         ? "Historic workshops, ateliers and authentic trattorias on the other bank of the Arno."
@@ -287,7 +277,7 @@ export const ConsigliPage = () => {
 
   const dintorni: Place[] = [
     {
-      src: fiesole,
+      src: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=1400&q=80",
       name: "Fiesole",
       desc: isEn
         ? "A balcony above Florence, with Etruscan and Roman ruins and one of the most celebrated views in Tuscany."
@@ -301,7 +291,7 @@ export const ConsigliPage = () => {
         : ["Teatro romano", "Mura etrusche", "Terrazza panoramica"],
     },
     {
-      src: mugello,
+      src: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1400&q=80",
       name: isEn ? "Mugello and hills" : "Mugello e colline",
       desc: isEn
         ? "Quiet roads, medieval villages and small farmhouses immersed in the countryside."
@@ -315,7 +305,7 @@ export const ConsigliPage = () => {
         : ["Botteghe dei coltellinai di Scarperia", "Pranzi in agriturismo", "Pievi romaniche"],
     },
     {
-      src: mercati,
+      src: "https://images.unsplash.com/photo-1506368249639-73a05d6f6488?auto=format&fit=crop&w=1400&q=80",
       name: isEn ? "Markets and local produce" : "Mercati e prodotti tipici",
       desc: isEn
         ? "Tuscan oil, wine and cheeses at the weekly markets in the area."
@@ -345,7 +335,7 @@ export const ConsigliPage = () => {
         className="relative isolate flex min-h-[92svh] w-full items-end overflow-hidden"
       >
         <img
-          src={heroTuscany}
+          src="https://images.unsplash.com/photo-1499602250831-6b0a55a24df2?auto=format&fit=crop&w=2200&q=80"
           alt="Tuscany"
           className="absolute inset-0 -z-10 h-full w-full object-cover"
         />
