@@ -345,7 +345,7 @@ export const ConsigliPage = () => {
         className="relative isolate flex min-h-[92svh] w-full items-end overflow-hidden"
       >
         <img
-          src="heroTuscany"
+          src={heroTuscany}
           alt="Tuscany"
           className="absolute inset-0 -z-10 h-full w-full object-cover"
         />
