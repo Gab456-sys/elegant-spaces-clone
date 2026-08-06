@@ -392,7 +392,7 @@ export const ConsigliPage = () => {
           <p className="reveal reveal-editorial-tight m-0 text-[11px] uppercase tracking-[0.24em] text-stone-600">
             {isEn ? "Ready to go" : "Pronto a partire"}
           </p>
-          <h2 className="reveal reveal-editorial m-0 max-w-[18ch] font-beausite_classic text-[40px] leading-[0.98] tracking-[-0.02em] text-stone-900 sm:text-[52px] md:text-[60px]">
+          <h2 className="reveal reveal-editorial m-0 max-w-[18ch] overflow-visible pb-2 font-beausite_classic text-[40px] leading-[1.02] tracking-[-0.02em] text-stone-900 sm:text-[52px] md:text-[60px]">
             {isEn ? "Book your stay at Villa Sesto" : "Prenota il tuo soggiorno a Villa Sesto"}
           </h2>
           <SectionCta href="/contatti" label={isEn ? "Book your stay" : "Prenota il tuo soggiorno"} />
