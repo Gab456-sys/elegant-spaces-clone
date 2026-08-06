@@ -1,16 +1,6 @@
 import { useEffect, useState } from "react";
 import { SectionCta } from "@/components/SectionCta";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
-import heroTuscany from "@/assets/consigli/hero_tuscany.jpg";
-import richardGinori from "@/assets/consigli/richard_ginori.jpg";
-import sestoCentro from "@/assets/consigli/sesto_centro.jpg";
-import villaMontalvo from "@/assets/consigli/villa_montalvo.jpg";
-import uffiziSignoria from "@/assets/consigli/uffizi_signoria.jpg";
-import duomoBattistero from "@/assets/consigli/duomo_battistero.jpg";
-import oltrarno from "@/assets/consigli/oltrarno.jpg";
-import fiesole from "@/assets/consigli/fiesole.jpg";
-import mugello from "@/assets/consigli/mugello.jpg";
-import mercati from "@/assets/consigli/mercati.jpg";
 
 type Place = {
   src: string;
@@ -197,7 +187,7 @@ export const ConsigliPage = () => {
 
   const sesto: Place[] = [
     {
-      src: richardGinori,
+      src: "https://upload.wikimedia.org/wikipedia/commons/3/30/Museo_della_Porcellana_di_Doccia%2C_sesto_fiorentino%2C_Richard-Ginori.JPG",
       name: "Museo Richard-Ginori",
       desc: isEn
         ? "The historic Tuscan porcelain manufactory, among archives and masterpieces of ceramic design."
@@ -211,7 +201,7 @@ export const ConsigliPage = () => {
         : ["Archivi storici Ginori", "Collezione Gio Ponti", "Visite guidate su prenotazione"],
     },
     {
-      src: sestoCentro,
+      src: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Sesto_fiorentino-municipio.jpg",
       name: isEn ? "Historic centre of Sesto Fiorentino" : "Centro storico di Sesto Fiorentino",
       desc: isEn
         ? "Quiet squares, artisan workshops and historic cafés, just steps from the property."
@@ -225,7 +215,7 @@ export const ConsigliPage = () => {
         : ["Mercato settimanale", "Caffè storici", "Trattorie tipiche"],
     },
     {
-      src: villaMontalvo,
+      src: "https://upload.wikimedia.org/wikipedia/commons/b/b9/Campi_bisenzio_villa_moltalto_-chiostro_1.jpg",
       name: isEn ? "Villa Montalvo Park" : "Parco di Villa Montalvo",
       desc: isEn
         ? "A historic garden to walk through centuries-old trees with views over the Florentine plain."
@@ -242,7 +232,7 @@ export const ConsigliPage = () => {
 
   const firenze: Place[] = [
     {
-      src: uffiziSignoria,
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Uffizi_Gallery_-_Daughter_of_Niobe_bent_by_terror.jpg/1920px-Uffizi_Gallery_-_Daughter_of_Niobe_bent_by_terror.jpg",
       name: isEn ? "Uffizi and Piazza della Signoria" : "Uffizi e Piazza della Signoria",
       desc: isEn
         ? "The Renaissance heart of Florence, with unmissable collections and open-air statues."
@@ -256,7 +246,7 @@ export const ConsigliPage = () => {
         : ["Biglietti da prenotare in anticipo", "Loggia dei Lanzi (gratuita)", "Palazzo Vecchio accanto"],
     },
     {
-      src: duomoBattistero,
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Florence_Duomo_from_Michelangelo_hill.jpg/1920px-Florence_Duomo_from_Michelangelo_hill.jpg",
       name: isEn ? "Duomo and Baptistery" : "Duomo e Battistero",
       desc: isEn
         ? "Brunelleschi's dome and the Baptistery of San Giovanni, symbols of the city."
@@ -270,7 +260,7 @@ export const ConsigliPage = () => {
         : ["Salita alla cupola", "Mosaici del Battistero", "Museo dell'Opera del Duomo"],
     },
     {
-      src: oltrarno,
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Ponte_Vecchio_at_dusk_1.JPG/1920px-Ponte_Vecchio_at_dusk_1.JPG",
       name: isEn ? "Oltrarno and local craftsmanship" : "Oltrarno e artigianato locale",
       desc: isEn
         ? "Historic workshops, ateliers and authentic trattorias on the other bank of the Arno."
@@ -287,7 +277,7 @@ export const ConsigliPage = () => {
 
   const dintorni: Place[] = [
     {
-      src: fiesole,
+      src: "https://upload.wikimedia.org/wikipedia/commons/4/43/George_Frederic_Watts_%281817-1904%29_-_Fiesole%2C_Tuscany_-_COMWG_12_-_Watts_Gallery.jpg",
       name: "Fiesole",
       desc: isEn
         ? "A balcony above Florence, with Etruscan and Roman ruins and one of the most celebrated views in Tuscany."
@@ -301,7 +291,7 @@ export const ConsigliPage = () => {
         : ["Teatro romano", "Mura etrusche", "Terrazza panoramica"],
     },
     {
-      src: mugello,
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Wv_Mugello_banner2.jpg/1920px-Wv_Mugello_banner2.jpg",
       name: isEn ? "Mugello and hills" : "Mugello e colline",
       desc: isEn
         ? "Quiet roads, medieval villages and small farmhouses immersed in the countryside."
@@ -315,7 +305,7 @@ export const ConsigliPage = () => {
         : ["Botteghe dei coltellinai di Scarperia", "Pranzi in agriturismo", "Pievi romaniche"],
     },
     {
-      src: mercati,
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Mercato_centrale_di_san_lorenzo_02.jpg/1920px-Mercato_centrale_di_san_lorenzo_02.jpg",
       name: isEn ? "Markets and local produce" : "Mercati e prodotti tipici",
       desc: isEn
         ? "Tuscan oil, wine and cheeses at the weekly markets in the area."
@@ -345,7 +335,7 @@ export const ConsigliPage = () => {
         className="relative isolate flex min-h-[92svh] w-full items-end overflow-hidden"
       >
         <img
-          src={heroTuscany}
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Landscape_of_Tuscany_2.jpg/1920px-Landscape_of_Tuscany_2.jpg"
           alt="Tuscany"
           className="absolute inset-0 -z-10 h-full w-full object-cover"
         />
