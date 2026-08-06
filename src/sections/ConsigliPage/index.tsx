@@ -187,7 +187,7 @@ export const ConsigliPage = () => {
 
   const sesto: Place[] = [
     {
-      src: "https://upload.wikimedia.org/wikipedia/commons/3/30/Museo_della_Porcellana_di_Doccia%2C_sesto_fiorentino%2C_Richard-Ginori.JPG",
+      src: "https://upload.wikimedia.org/wikipedia/commons/8/84/Manifattura_ginori%2C_venere_di_tipo_medici_in_porcellana%2C_1770-1800_ca._%28museo_della_manifattura_di_doccia%29.jpg",
       name: "Museo Richard-Ginori",
       desc: isEn
         ? "The historic Tuscan porcelain manufactory, among archives and masterpieces of ceramic design."
@@ -201,7 +201,7 @@ export const ConsigliPage = () => {
         : ["Archivi storici Ginori", "Collezione Gio Ponti", "Visite guidate su prenotazione"],
     },
     {
-      src: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Sesto_fiorentino-municipio.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Sesto%2C_piazza_vittorio_veneto_01.JPG/1920px-Sesto%2C_piazza_vittorio_veneto_01.JPG",
       name: isEn ? "Historic centre of Sesto Fiorentino" : "Centro storico di Sesto Fiorentino",
       desc: isEn
         ? "Quiet squares, artisan workshops and historic cafés, just steps from the property."
@@ -232,7 +232,7 @@ export const ConsigliPage = () => {
 
   const firenze: Place[] = [
     {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Firenze_-_Florence_-_Galleria_degli_Uffizi_-_Vasari_Corridor_1566_-_View_NNE_through_the_Uffizi_Courtyard_towards_Palazzo_Vecchio.jpg/1920px-Firenze_-_Florence_-_Galleria_degli_Uffizi_-_Vasari_Corridor_1566_-_View_NNE_through_the_Uffizi_Courtyard_towards_Palazzo_Vecchio.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/3/3f/Florence._Uffizi_Gallery_and_Palazzo_Vecchio_%283611947576%29.jpg",
       name: isEn ? "Uffizi and Piazza della Signoria" : "Uffizi e Piazza della Signoria",
       desc: isEn
         ? "The Renaissance heart of Florence, with unmissable collections and open-air statues."
@@ -291,7 +291,7 @@ export const ConsigliPage = () => {
         : ["Teatro romano", "Mura etrusche", "Terrazza panoramica"],
     },
     {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Wv_Mugello_banner2.jpg/1920px-Wv_Mugello_banner2.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Mugello_banner.jpg/1920px-Mugello_banner.jpg",
       name: isEn ? "Mugello and hills" : "Mugello e colline",
       desc: isEn
         ? "Quiet roads, medieval villages and small farmhouses immersed in the countryside."
