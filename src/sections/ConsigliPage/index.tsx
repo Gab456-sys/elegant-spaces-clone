@@ -187,7 +187,7 @@ export const ConsigliPage = () => {
 
   const sesto: Place[] = [
     {
-      src: "https://upload.wikimedia.org/wikipedia/commons/3/30/Museo_della_Porcellana_di_Doccia%2C_sesto_fiorentino%2C_Richard-Ginori.JPG",
+      src: "https://upload.wikimedia.org/wikipedia/commons/8/84/Manifattura_ginori%2C_venere_di_tipo_medici_in_porcellana%2C_1770-1800_ca._%28museo_della_manifattura_di_doccia%29.jpg",
       name: "Museo Richard-Ginori",
       desc: isEn
         ? "The historic Tuscan porcelain manufactory, among archives and masterpieces of ceramic design."
@@ -201,7 +201,7 @@ export const ConsigliPage = () => {
         : ["Archivi storici Ginori", "Collezione Gio Ponti", "Visite guidate su prenotazione"],
     },
     {
-      src: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Sesto_fiorentino-municipio.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Sesto%2C_piazza_vittorio_veneto_01.JPG/1920px-Sesto%2C_piazza_vittorio_veneto_01.JPG",
       name: isEn ? "Historic centre of Sesto Fiorentino" : "Centro storico di Sesto Fiorentino",
       desc: isEn
         ? "Quiet squares, artisan workshops and historic cafés, just steps from the property."
@@ -215,7 +215,7 @@ export const ConsigliPage = () => {
         : ["Mercato settimanale", "Caffè storici", "Trattorie tipiche"],
     },
     {
-      src: "https://upload.wikimedia.org/wikipedia/commons/b/b9/Campi_bisenzio_villa_moltalto_-chiostro_1.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Parco_Villa_Montalvo_-_Campi_Bisenzio_6005.jpg/1920px-Parco_Villa_Montalvo_-_Campi_Bisenzio_6005.jpg",
       name: isEn ? "Villa Montalvo Park" : "Parco di Villa Montalvo",
       desc: isEn
         ? "A historic garden to walk through centuries-old trees with views over the Florentine plain."
@@ -232,7 +232,7 @@ export const ConsigliPage = () => {
 
   const firenze: Place[] = [
     {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Uffizi_Gallery_-_Daughter_of_Niobe_bent_by_terror.jpg/1920px-Uffizi_Gallery_-_Daughter_of_Niobe_bent_by_terror.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Uffizi_Gallery%2C_Florence.jpg",
       name: isEn ? "Uffizi and Piazza della Signoria" : "Uffizi e Piazza della Signoria",
       desc: isEn
         ? "The Renaissance heart of Florence, with unmissable collections and open-air statues."
@@ -277,7 +277,7 @@ export const ConsigliPage = () => {
 
   const dintorni: Place[] = [
     {
-      src: "https://upload.wikimedia.org/wikipedia/commons/4/43/George_Frederic_Watts_%281817-1904%29_-_Fiesole%2C_Tuscany_-_COMWG_12_-_Watts_Gallery.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Fiesole%2C_Roman_theatre_2016-05-07.jpg/1920px-Fiesole%2C_Roman_theatre_2016-05-07.jpg",
       name: "Fiesole",
       desc: isEn
         ? "A balcony above Florence, with Etruscan and Roman ruins and one of the most celebrated views in Tuscany."
@@ -291,7 +291,7 @@ export const ConsigliPage = () => {
         : ["Teatro romano", "Mura etrusche", "Terrazza panoramica"],
     },
     {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Wv_Mugello_banner2.jpg/1920px-Wv_Mugello_banner2.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Gabbiano232.jpg/1920px-Gabbiano232.jpg",
       name: isEn ? "Mugello and hills" : "Mugello e colline",
       desc: isEn
         ? "Quiet roads, medieval villages and small farmhouses immersed in the countryside."
