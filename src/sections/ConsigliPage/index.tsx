@@ -291,7 +291,7 @@ export const ConsigliPage = () => {
         : ["Teatro romano", "Mura etrusche", "Terrazza panoramica"],
     },
     {
-      src: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1400&q=80",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Wv_Mugello_banner2.jpg/1920px-Wv_Mugello_banner2.jpg",
       name: isEn ? "Mugello and hills" : "Mugello e colline",
       desc: isEn
         ? "Quiet roads, medieval villages and small farmhouses immersed in the countryside."
