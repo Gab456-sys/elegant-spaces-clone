@@ -232,7 +232,7 @@ export const ConsigliPage = () => {
 
   const firenze: Place[] = [
     {
-      src: "https://upload.wikimedia.org/wikipedia/commons/3/3f/Florence._Uffizi_Gallery_and_Palazzo_Vecchio_%283611947576%29.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Uffizi_Gallery%2C_Florence.jpg",
       name: isEn ? "Uffizi and Piazza della Signoria" : "Uffizi e Piazza della Signoria",
       desc: isEn
         ? "The Renaissance heart of Florence, with unmissable collections and open-air statues."
