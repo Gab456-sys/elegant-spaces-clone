@@ -215,7 +215,7 @@ export const ConsigliPage = () => {
         : ["Mercato settimanale", "Caffè storici", "Trattorie tipiche"],
     },
     {
-      src: "https://upload.wikimedia.org/wikipedia/commons/b/b9/Campi_bisenzio_villa_moltalto_-chiostro_1.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Parco_Villa_Montalvo_-_Campi_Bisenzio_6005.jpg/1920px-Parco_Villa_Montalvo_-_Campi_Bisenzio_6005.jpg",
       name: isEn ? "Villa Montalvo Park" : "Parco di Villa Montalvo",
       desc: isEn
         ? "A historic garden to walk through centuries-old trees with views over the Florentine plain."
@@ -232,7 +232,7 @@ export const ConsigliPage = () => {
 
   const firenze: Place[] = [
     {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Uffizi_Gallery_-_Daughter_of_Niobe_bent_by_terror.jpg/1920px-Uffizi_Gallery_-_Daughter_of_Niobe_bent_by_terror.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Firenze_-_Florence_-_Galleria_degli_Uffizi_-_Vasari_Corridor_1566_-_View_NNE_through_the_Uffizi_Courtyard_towards_Palazzo_Vecchio.jpg/1920px-Firenze_-_Florence_-_Galleria_degli_Uffizi_-_Vasari_Corridor_1566_-_View_NNE_through_the_Uffizi_Courtyard_towards_Palazzo_Vecchio.jpg",
       name: isEn ? "Uffizi and Piazza della Signoria" : "Uffizi e Piazza della Signoria",
       desc: isEn
         ? "The Renaissance heart of Florence, with unmissable collections and open-air statues."
@@ -277,7 +277,7 @@ export const ConsigliPage = () => {
 
   const dintorni: Place[] = [
     {
-      src: "https://upload.wikimedia.org/wikipedia/commons/4/43/George_Frederic_Watts_%281817-1904%29_-_Fiesole%2C_Tuscany_-_COMWG_12_-_Watts_Gallery.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Fiesole%2C_Roman_theatre_2016-05-07.jpg/1920px-Fiesole%2C_Roman_theatre_2016-05-07.jpg",
       name: "Fiesole",
       desc: isEn
         ? "A balcony above Florence, with Etruscan and Roman ruins and one of the most celebrated views in Tuscany."
