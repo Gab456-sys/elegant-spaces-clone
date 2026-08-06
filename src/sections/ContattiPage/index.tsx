@@ -89,154 +89,189 @@ export const ContattiPage = () => {
         data-header-theme="dark"
         className="border-b border-stone-300/70 bg-[#f6f2eb]"
       >
-        <div className="mx-auto grid w-full max-w-[1680px] grid-cols-1 gap-14 px-6 py-20 md:grid-cols-2 md:gap-x-16 md:px-10 md:py-28 lg:px-16">
-          {/* FORM */}
-          <div className="reveal reveal-editorial">
-            <p className="m-0 text-[11px] uppercase tracking-[0.24em] text-stone-600">
-              {isEn ? "Write to us" : "Scrivici"}
-            </p>
-            <h2 className="m-0 mt-5 max-w-[14ch] font-beausite_classic text-[36px] leading-[1] tracking-[-0.02em] text-stone-900 sm:text-[44px] md:text-[52px]">
-              {isEn ? "Request information" : "Richiedi informazioni"}
-            </h2>
-            <form
-              onSubmit={handleSubmit}
-              className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2"
-            >
-              <label className="flex flex-col gap-2 text-[10px] uppercase tracking-[0.22em] text-stone-600 md:col-span-2">
-                {isEn ? "Full name" : "Nome completo"}
-                <input
-                  required
-                  name="name"
-                  value={form.name}
-                  onChange={handleChange}
-                  className="h-11 border-b border-stone-400/70 bg-transparent px-0 text-[15px] text-stone-900 outline-none transition-colors focus:border-stone-900"
-                />
-              </label>
-              <label className="flex flex-col gap-2 text-[10px] uppercase tracking-[0.22em] text-stone-600">
-                Email
-                <input
-                  required
-                  type="email"
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  className="h-11 border-b border-stone-400/70 bg-transparent px-0 text-[15px] text-stone-900 outline-none transition-colors focus:border-stone-900"
-                />
-              </label>
-              <label className="flex flex-col gap-2 text-[10px] uppercase tracking-[0.22em] text-stone-600">
-                {isEn ? "Phone (optional)" : "Telefono (opzionale)"}
-                <input
-                  type="tel"
-                  name="phone"
-                  value={form.phone}
-                  onChange={handleChange}
-                  className="h-11 border-b border-stone-400/70 bg-transparent px-0 text-[15px] text-stone-900 outline-none transition-colors focus:border-stone-900"
-                />
-              </label>
-              <label className="flex flex-col gap-2 text-[10px] uppercase tracking-[0.22em] text-stone-600">
-                {isEn ? "Arrival date" : "Data di arrivo"}
-                <input
-                  type="date"
-                  name="arrival"
-                  value={form.arrival}
-                  onChange={handleChange}
-                  className="h-11 border-b border-stone-400/70 bg-transparent px-0 text-[15px] uppercase text-stone-900 outline-none transition-colors focus:border-stone-900"
-                />
-              </label>
-              <label className="flex flex-col gap-2 text-[10px] uppercase tracking-[0.22em] text-stone-600">
-                {isEn ? "Departure date" : "Data di partenza"}
-                <input
-                  type="date"
-                  name="departure"
-                  value={form.departure}
-                  onChange={handleChange}
-                  className="h-11 border-b border-stone-400/70 bg-transparent px-0 text-[15px] uppercase text-stone-900 outline-none transition-colors focus:border-stone-900"
-                />
-              </label>
-              <label className="flex flex-col gap-2 text-[10px] uppercase tracking-[0.22em] text-stone-600 md:col-span-2">
-                {isEn ? "Message" : "Messaggio"}
-                <textarea
-                  required
-                  name="message"
-                  rows={5}
-                  value={form.message}
-                  onChange={handleChange}
-                  className="resize-none border-b border-stone-400/70 bg-transparent px-0 py-3 text-[15px] leading-[1.5] text-stone-900 outline-none transition-colors focus:border-stone-900"
-                />
-              </label>
-              <div className="md:col-span-2">
-                <button
-                  type="submit"
-                  className="group relative inline-flex w-fit items-center overflow-hidden rounded-[30px] border border-stone-900 px-5 pb-2.5 pt-3 text-[11px] uppercase tracking-[1.1px] leading-[13px] transition-colors duration-500 hover:text-stone-100"
-                >
-                  <span className="relative z-[1]">
-                    {isEn ? "Send request" : "Invia richiesta"}
-                  </span>
-                  <span className="absolute left-0 top-full z-0 h-full w-full bg-gray-900 transition-transform duration-500 ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:-translate-y-full" />
-                </button>
-              </div>
-            </form>
-          </div>
+        <div className="mx-auto w-full max-w-[1680px] px-6 py-20 md:px-10 md:py-28 lg:px-16">
+          <div className="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-x-20">
+            {/* FORM */}
+            <div className="reveal reveal-editorial lg:col-span-7">
+              <p className="m-0 text-[11px] uppercase tracking-[0.24em] text-stone-600">
+                {isEn ? "Write to us" : "Scrivici"}
+              </p>
+              <h2 className="m-0 mt-5 max-w-[14ch] font-beausite_classic text-[36px] leading-[1] tracking-[-0.02em] text-stone-900 sm:text-[44px] md:text-[52px]">
+                {isEn ? "Request information" : "Richiedi informazioni"}
+              </h2>
+              <p className="m-0 mt-6 max-w-[46ch] text-[16px] leading-[1.6] text-stone-700">
+                {isEn
+                  ? "Tell us your dates and what you need: we usually reply within 24 hours."
+                  : "Raccontaci le tue date e le tue esigenze: rispondiamo di solito entro 24 ore."}
+              </p>
 
-          {/* INFO */}
-          <div className="reveal reveal-editorial md:pl-10">
-            <p className="m-0 text-[11px] uppercase tracking-[0.24em] text-stone-600">
-              {isEn ? "The property" : "La struttura"}
-            </p>
-            <h2 className="m-0 mt-5 font-beausite_classic text-[36px] leading-[1] tracking-[-0.02em] text-stone-900 sm:text-[44px] md:text-[52px]">
-              Villa Sesto
-            </h2>
-            <dl className="mt-10 border-t border-stone-300/80">
-              <div className="border-b border-stone-300/80 py-5">
-                <dt className="text-[10px] uppercase tracking-[0.22em] text-stone-600">
-                  {isEn ? "Address" : "Indirizzo"}
-                </dt>
-                <dd className="m-0 mt-2 text-[16px] leading-[1.5] text-stone-900">
-                  Viale Giulio Cesare 21, Sesto Fiorentino (FI)
-                  <br />
+              <form
+                onSubmit={handleSubmit}
+                className="mt-12 grid grid-cols-1 gap-x-10 gap-y-9 md:grid-cols-2"
+              >
+                <label className="flex flex-col gap-2.5 text-[10px] uppercase tracking-[0.22em] text-stone-600 md:col-span-2">
+                  {isEn ? "Full name" : "Nome completo"}
+                  <input
+                    required
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    className="h-11 border-b border-stone-400/70 bg-transparent px-0 text-[15px] text-stone-900 outline-none transition-colors focus:border-stone-900"
+                  />
+                </label>
+                <label className="flex flex-col gap-2.5 text-[10px] uppercase tracking-[0.22em] text-stone-600">
+                  Email
+                  <input
+                    required
+                    type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    className="h-11 border-b border-stone-400/70 bg-transparent px-0 text-[15px] text-stone-900 outline-none transition-colors focus:border-stone-900"
+                  />
+                </label>
+                <label className="flex flex-col gap-2.5 text-[10px] uppercase tracking-[0.22em] text-stone-600">
+                  {isEn ? "Phone (optional)" : "Telefono (opzionale)"}
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={form.phone}
+                    onChange={handleChange}
+                    className="h-11 border-b border-stone-400/70 bg-transparent px-0 text-[15px] text-stone-900 outline-none transition-colors focus:border-stone-900"
+                  />
+                </label>
+                <label className="flex flex-col gap-2.5 text-[10px] uppercase tracking-[0.22em] text-stone-600">
+                  {isEn ? "Arrival date" : "Data di arrivo"}
+                  <input
+                    type="date"
+                    name="arrival"
+                    value={form.arrival}
+                    onChange={handleChange}
+                    className="h-11 border-b border-stone-400/70 bg-transparent px-0 text-[15px] uppercase text-stone-900 outline-none transition-colors focus:border-stone-900"
+                  />
+                </label>
+                <label className="flex flex-col gap-2.5 text-[10px] uppercase tracking-[0.22em] text-stone-600">
+                  {isEn ? "Departure date" : "Data di partenza"}
+                  <input
+                    type="date"
+                    name="departure"
+                    value={form.departure}
+                    onChange={handleChange}
+                    className="h-11 border-b border-stone-400/70 bg-transparent px-0 text-[15px] uppercase text-stone-900 outline-none transition-colors focus:border-stone-900"
+                  />
+                </label>
+                <label className="flex flex-col gap-2.5 text-[10px] uppercase tracking-[0.22em] text-stone-600 md:col-span-2">
+                  {isEn ? "Message" : "Messaggio"}
+                  <textarea
+                    required
+                    name="message"
+                    rows={4}
+                    value={form.message}
+                    onChange={handleChange}
+                    className="resize-none border-b border-stone-400/70 bg-transparent px-0 py-3 text-[15px] leading-[1.5] text-stone-900 outline-none transition-colors focus:border-stone-900"
+                  />
+                </label>
+                <div className="flex flex-col gap-5 pt-2 md:col-span-2 md:flex-row md:items-center md:justify-between">
+                  <button
+                    type="submit"
+                    className="group relative inline-flex w-fit items-center overflow-hidden rounded-[30px] border border-stone-900 px-6 pb-2.5 pt-3 text-[11px] uppercase tracking-[1.1px] leading-[13px] transition-colors duration-500 hover:text-stone-100"
+                  >
+                    <span className="relative z-[1]">
+                      {isEn ? "Send request" : "Invia richiesta"}
+                    </span>
+                    <span className="absolute left-0 top-full z-0 h-full w-full bg-gray-900 transition-transform duration-500 ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:-translate-y-full" />
+                  </button>
+                  <p className="m-0 max-w-[34ch] text-[11px] leading-[1.6] uppercase tracking-[0.16em] text-stone-500">
+                    {isEn
+                      ? "No booking fees — direct contact with the property."
+                      : "Nessun costo di prenotazione — contatto diretto con la struttura."}
+                  </p>
+                </div>
+              </form>
+            </div>
+
+            {/* INFO */}
+            <aside className="reveal reveal-editorial lg:col-span-5">
+              <div className="lg:sticky lg:top-28">
+                <div className="border border-stone-300/80 bg-[#efe9df] p-8 md:p-10">
+                  <p className="m-0 text-[11px] uppercase tracking-[0.24em] text-stone-600">
+                    {isEn ? "The property" : "La struttura"}
+                  </p>
+                  <h2 className="m-0 mt-4 font-beausite_classic text-[32px] leading-[1] tracking-[-0.02em] text-stone-900 sm:text-[40px]">
+                    Villa Sesto
+                  </h2>
+
+                  <dl className="mt-9 border-t border-stone-400/40">
+                    <div className="border-b border-stone-400/40 py-5">
+                      <dt className="text-[10px] uppercase tracking-[0.22em] text-stone-600">
+                        {isEn ? "Address" : "Indirizzo"}
+                      </dt>
+                      <dd className="m-0 mt-2 text-[16px] leading-[1.5] text-stone-900">
+                        Viale Giulio Cesare 21
+                        <br />
+                        Sesto Fiorentino (FI)
+                      </dd>
+                    </div>
+                    <div className="border-b border-stone-400/40 py-5">
+                      <dt className="text-[10px] uppercase tracking-[0.22em] text-stone-600">
+                        Email
+                      </dt>
+                      <dd className="m-0 mt-2 text-[16px] leading-[1.5] text-stone-900">
+                        <a
+                          href="mailto:info@villasesto.it"
+                          className="underline-offset-4 transition-colors hover:text-stone-600 hover:underline"
+                        >
+                          info@villasesto.it
+                        </a>
+                      </dd>
+                    </div>
+                    <div className="grid grid-cols-2 gap-x-6 border-b border-stone-400/40 py-5">
+                      <div>
+                        <dt className="text-[10px] uppercase tracking-[0.22em] text-stone-600">
+                          Check-in
+                        </dt>
+                        <dd className="m-0 mt-2 text-[16px] leading-[1.5] text-stone-900">
+                          14:00 – 19:00
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="text-[10px] uppercase tracking-[0.22em] text-stone-600">
+                          Check-out
+                        </dt>
+                        <dd className="m-0 mt-2 text-[16px] leading-[1.5] text-stone-900">
+                          {isEn ? "By 10:30" : "Entro le 10:30"}
+                        </dd>
+                      </div>
+                    </div>
+                  </dl>
+
                   <a
                     href="https://maps.google.com/?q=Viale+Giulio+Cesare+21+Sesto+Fiorentino"
                     target="_blank"
                     rel="noreferrer"
-                    className="mt-2 inline-block text-[11px] uppercase tracking-[0.22em] text-stone-700 underline underline-offset-4 transition-colors hover:text-stone-900"
+                    className="group relative mt-8 inline-flex w-fit items-center overflow-hidden rounded-[30px] border border-stone-900 px-6 pb-2.5 pt-3 text-[11px] uppercase tracking-[1.1px] leading-[13px] text-stone-900 transition-colors duration-500 hover:text-stone-100"
                   >
-                    {isEn ? "Open in Google Maps" : "Apri in Google Maps"}
+                    <span className="relative z-[1]">
+                      {isEn ? "Open in Google Maps" : "Apri in Google Maps"}
+                    </span>
+                    <span className="absolute left-0 top-full z-0 h-full w-full bg-gray-900 transition-transform duration-500 ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:-translate-y-full" />
                   </a>
-                </dd>
+                </div>
+
+                <div className="mt-6 overflow-hidden border border-stone-300/80">
+                  <iframe
+                    title="Villa Sesto — mappa"
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=11.185%2C43.826%2C11.215%2C43.842&layer=mapnik&marker=43.834%2C11.200"
+                    loading="lazy"
+                    className="h-[260px] w-full grayscale-[35%]"
+                  />
+                </div>
               </div>
-              <div className="border-b border-stone-300/80 py-5">
-                <dt className="text-[10px] uppercase tracking-[0.22em] text-stone-600">
-                  Email
-                </dt>
-                <dd className="m-0 mt-2 text-[16px] leading-[1.5] text-stone-900">
-                  <a
-                    href="mailto:info@villasesto.it"
-                    className="transition-colors hover:text-stone-600"
-                  >
-                    info@villasesto.it
-                  </a>
-                </dd>
-              </div>
-              <div className="border-b border-stone-300/80 py-5">
-                <dt className="text-[10px] uppercase tracking-[0.22em] text-stone-600">
-                  Check-in
-                </dt>
-                <dd className="m-0 mt-2 text-[16px] leading-[1.5] text-stone-900">
-                  14:00 – 19:00
-                </dd>
-              </div>
-              <div className="border-b border-stone-300/80 py-5">
-                <dt className="text-[10px] uppercase tracking-[0.22em] text-stone-600">
-                  Check-out
-                </dt>
-                <dd className="m-0 mt-2 text-[16px] leading-[1.5] text-stone-900">
-                  {isEn ? "By 10:30" : "Entro le 10:30"}
-                </dd>
-              </div>
-            </dl>
+            </aside>
           </div>
         </div>
       </section>
+
 
       {/* HOW TO REACH */}
       <section
