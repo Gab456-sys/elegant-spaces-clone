@@ -116,7 +116,7 @@ export const ContattiPage = () => {
                     name="name"
                     value={form.name}
                     onChange={handleChange}
-                    className="h-11 border-b border-stone-400/70 bg-transparent px-0 text-[15px] text-stone-900 outline-none transition-colors focus:border-stone-900"
+                    className="h-11 border-b border-stone-400/70 bg-transparent px-0 text-[15px] text-stone-900 outline-none transition-all duration-300 focus:border-stone-900 focus:shadow-[inset_0_-2px_0_0_#1c1917]"
                   />
                 </label>
                 <label className="flex flex-col gap-2.5 text-[10px] uppercase tracking-[0.22em] text-stone-600">
@@ -127,7 +127,7 @@ export const ContattiPage = () => {
                     name="email"
                     value={form.email}
                     onChange={handleChange}
-                    className="h-11 border-b border-stone-400/70 bg-transparent px-0 text-[15px] text-stone-900 outline-none transition-colors focus:border-stone-900"
+                    className="h-11 border-b border-stone-400/70 bg-transparent px-0 text-[15px] text-stone-900 outline-none transition-all duration-300 focus:border-stone-900 focus:shadow-[inset_0_-2px_0_0_#1c1917]"
                   />
                 </label>
                 <label className="flex flex-col gap-2.5 text-[10px] uppercase tracking-[0.22em] text-stone-600">
@@ -137,7 +137,7 @@ export const ContattiPage = () => {
                     name="phone"
                     value={form.phone}
                     onChange={handleChange}
-                    className="h-11 border-b border-stone-400/70 bg-transparent px-0 text-[15px] text-stone-900 outline-none transition-colors focus:border-stone-900"
+                    className="h-11 border-b border-stone-400/70 bg-transparent px-0 text-[15px] text-stone-900 outline-none transition-all duration-300 focus:border-stone-900 focus:shadow-[inset_0_-2px_0_0_#1c1917]"
                   />
                 </label>
                 <label className="flex flex-col gap-2.5 text-[10px] uppercase tracking-[0.22em] text-stone-600">
@@ -147,7 +147,7 @@ export const ContattiPage = () => {
                     name="arrival"
                     value={form.arrival}
                     onChange={handleChange}
-                    className="h-11 border-b border-stone-400/70 bg-transparent px-0 text-[15px] uppercase text-stone-900 outline-none transition-colors focus:border-stone-900"
+                    className="h-11 border-b border-stone-400/70 bg-transparent px-0 text-[15px] uppercase text-stone-900 outline-none transition-all duration-300 focus:border-stone-900 focus:shadow-[inset_0_-2px_0_0_#1c1917]"
                   />
                 </label>
                 <label className="flex flex-col gap-2.5 text-[10px] uppercase tracking-[0.22em] text-stone-600">
@@ -157,7 +157,7 @@ export const ContattiPage = () => {
                     name="departure"
                     value={form.departure}
                     onChange={handleChange}
-                    className="h-11 border-b border-stone-400/70 bg-transparent px-0 text-[15px] uppercase text-stone-900 outline-none transition-colors focus:border-stone-900"
+                    className="h-11 border-b border-stone-400/70 bg-transparent px-0 text-[15px] uppercase text-stone-900 outline-none transition-all duration-300 focus:border-stone-900 focus:shadow-[inset_0_-2px_0_0_#1c1917]"
                   />
                 </label>
                 <label className="flex flex-col gap-2.5 text-[10px] uppercase tracking-[0.22em] text-stone-600 md:col-span-2">
@@ -168,7 +168,7 @@ export const ContattiPage = () => {
                     rows={4}
                     value={form.message}
                     onChange={handleChange}
-                    className="resize-none border-b border-stone-400/70 bg-transparent px-0 py-3 text-[15px] leading-[1.5] text-stone-900 outline-none transition-colors focus:border-stone-900"
+                    className="resize-none border-b border-stone-400/70 bg-transparent px-0 py-3 text-[15px] leading-[1.5] text-stone-900 outline-none transition-all duration-300 focus:border-stone-900 focus:shadow-[inset_0_-2px_0_0_#1c1917]"
                   />
                 </label>
                 <div className="flex flex-col gap-5 pt-2 md:col-span-2 md:flex-row md:items-center md:justify-between">
