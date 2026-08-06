@@ -197,7 +197,7 @@ export const ConsigliPage = () => {
 
   const sesto: Place[] = [
     {
-      src: "richardGinori",
+      src: richardGinori,
       name: "Museo Richard-Ginori",
       desc: isEn
         ? "The historic Tuscan porcelain manufactory, among archives and masterpieces of ceramic design."
@@ -211,7 +211,7 @@ export const ConsigliPage = () => {
         : ["Archivi storici Ginori", "Collezione Gio Ponti", "Visite guidate su prenotazione"],
     },
     {
-      src: "sestoCentro",
+      src: sestoCentro,
       name: isEn ? "Historic centre of Sesto Fiorentino" : "Centro storico di Sesto Fiorentino",
       desc: isEn
         ? "Quiet squares, artisan workshops and historic cafés, just steps from the property."
@@ -225,7 +225,7 @@ export const ConsigliPage = () => {
         : ["Mercato settimanale", "Caffè storici", "Trattorie tipiche"],
     },
     {
-      src: "villaMontalvo",
+      src: villaMontalvo,
       name: isEn ? "Villa Montalvo Park" : "Parco di Villa Montalvo",
       desc: isEn
         ? "A historic garden to walk through centuries-old trees with views over the Florentine plain."
@@ -242,7 +242,7 @@ export const ConsigliPage = () => {
 
   const firenze: Place[] = [
     {
-      src: "uffiziSignoria",
+      src: uffiziSignoria,
       name: isEn ? "Uffizi and Piazza della Signoria" : "Uffizi e Piazza della Signoria",
       desc: isEn
         ? "The Renaissance heart of Florence, with unmissable collections and open-air statues."
@@ -256,7 +256,7 @@ export const ConsigliPage = () => {
         : ["Biglietti da prenotare in anticipo", "Loggia dei Lanzi (gratuita)", "Palazzo Vecchio accanto"],
     },
     {
-      src: "duomoBattistero",
+      src: duomoBattistero,
       name: isEn ? "Duomo and Baptistery" : "Duomo e Battistero",
       desc: isEn
         ? "Brunelleschi's dome and the Baptistery of San Giovanni, symbols of the city."
@@ -270,7 +270,7 @@ export const ConsigliPage = () => {
         : ["Salita alla cupola", "Mosaici del Battistero", "Museo dell'Opera del Duomo"],
     },
     {
-      src: "oltrarno",
+      src: oltrarno,
       name: isEn ? "Oltrarno and local craftsmanship" : "Oltrarno e artigianato locale",
       desc: isEn
         ? "Historic workshops, ateliers and authentic trattorias on the other bank of the Arno."
@@ -287,7 +287,7 @@ export const ConsigliPage = () => {
 
   const dintorni: Place[] = [
     {
-      src: "fiesole",
+      src: fiesole,
       name: "Fiesole",
       desc: isEn
         ? "A balcony above Florence, with Etruscan and Roman ruins and one of the most celebrated views in Tuscany."
@@ -301,7 +301,7 @@ export const ConsigliPage = () => {
         : ["Teatro romano", "Mura etrusche", "Terrazza panoramica"],
     },
     {
-      src: "mugello",
+      src: mugello,
       name: isEn ? "Mugello and hills" : "Mugello e colline",
       desc: isEn
         ? "Quiet roads, medieval villages and small farmhouses immersed in the countryside."
@@ -315,7 +315,7 @@ export const ConsigliPage = () => {
         : ["Botteghe dei coltellinai di Scarperia", "Pranzi in agriturismo", "Pievi romaniche"],
     },
     {
-      src: "mercati",
+      src: mercati,
       name: isEn ? "Markets and local produce" : "Mercati e prodotti tipici",
       desc: isEn
         ? "Tuscan oil, wine and cheeses at the weekly markets in the area."
