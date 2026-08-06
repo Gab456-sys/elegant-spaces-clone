@@ -1,6 +1,16 @@
 import { useEffect, useState } from "react";
 import { SectionCta } from "@/components/SectionCta";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import heroTuscany from "@/assets/consigli/hero_tuscany.jpg.asset.json";
+import richardGinori from "@/assets/consigli/richard_ginori.jpg.asset.json";
+import sestoCentro from "@/assets/consigli/sesto_centro.jpg.asset.json";
+import villaMontalvo from "@/assets/consigli/villa_montalvo.jpg.asset.json";
+import uffiziSignoria from "@/assets/consigli/uffizi_signoria.jpg.asset.json";
+import duomoBattistero from "@/assets/consigli/duomo_battistero.jpg.asset.json";
+import oltrarno from "@/assets/consigli/oltrarno.jpg.asset.json";
+import fiesole from "@/assets/consigli/fiesole.jpg.asset.json";
+import mugello from "@/assets/consigli/mugello.jpg.asset.json";
+import mercati from "@/assets/consigli/mercati.jpg.asset.json";
 
 type Place = {
   src: string;
