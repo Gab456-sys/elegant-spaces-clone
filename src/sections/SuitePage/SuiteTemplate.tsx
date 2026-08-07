@@ -232,7 +232,7 @@ export const SuiteTemplate = ({ title }: { title: string }) => {
       >
         <div className="mx-auto w-full max-w-[1680px] px-6 py-16 md:px-10 md:py-20 lg:px-16">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-x-10 md:gap-y-0">
-            <figure className="reveal-crop order-2 m-0 md:order-1 md:col-span-6">
+            <figure className="reveal-crop order-2 m-0 md:order-1 md:col-span-5">
               <div className="h-full overflow-hidden">
                 <img
                   src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1600&q=80"
@@ -242,7 +242,7 @@ export const SuiteTemplate = ({ title }: { title: string }) => {
               </div>
             </figure>
 
-            <div className="order-1 md:order-2 md:col-span-5 md:col-start-8">
+            <div className="order-1 md:order-2 md:col-span-6 md:col-start-7">
               <div className="reveal reveal-editorial mb-10 md:mb-12">
                 <p className="m-0 text-[10px] uppercase tracking-[0.24em] text-stone-600">
                   {isEn ? "Booking" : "Prenotazione"}
