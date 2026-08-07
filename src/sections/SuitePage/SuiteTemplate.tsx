@@ -292,7 +292,7 @@ export const SuiteTemplate = ({ title }: { title: string }) => {
 
                       <button
                         type="button"
-                        className="inline-flex h-9 items-center justify-center justify-self-center whitespace-nowrap border border-stone-900 px-8 text-center text-[9px] uppercase tracking-[0.2em] text-stone-900 transition-colors hover:bg-stone-900 hover:text-[#f8f5ef]"
+                        className="inline-flex h-9 items-center justify-center justify-self-center whitespace-nowrap border border-stone-900 px-8 text-center text-[9px] uppercase tracking-[0.2em] text-stone-900 transition-colors hover:bg-stone-900 hover:text-[#f8f5ef] md:col-span-2"
                       >
                         {isEn ? "Check availability" : "Verifica disponibilità"}
                       </button>
