@@ -84,20 +84,6 @@ export const LaVillaPage = () => {
         : "Connessione veloce in tutte le camere e nelle aree comuni.",
     },
     {
-      icon: <IconAC />,
-      label: isEn ? "Air conditioning" : "Aria condizionata",
-      desc: isEn
-        ? "Climate comfort in every season of the year."
-        : "Comfort climatico in ogni stagione dell'anno.",
-    },
-    {
-      icon: <IconBreakfast />,
-      label: isEn ? "Italian breakfast" : "Colazione italiana",
-      desc: isEn
-        ? "Sweet and savoury items, every morning from 8:00 to 10:00."
-        : "Prodotti dolci e salati, ogni mattina dalle 08:00 alle 10:00.",
-    },
-    {
       icon: <IconParking />,
       label: isEn ? "Private 24h parking" : "Parcheggio privato 24h",
       desc: isEn
