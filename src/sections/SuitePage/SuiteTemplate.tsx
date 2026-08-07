@@ -230,85 +230,91 @@ export const SuiteTemplate = ({ title }: { title: string }) => {
         data-header-theme="dark"
         className="border-t border-stone-300/70 bg-[#ece5da]"
       >
-        <div className="mx-auto grid w-full max-w-[1680px] grid-cols-1 gap-y-10 px-6 py-16 md:grid-cols-12 md:gap-x-10 md:gap-y-0 md:px-10 md:py-20 lg:px-16">
-          <div className="reveal reveal-editorial md:col-span-4">
+        <div className="mx-auto w-full max-w-[1680px] px-6 py-16 md:px-10 md:py-20 lg:px-16">
+          <div className="reveal reveal-editorial mb-12 md:mb-16">
             <p className="m-0 text-[10px] uppercase tracking-[0.24em] text-stone-600">
               {isEn ? "Booking" : "Prenotazione"}
             </p>
-            <h2 className="m-0 mt-5 max-w-[10ch] font-beausite_classic text-[42px] leading-[0.94] tracking-[-0.02em] text-stone-900 sm:text-[52px] md:text-[64px]">
+            <h2 className="m-0 mt-5 max-w-[12ch] font-beausite_classic text-[42px] leading-[0.94] tracking-[-0.02em] text-stone-900 sm:text-[52px] md:max-w-none md:text-[64px]">
               {isEn ? "Reserve your stay" : "Prenota il tuo soggiorno"}
             </h2>
-            <p className="m-0 mt-7 max-w-[34ch] text-[16px] leading-[1.55] tracking-[-0.004em] text-stone-800/95">
+            <p className="m-0 mt-7 max-w-[42ch] text-[16px] leading-[1.55] tracking-[-0.004em] text-stone-800/95">
               {isEn
                 ? "Select dates and guests to check current availability with a streamlined booking flow designed to stay visually consistent with this editorial hospitality page."
                 : "Seleziona date e ospiti per verificare la disponibilità con un flusso di prenotazione essenziale, in continuità con l'atmosfera editoriale della pagina."}
             </p>
 
-            <ul className="m-0 mt-10 list-none border-t border-stone-300/80 p-0">
-              <li className="border-b border-stone-300/80 py-4">
-                <p className="m-0 text-[15px] leading-[1.35] text-stone-900">
-                  {isEn
-                    ? "Family Suite — €80 per night — 4 guests"
-                    : "Family Suite — 80 euro a notte — 4 ospiti"}
-                </p>
+            <ul className="m-0 mt-10 grid list-none gap-x-8 gap-y-3 border-t border-stone-300/80 p-0 pt-5 md:grid-cols-3">
+              <li className="text-[15px] leading-[1.35] text-stone-900">
+                {isEn
+                  ? "Family Suite — €80 per night — 4 guests"
+                  : "Family Suite — 80 euro a notte — 4 ospiti"}
               </li>
-              <li className="border-b border-stone-300/80 py-4">
-                <p className="m-0 text-[15px] leading-[1.35] text-stone-900">
-                  {isEn
-                    ? "Comfort Suite — €50 per night — 2 guests — 1 extra bed available"
-                    : "Comfort Suite — 50 euro a notte — 2 ospiti — 1 letto aggiuntivo disponibile"}
-                </p>
+              <li className="text-[15px] leading-[1.35] text-stone-900">
+                {isEn
+                  ? "Comfort Suite — €50 per night — 2 guests — 1 extra bed available"
+                  : "Comfort Suite — 50 euro a notte — 2 ospiti — 1 letto aggiuntivo disponibile"}
               </li>
-              <li className="border-b border-stone-300/80 py-4">
-                <p className="m-0 text-[15px] leading-[1.35] text-stone-900">
-                  {isEn
-                    ? "Basic Room — €40 per night — 2 guests"
-                    : "Basic Room — 40 euro a notte — 2 ospiti"}
-                </p>
+              <li className="text-[15px] leading-[1.35] text-stone-900">
+                {isEn
+                  ? "Basic Room — €40 per night — 2 guests"
+                  : "Basic Room — 40 euro a notte — 2 ospiti"}
               </li>
             </ul>
           </div>
 
-          <div className="reveal reveal-editorial-tight md:col-span-7 md:col-start-6">
-            <div className="w-full border border-stone-300/75 bg-[#f6f2eb] p-5 md:p-6">
-              <div
-                id="suite-booking-embed"
-                data-provider="smoobu-or-lodgify"
-                data-context="suite-page"
-              >
-                <form className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
-                  <label className="flex flex-col gap-1.5 text-[10px] uppercase tracking-[0.2em] text-stone-600">
-                    {isEn ? "Arrival" : "Arrivo"}
-                    <input
-                      type="date"
-                      className="h-11 border border-stone-300/80 bg-[#f8f5ef] px-3 text-[14px] uppercase tracking-[0.03em] text-stone-900 outline-none transition-colors focus:border-stone-500"
-                    />
-                  </label>
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-x-10">
+            <figure className="reveal-crop m-0 md:col-span-5">
+              <div className="h-full overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1600&q=80"
+                  alt={isEn ? "Room interior" : "Interno camera"}
+                  className="reveal-media-inner block h-[46svh] w-full object-cover md:h-full md:min-h-[460px]"
+                />
+              </div>
+            </figure>
 
-                  <label className="flex flex-col gap-1.5 text-[10px] uppercase tracking-[0.2em] text-stone-600">
-                    {isEn ? "Departure" : "Partenza"}
-                    <input
-                      type="date"
-                      className="h-11 border border-stone-300/80 bg-[#f8f5ef] px-3 text-[14px] uppercase tracking-[0.03em] text-stone-900 outline-none transition-colors focus:border-stone-500"
-                    />
-                  </label>
+            <div className="reveal reveal-editorial-tight md:col-span-6 md:col-start-7">
+              <div className="w-full border border-stone-300/75 bg-[#f6f2eb] p-5 md:p-6">
+                <div
+                  id="suite-booking-embed"
+                  data-provider="smoobu-or-lodgify"
+                  data-context="suite-page"
+                >
+                  <form className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
+                    <label className="flex flex-col gap-1.5 text-[10px] uppercase tracking-[0.2em] text-stone-600">
+                      {isEn ? "Arrival" : "Arrivo"}
+                      <input
+                        type="date"
+                        className="h-11 border border-stone-300/80 bg-[#f8f5ef] px-3 text-[14px] uppercase tracking-[0.03em] text-stone-900 outline-none transition-colors focus:border-stone-500"
+                      />
+                    </label>
 
-                  <label className="flex flex-col gap-1.5 text-[10px] uppercase tracking-[0.2em] text-stone-600 md:col-span-2">
-                    {isEn ? "Guests" : "Ospiti"}
-                    <select className="h-11 border border-stone-300/80 bg-[#f8f5ef] px-3 text-[14px] text-stone-900 outline-none transition-colors focus:border-stone-500">
-                      <option>{isEn ? "2 guests" : "2 ospiti"}</option>
-                      <option>{isEn ? "3 guests" : "3 ospiti"}</option>
-                      <option>{isEn ? "4 guests" : "4 ospiti"}</option>
-                    </select>
-                  </label>
+                    <label className="flex flex-col gap-1.5 text-[10px] uppercase tracking-[0.2em] text-stone-600">
+                      {isEn ? "Departure" : "Partenza"}
+                      <input
+                        type="date"
+                        className="h-11 border border-stone-300/80 bg-[#f8f5ef] px-3 text-[14px] uppercase tracking-[0.03em] text-stone-900 outline-none transition-colors focus:border-stone-500"
+                      />
+                    </label>
 
-                  <button
-                    type="button"
-                    className="h-11 border border-stone-900 px-5 text-left text-[10px] uppercase tracking-[0.24em] text-stone-900 transition-colors hover:bg-stone-900 hover:text-[#f8f5ef] md:col-span-2"
-                  >
-                    {isEn ? "Check availability" : "Verifica disponibilità"}
-                  </button>
-                </form>
+                    <label className="flex flex-col gap-1.5 text-[10px] uppercase tracking-[0.2em] text-stone-600 md:col-span-2">
+                      {isEn ? "Guests" : "Ospiti"}
+                      <select className="h-11 border border-stone-300/80 bg-[#f8f5ef] px-3 text-[14px] text-stone-900 outline-none transition-colors focus:border-stone-500">
+                        <option>{isEn ? "2 guests" : "2 ospiti"}</option>
+                        <option>{isEn ? "3 guests" : "3 ospiti"}</option>
+                        <option>{isEn ? "4 guests" : "4 ospiti"}</option>
+                      </select>
+                    </label>
+
+                    <button
+                      type="button"
+                      className="h-11 border border-stone-900 px-5 text-left text-[10px] uppercase tracking-[0.24em] text-stone-900 transition-colors hover:bg-stone-900 hover:text-[#f8f5ef] md:col-span-2"
+                    >
+                      {isEn ? "Check availability" : "Verifica disponibilità"}
+                    </button>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
