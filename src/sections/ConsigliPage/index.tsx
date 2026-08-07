@@ -192,7 +192,7 @@ export const ConsigliPage = () => {
       desc: isEn
         ? "The historic Tuscan porcelain manufactory, among archives and masterpieces of ceramic design."
         : "La storica manifattura della porcellana toscana, tra archivi e capolavori del design ceramico.",
-      meta: isEn ? "12 min on foot" : "12 min a piedi",
+      meta: isEn ? "10 min on foot" : "10 min a piedi",
       long: isEn
         ? "Founded in 1735, the Richard-Ginori Museum preserves nearly three centuries of Italian porcelain heritage. Its collection ranges from Baroque tableware to iconic 20th-century designs by Gio Ponti, offering a rare window into Tuscan craftsmanship and industrial art."
         : "Fondato nel 1735, il Museo Richard-Ginori custodisce quasi tre secoli di eccellenza della porcellana italiana. La collezione spazia dalle stoviglie barocche alle iconiche creazioni novecentesche di Gio Ponti, offrendo una rara finestra sull'artigianato toscano e sull'arte industriale.",
@@ -206,7 +206,7 @@ export const ConsigliPage = () => {
       desc: isEn
         ? "Quiet squares, artisan workshops and historic cafés, just steps from the property."
         : "Piazze raccolte, botteghe artigiane e caffè storici a due passi dalla struttura.",
-      meta: isEn ? "8 min on foot" : "8 min a piedi",
+      meta: isEn ? "15 min on foot" : "15 min a piedi",
       long: isEn
         ? "The old town of Sesto Fiorentino unfolds along elegant piazzas and narrow streets shaped by centuries of Florentine influence. Family-run trattorias, gelaterias and small artisan workshops make it perfect for a slow morning walk or an evening aperitivo."
         : "Il centro storico di Sesto Fiorentino si snoda tra piazze eleganti e vie strette plasmate da secoli di influenza fiorentina. Trattorie a conduzione familiare, gelaterie e piccole botteghe artigiane lo rendono perfetto per una passeggiata mattutina o un aperitivo serale.",
@@ -220,7 +220,7 @@ export const ConsigliPage = () => {
       desc: isEn
         ? "A historic garden to walk through centuries-old trees with views over the Florentine plain."
         : "Un giardino storico dove passeggiare tra alberi secolari e viste sulla piana fiorentina.",
-      meta: isEn ? "15 min on foot" : "15 min a piedi",
+      meta: isEn ? "10 min by car" : "10 min in auto",
       long: isEn
         ? "Once a Medici hunting estate, the park surrounding Villa Montalvo is a peaceful expanse of Italian gardens, cedars and holm oaks. Winding paths open onto quiet clearings and long views over the Florentine plain — an ideal reset between city visits."
         : "Un tempo tenuta di caccia medicea, il parco che circonda Villa Montalvo è una distesa serena di giardini all'italiana, cedri e lecci. Sentieri sinuosi si aprono su radure silenziose e ampie vedute sulla piana fiorentina — perfetto per riprendere fiato tra una visita e l'altra.",
@@ -237,7 +237,7 @@ export const ConsigliPage = () => {
       desc: isEn
         ? "The Renaissance heart of Florence, with unmissable collections and open-air statues."
         : "Il cuore rinascimentale di Firenze, tra collezioni imperdibili e statue all'aperto.",
-      meta: isEn ? "30 min by train + on foot" : "30 min in treno + a piedi",
+      meta: isEn ? "35 min by car" : "35 min in auto",
       long: isEn
         ? "The Uffizi Gallery holds one of the greatest collections of Renaissance art in the world — Botticelli, Leonardo, Michelangelo, Caravaggio. Just outside, Piazza della Signoria remains Florence's civic stage, framed by Palazzo Vecchio and the open-air sculptures of the Loggia dei Lanzi."
         : "La Galleria degli Uffizi custodisce una delle più grandi collezioni di arte rinascimentale al mondo — Botticelli, Leonardo, Michelangelo, Caravaggio. Fuori, Piazza della Signoria resta il palcoscenico civico di Firenze, incorniciata da Palazzo Vecchio e dalle sculture all'aperto della Loggia dei Lanzi.",
@@ -251,7 +251,7 @@ export const ConsigliPage = () => {
       desc: isEn
         ? "Brunelleschi's dome and the Baptistery of San Giovanni, symbols of the city."
         : "La cupola del Brunelleschi e il Battistero di San Giovanni, simboli della città.",
-      meta: isEn ? "25 min by train + on foot" : "25 min in treno + a piedi",
+      meta: isEn ? "30 min by car" : "30 min in auto",
       long: isEn
         ? "Brunelleschi's dome still crowns Florence's skyline as one of the great feats of Renaissance engineering. Below, Santa Maria del Fiore, Giotto's Campanile and the octagonal Baptistery — with its bronze Gates of Paradise — form one of the most extraordinary architectural ensembles in Europe."
         : "La cupola del Brunelleschi domina ancora lo skyline di Firenze come una delle grandi imprese ingegneristiche del Rinascimento. Sotto, Santa Maria del Fiore, il Campanile di Giotto e il Battistero ottagonale — con le sue Porte del Paradiso in bronzo — formano uno degli insiemi architettonici più straordinari d'Europa.",
@@ -265,7 +265,7 @@ export const ConsigliPage = () => {
       desc: isEn
         ? "Historic workshops, ateliers and authentic trattorias on the other bank of the Arno."
         : "Botteghe storiche, atelier e trattorie autentiche sull'altra sponda dell'Arno.",
-      meta: isEn ? "35 min by train + on foot" : "35 min in treno + a piedi",
+      meta: isEn ? "30 min by car" : "30 min in auto",
       long: isEn
         ? "Across the Arno, the Oltrarno keeps Florence's craft soul alive. Leather ateliers, gilders, bookbinders and framers still work behind unassuming doors in San Frediano and Santo Spirito, while the neighbourhood's trattorias and wine bars offer some of the city's most authentic evenings."
         : "Oltre l'Arno, l'Oltrarno custodisce l'anima artigiana di Firenze. Botteghe di pelle, doratori, legatori e corniciai lavorano ancora dietro portoni discreti a San Frediano e Santo Spirito, mentre trattorie e wine bar del quartiere regalano alcune delle serate più autentiche della città.",
