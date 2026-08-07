@@ -173,12 +173,12 @@ export const LaVillaPage = () => {
         className="border-b border-stone-300/70 bg-[#f6f2eb]"
       >
         <div className="mx-auto grid w-full max-w-[1680px] grid-cols-1 gap-10 px-6 py-20 md:grid-cols-12 md:gap-x-14 md:px-10 md:py-28 lg:px-16">
-          <figure className="reveal-crop md:col-span-5">
-            <div className="overflow-hidden">
+          <figure className="reveal-crop h-full md:col-span-5">
+            <div className="h-full overflow-hidden">
               <img
                 src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1400&q=80"
                 alt="Villa Sesto"
-                className="reveal-media-inner block h-[60svh] w-full object-cover md:h-[78svh]"
+                className="reveal-media-inner block h-[60svh] w-full object-cover md:h-full md:min-h-[78svh]"
               />
             </div>
           </figure>
