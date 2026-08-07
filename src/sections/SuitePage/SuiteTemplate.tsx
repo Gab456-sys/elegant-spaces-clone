@@ -256,30 +256,6 @@ export const SuiteTemplate = ({ title }: { title: string }) => {
                     : "Seleziona le date e il numero di ospiti per verificare la disponibilità della tua suite. Riceverai una conferma rapida e personalizzata per pianificare il tuo soggiorno in completa tranquillità."}
                 </p>
 
-                <ul className="m-0 mt-8 list-none border-t border-stone-300/80 p-0 pt-5">
-                  <li className="border-b border-stone-300/80 py-3">
-                    <p className="m-0 text-[15px] leading-[1.35] text-stone-900">
-                      {isEn
-                        ? "Family Suite — €80 per night — 4 guests"
-                        : "Family Suite — 80 euro a notte — 4 ospiti"}
-                    </p>
-                  </li>
-                  <li className="border-b border-stone-300/80 py-3">
-                    <p className="m-0 text-[15px] leading-[1.35] text-stone-900">
-                      {isEn
-                        ? "Comfort Suite — €50 per night — 2 guests — 1 extra bed available"
-                        : "Comfort Suite — 50 euro a notte — 2 ospiti — 1 letto aggiuntivo disponibile"}
-                    </p>
-                  </li>
-                  <li className="border-b border-stone-300/80 py-3">
-                    <p className="m-0 text-[15px] leading-[1.35] text-stone-900">
-                      {isEn
-                        ? "Basic Room — €40 per night — 2 guests"
-                        : "Basic Room — 40 euro a notte — 2 ospiti"}
-                    </p>
-                  </li>
-                </ul>
-              </div>
 
               <div className="reveal reveal-editorial-tight">
                 <div className="w-full border border-stone-300/75 bg-[#f6f2eb] p-5 md:p-6">
