@@ -252,8 +252,8 @@ export const SuiteTemplate = ({ title }: { title: string }) => {
                 </h2>
                 <p className="m-0 mt-7 max-w-[42ch] text-[16px] leading-[1.55] tracking-[-0.004em] text-stone-800/95">
                   {isEn
-                    ? "Select dates and guests to check current availability with a streamlined booking flow designed to stay visually consistent with this editorial hospitality page."
-                    : "Seleziona date e ospiti per verificare la disponibilità con un flusso di prenotazione essenziale, in continuità con l'atmosfera editoriale della pagina."}
+                    ? "Select your dates and the number of guests to check your suite's availability. You'll receive a quick, personalized confirmation to plan your stay with complete peace of mind."
+                    : "Seleziona le date e il numero di ospiti per verificare la disponibilità della tua suite. Riceverai una conferma rapida e personalizzata per pianificare il tuo soggiorno in completa tranquillità."}
                 </p>
 
                 <ul className="m-0 mt-8 list-none border-t border-stone-300/80 p-0 pt-5">
