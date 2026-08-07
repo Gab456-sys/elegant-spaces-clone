@@ -230,7 +230,7 @@ export const SuiteTemplate = ({ title }: { title: string }) => {
         data-header-theme="dark"
         className="border-t border-stone-300/70 bg-[#ece5da]"
       >
-        <div className="mx-auto grid w-full max-w-[1680px] grid-cols-1 gap-y-14 px-6 py-20 md:grid-cols-12 md:gap-x-10 md:gap-y-0 md:px-10 md:py-28 lg:px-16">
+        <div className="mx-auto grid w-full max-w-[1680px] grid-cols-1 gap-y-10 px-6 py-16 md:grid-cols-12 md:gap-x-10 md:gap-y-0 md:px-10 md:py-20 lg:px-16">
           <div className="reveal reveal-editorial md:col-span-4">
             <p className="m-0 text-[10px] uppercase tracking-[0.24em] text-stone-600">
               {isEn ? "Booking" : "Prenotazione"}
@@ -269,13 +269,12 @@ export const SuiteTemplate = ({ title }: { title: string }) => {
             </ul>
           </div>
 
-          <div className="reveal reveal-editorial-tight md:col-span-7 md:col-start-6 md:self-stretch">
-            <div className="flex h-full w-full flex-col border border-stone-300/75 bg-[#f6f2eb] p-6 md:p-7 lg:p-8">
+          <div className="reveal reveal-editorial-tight md:col-span-7 md:col-start-6">
+            <div className="w-full border border-stone-300/75 bg-[#f6f2eb] p-5 md:p-6">
               <div
                 id="suite-booking-embed"
                 data-provider="smoobu-or-lodgify"
                 data-context="suite-page"
-                className="min-h-[252px] flex-1"
               >
                 <form className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
                   <label className="flex flex-col gap-1.5 text-[10px] uppercase tracking-[0.2em] text-stone-600">
