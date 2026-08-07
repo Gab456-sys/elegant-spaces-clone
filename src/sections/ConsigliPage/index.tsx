@@ -137,7 +137,17 @@ const PlaceModal = ({
           aria-label={labels.close}
           className="absolute right-3 top-3 z-30 flex h-11 w-11 cursor-pointer touch-manipulation items-center justify-center rounded-full border-0 bg-white/95 text-stone-900 shadow-xl transition hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 focus-visible:ring-offset-2 focus-visible:ring-offset-white md:h-12 md:w-12"
         >
-          <span aria-hidden className="pointer-events-none text-2xl leading-none md:text-3xl">×</span>
+          <svg
+            aria-hidden
+            className="pointer-events-none h-5 w-5 stroke-current md:h-6 md:w-6"
+            viewBox="0 0 24 24"
+            fill="none"
+            strokeWidth="2"
+            strokeLinecap="round"
+          >
+            <path d="M6 6l12 12" />
+            <path d="M18 6L6 18" />
+          </svg>
         </button>
         <div className="relative h-[38svh] w-full shrink-0 md:h-auto md:w-[55%]">
           <img
