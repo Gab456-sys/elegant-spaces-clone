@@ -255,7 +255,7 @@ export const SuiteTemplate = ({ title }: { title: string }) => {
                     ? "Select your dates and the number of guests to check your suite's availability. You'll receive a quick, personalized confirmation to plan your stay with complete peace of mind."
                     : "Seleziona le date e il numero di ospiti per verificare la disponibilità della tua suite. Riceverai una conferma rapida e personalizzata per pianificare il tuo soggiorno in completa tranquillità."}
                 </p>
-
+              </div>
 
               <div className="reveal reveal-editorial-tight">
                 <div className="w-full border border-stone-300/75 bg-[#f6f2eb] p-5 md:p-6">
