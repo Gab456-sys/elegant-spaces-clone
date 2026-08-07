@@ -20,12 +20,14 @@ const IconParking = () => (
     <path d="M10 17V8h3a2.5 2.5 0 0 1 0 5h-3" strokeLinecap="round" />
   </svg>
 );
-const IconLuggage = () => (
+const IconVending = () => (
   <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.4">
-    <rect x="5" y="7" width="14" height="13" rx="2" />
-    <path d="M9 7V4h6v3M9 11v6M15 11v6" strokeLinecap="round" />
+    <rect x="4" y="3" width="16" height="18" rx="2" />
+    <path d="M8 8h8M8 12h8M8 16h5" strokeLinecap="round" />
+    <circle cx="17" cy="16" r="1" fill="currentColor" />
   </svg>
 );
+
 const IconPet = () => (
   <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.4">
     <circle cx="6" cy="10" r="1.6" /><circle cx="10" cy="6" r="1.6" />
@@ -98,11 +100,11 @@ export const LaVillaPage = () => {
         : "Posti auto riservati, sempre accessibili giorno e notte.",
     },
     {
-      icon: <IconLuggage />,
-      label: isEn ? "Luggage storage" : "Custodia bagagli",
+      icon: <IconVending />,
+      label: isEn ? "Vending machines" : "Distributori automatici",
       desc: isEn
-        ? "Free storage before check-in and after check-out."
-        : "Deposito gratuito prima del check-in e dopo il check-out.",
+        ? "Food and drink vending machines available at the entrance."
+        : "Distributori automatici per cibo e bevande presenti all'ingresso.",
     },
     {
       icon: <IconPet />,
