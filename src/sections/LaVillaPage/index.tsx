@@ -59,7 +59,7 @@ export const LaVillaPage = () => {
         : "Un salotto luminoso dove rallentare tra un impegno e l'altro.",
     },
     {
-      src: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Gardens_of_Italy_Vol_2_Villa_Gamberaia_the_terrace_garden_0122.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/d/d6/Villa_gamberaia_01.JPG",
       label: isEn ? "TERRACE AND GARDEN" : "TERRAZZA E GIARDINO",
       caption: isEn
         ? "Outdoor spaces immersed in the Tuscan greenery."
