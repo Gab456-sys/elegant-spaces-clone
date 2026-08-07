@@ -14,12 +14,6 @@ const IconAC = () => (
     <path d="M12 3v18M3 12h18M5 5l14 14M19 5 5 19" strokeLinecap="round" />
   </svg>
 );
-const IconBreakfast = () => (
-  <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.4">
-    <path d="M4 10h13a3 3 0 0 1 0 6h-1M4 10v5a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3v-5H4Z" />
-    <path d="M7 6c0-1 1-1 1-2M11 6c0-1 1-1 1-2" strokeLinecap="round" />
-  </svg>
-);
 const IconParking = () => (
   <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.4">
     <rect x="4" y="4" width="16" height="16" rx="2" />
@@ -95,13 +89,6 @@ export const LaVillaPage = () => {
       desc: isEn
         ? "Climate comfort in every season of the year."
         : "Comfort climatico in ogni stagione dell'anno.",
-    },
-    {
-      icon: <IconBreakfast />,
-      label: isEn ? "Italian breakfast" : "Colazione italiana",
-      desc: isEn
-        ? "Sweet and savoury items, every morning from 8:00 to 10:00."
-        : "Prodotti dolci e salati, ogni mattina dalle 08:00 alle 10:00.",
     },
     {
       icon: <IconParking />,
