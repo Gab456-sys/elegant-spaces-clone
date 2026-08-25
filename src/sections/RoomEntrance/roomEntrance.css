@@ -97,8 +97,28 @@
 }
 
 /*
+  IL PROTAGONISTA IN PRIMO PIANO.
+  PNG scontornato ancorato in basso al centro: sta DIETRO le ante (z 4) e
+  DAVANTI alla camera (z 0). Resta fermo mentre le ante si aprono, poi passa
+  sopra lo spettatore. Senza, l'apertura rivela una foto piatta.
+*/
+.re-foreground {
+  left: 50%;
+  bottom: var(--fg-bottom);
+  z-index: 3;
+  width: min(var(--fg-width), 2140px);
+  height: auto;
+  opacity: var(--fg-opacity);
+  transform: translate3d(calc(-50% + var(--mx) * 18px), var(--fg-y), 0)
+    scale(var(--fg-scale));
+  transform-origin: 50% 48%;
+  will-change: transform, opacity;
+}
+
+/*
   Le ante sono due copie della stessa foto della soglia, tagliate a metà
-  con clip-path. Non servono PNG scontornati: è questo che rende l'effetto
+  con una mask sfumata sul bordo interno. Non servono PNG scontornati per le
+  ante: solo il layer .re-foreground vuole un ritaglio. È questo che rende
   realizzabile con foto piatte.
 */
 .re-door {
@@ -122,14 +142,20 @@
 }
 
 .re-door-left {
-  clip-path: inset(0 50% 0 0);
+  -webkit-mask-image: linear-gradient(
+    90deg, #000 0 calc(50% - var(--door-feather)), transparent calc(50% + 8px));
+  mask-image: linear-gradient(
+    90deg, #000 0 calc(50% - var(--door-feather)), transparent calc(50% + 8px));
   transform-origin: 0% 50%;
   transform: translate3d(calc(var(--door-drift) * -34vw + var(--mx) * 14px), 0, 0)
     rotateY(calc(var(--door-drift) * 26deg)) scale(var(--door-scale));
 }
 
 .re-door-right {
-  clip-path: inset(0 0 0 50%);
+  -webkit-mask-image: linear-gradient(
+    270deg, #000 0 calc(50% - var(--door-feather)), transparent calc(50% + 8px));
+  mask-image: linear-gradient(
+    270deg, #000 0 calc(50% - var(--door-feather)), transparent calc(50% + 8px));
   transform-origin: 100% 50%;
   transform: translate3d(calc(var(--door-drift) * 34vw + var(--mx) * 14px), 0, 0)
     rotateY(calc(var(--door-drift) * -26deg)) scale(var(--door-scale));
@@ -484,6 +510,9 @@
     flex-basis: min(78vw, 300px);
     height: 184px;
   }
+  .re-stage {
+    --door-feather: 20px;
+  }
 }
 
 /*
@@ -502,6 +531,10 @@
   .re-door,
   .re-detail {
     display: none;
+  }
+  .re-foreground {
+    opacity: 1;
+    transform: translate3d(-50%, 0, 0);
   }
   .re-title,
   .re-intro,

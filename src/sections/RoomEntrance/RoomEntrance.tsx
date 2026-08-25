@@ -23,24 +23,35 @@ const segment = (s: number, a: number, b: number, c: number, d: number) => {
 /** Lunghezza scrollabile della scena, in px. Deve combaciare con il CSS. */
 const SCENE = 2600;
 
+type Localized<T> = { it: T; en: T };
+
+type PanelBed = {
+  heading: ReactNode;
+  body: ReactNode;
+  facts: { dt: ReactNode; dd: ReactNode }[];
+};
+
+type PanelServices = { heading: ReactNode; body: ReactNode; cta: ReactNode };
+
+type AmenityContent = { kicker: ReactNode; title: ReactNode; body: ReactNode };
+
 type Props = {
+  /** Solo le immagini: i testi arrivano dalle props qui sotto. */
   room: RoomEntranceData;
-  /** Contenuti iniziali espliciti, così restano modificabili dall'editor visivo. */
-  titleContent?: ReactNode;
-  introContent?: { it: ReactNode; en: ReactNode };
-  tagsContent?: { it: ReactNode; en: ReactNode };
-  panelBedContent?: {
-    it: { heading: ReactNode; body: ReactNode; facts: { dt: ReactNode; dd: ReactNode }[] };
-    en: { heading: ReactNode; body: ReactNode; facts: { dt: ReactNode; dd: ReactNode }[] };
-  };
-  panelServicesContent?: {
-    it: { heading: ReactNode; body: ReactNode; cta: ReactNode };
-    en: { heading: ReactNode; body: ReactNode; cta: ReactNode };
-  };
-  amenitiesContent?: {
-    it: { kicker: ReactNode; title: ReactNode; body: ReactNode }[];
-    en: { kicker: ReactNode; title: ReactNode; body: ReactNode }[];
-  };
+  /**
+   * Tutti i contenuti sono OBBLIGATORI e vivono nelle pagine camera, così
+   * l'editor visivo di Lovable può selezionarli e modificarli. Non aggiungere
+   * fallback da rooms.ts: due fonti di verità significano modifiche che
+   * sembrano non avere effetto.
+   */
+  titleContent: ReactNode;
+  introContent: Localized<ReactNode>;
+  tagsContent: Localized<ReactNode>;
+  panelBedContent: Localized<PanelBed>;
+  panelServicesContent: Localized<PanelServices>;
+  amenitiesContent: Localized<AmenityContent[]>;
+  /** Testo alternativo della foto principale, per gli screen reader. */
+  roomImageAlt?: string;
   /** Selettore del target della CTA. Default: il form di prenotazione. */
   ctaTarget?: string;
 };
@@ -53,6 +64,7 @@ export const RoomEntrance = ({
   panelBedContent,
   panelServicesContent,
   amenitiesContent,
+  roomImageAlt = "",
   ctaTarget = "#suite-booking-embed",
 }: Props) => {
   const { language } = useLanguage();
@@ -65,11 +77,12 @@ export const RoomEntrance = ({
   const controlsRef = useRef<HTMLDivElement | null>(null);
 
   /** Le card sono triplicate per il loop infinito; si parte dal set centrale. */
-  const loopCards = useMemo(
-    () => [...room.amenities, ...room.amenities, ...room.amenities],
-    [room.amenities],
+  const cards = amenitiesContent[lang];
+  const originalCount = cards.length;
+  const loopIndexes = useMemo(
+    () => Array.from({ length: originalCount * 3 }, (_, i) => i),
+    [originalCount],
   );
-  const originalCount = room.amenities.length;
   const activeRef = useRef(originalCount);
 
   /* ---------- slider ---------- */
@@ -179,6 +192,17 @@ export const RoomEntrance = ({
       set("--door-opacity", (1 - door.exit).toFixed(4));
       set("--door-scale", (1 + door.enter * 0.5).toFixed(4));
 
+      /*
+        Primo piano scontornato: ancorato in basso mentre le ante si aprono,
+        poi in uscita sale di -760px scalando +0.5 — passa SOPRA lo spettatore
+        invece di allontanarsi. È il movimento che dà profondità alla scena.
+      */
+      set("--fg-bottom", `${(2 - door.enter * 10).toFixed(2)}vh`);
+      set("--fg-width", `${(64 + door.enter * 36).toFixed(2)}vw`);
+      set("--fg-y", `${(my * 8 - progress * 40 - door.exit * 760).toFixed(2)}px`);
+      set("--fg-scale", (1 + progress * 0.18 + door.exit * 0.5).toFixed(4));
+      set("--fg-opacity", (1 - detail.enter * 0.85).toFixed(4));
+
       set("--detail-opacity", (detail.active * (1 - detail.exit)).toFixed(4));
       set("--detail-scale", (1.04 + detail.enter * 0.08).toFixed(4));
 
@@ -265,13 +289,13 @@ export const RoomEntrance = ({
   return (
     <section ref={sectionRef} className="re-scroll">
       <div ref={stageRef} className="re-stage">
-        <img
-          className="re-layer re-room"
-          src={room.images.room}
-          alt={room.title}
-        />
+        <img className="re-layer re-room" src={room.images.room} alt={roomImageAlt} />
 
+        <img className="re-layer re-detail" src={room.images.detail} alt="" />
 
+        {room.images.foreground && (
+          <img className="re-layer re-foreground" src={room.images.foreground} alt="" />
+        )}
 
         <div className="re-door re-door-left">
           <img src={room.images.doorway} alt="" />
@@ -279,29 +303,21 @@ export const RoomEntrance = ({
         <div className="re-door re-door-right">
           <img src={room.images.doorway} alt="" />
         </div>
+
         <div className="re-layer re-shade" />
 
-        <h1 className="re-title">
-          {titleContent ??
-            (room.titleLines ?? [room.title]).map((line) => <span key={line}>{line}</span>)}
-        </h1>
+        <h1 className="re-title">{titleContent}</h1>
 
         <div className="re-intro">
-          <p>{introContent?.[lang] ?? room.intro[lang]}</p>
-          <div className="re-tags">
-            {tagsContent?.[lang] ??
-              room.tags.map((tag, i) => <span key={i}>{tag[lang]}</span>)}
-          </div>
+          <p>{introContent[lang]}</p>
+          <div className="re-tags">{tagsContent[lang]}</div>
         </div>
 
         <div className="re-panel re-panel-bed">
-          <h2>{panelBedContent?.[lang].heading ?? room.panelBed.heading[lang]}</h2>
-          <p>{panelBedContent?.[lang].body ?? room.panelBed.body[lang]}</p>
+          <h2>{panelBedContent[lang].heading}</h2>
+          <p>{panelBedContent[lang].body}</p>
           <dl className="re-facts">
-            {(panelBedContent?.[lang].facts ?? room.panelBed.facts.map((fact) => ({
-              dt: fact.dt,
-              dd: fact.dd[lang],
-            }))).map((fact, i) => (
+            {panelBedContent[lang].facts.map((fact, i) => (
               <div key={i}>
                 <dt>{fact.dt}</dt>
                 <dd>{fact.dd}</dd>
@@ -311,18 +327,17 @@ export const RoomEntrance = ({
         </div>
 
         <div className="re-panel re-panel-services">
-          <h2>{panelServicesContent?.[lang].heading ?? room.panelServices.heading[lang]}</h2>
-          <p>{panelServicesContent?.[lang].body ?? room.panelServices.body[lang]}</p>
+          <h2>{panelServicesContent[lang].heading}</h2>
+          <p>{panelServicesContent[lang].body}</p>
           <button type="button" className="re-cta" onClick={goToCta}>
             <span>↗</span>
-            {panelServicesContent?.[lang].cta ??
-              (lang === "en" ? "Check availability" : "Verifica disponibilità")}
+            {panelServicesContent[lang].cta}
           </button>
         </div>
 
         <div ref={amenitiesRef} className="re-amenities">
           <div ref={trackRef} className="re-track">
-            {loopCards.map((item, i) => (
+            {loopIndexes.map((i) => (
               <article
                 key={i}
                 className="re-card"
@@ -336,11 +351,9 @@ export const RoomEntrance = ({
                 tabIndex={0}
                 role="button"
               >
-                <span className="re-card-kicker">
-                  {amenitiesContent?.[lang][i % originalCount]?.kicker ?? item.kicker[lang]}
-                </span>
-                <h3>{amenitiesContent?.[lang][i % originalCount]?.title ?? item.title[lang]}</h3>
-                <p>{amenitiesContent?.[lang][i % originalCount]?.body ?? item.body[lang]}</p>
+                <span className="re-card-kicker">{cards[i % originalCount].kicker}</span>
+                <h3>{cards[i % originalCount].title}</h3>
+                <p>{cards[i % originalCount].body}</p>
               </article>
             ))}
           </div>
