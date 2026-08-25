@@ -29,6 +29,7 @@
   --bed-bottom: 5vh;
   --bed-width: 67.2vw;
   --bed-scale: 1.02;
+  --door-opacity: 1;
   --door-left-x: -100%;
   --door-left-y: 0px;
   --door-left-scale: 1;
@@ -431,6 +432,7 @@ button {
 
 .door-img {
   z-index: 6;
+  opacity: var(--door-opacity);
   left: 50%;
   bottom: 0;
   width: min(60vw, 1120px);

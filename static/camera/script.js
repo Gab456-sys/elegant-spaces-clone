@@ -236,7 +236,7 @@
     set(
       "--door-left-x",
       "calc(-100% + " +
-        (-doorDrift * 34).toFixed(3) +
+        (-doorDrift * 82).toFixed(3) +
         "vw + " +
         (mouseX * 22).toFixed(2) +
         "px)"
@@ -247,7 +247,7 @@
     set(
       "--door-right-x",
       "calc(0% + " +
-        (doorDrift * 34).toFixed(3) +
+        (doorDrift * 82).toFixed(3) +
         "vw + " +
         (mouseX * 22).toFixed(2) +
         "px)"
@@ -256,6 +256,7 @@
     set("--door-right-scale", doorScale);
     set("--door-right-rot", (-doorDrift * 26).toFixed(3) + "deg");
 
+    set("--door-opacity", (1 - clamp((doorDrift - 0.55) / 0.35)).toFixed(4));
     set("--detail-opacity", detailOpacity.toFixed(4));
     set("--detail-x", "calc(-50% + " + (mouseX * 10).toFixed(2) + "px)");
     set(
