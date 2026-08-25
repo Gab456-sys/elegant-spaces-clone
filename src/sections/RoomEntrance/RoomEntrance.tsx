@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, type ReactNode } from "react";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import type { RoomEntranceData } from "./rooms";
 import "./roomEntrance.css";
@@ -25,11 +25,21 @@ const SCENE = 2600;
 
 type Props = {
   room: RoomEntranceData;
+  /** Contenuti iniziali espliciti, così restano modificabili dall'editor visivo. */
+  titleContent?: ReactNode;
+  introContent?: { it: ReactNode; en: ReactNode };
+  tagsContent?: { it: ReactNode; en: ReactNode };
   /** Selettore del target della CTA. Default: il form di prenotazione. */
   ctaTarget?: string;
 };
 
-export const RoomEntrance = ({ room, ctaTarget = "#suite-booking-embed" }: Props) => {
+export const RoomEntrance = ({
+  room,
+  titleContent,
+  introContent,
+  tagsContent,
+  ctaTarget = "#suite-booking-embed",
+}: Props) => {
   const { language } = useLanguage();
   const lang = language === "en" ? "en" : "it";
 
@@ -257,17 +267,15 @@ export const RoomEntrance = ({ room, ctaTarget = "#suite-booking-embed" }: Props
         <div className="re-layer re-shade" />
 
         <h1 className="re-title">
-          {(room.titleLines ?? [room.title]).map((line) => (
-            <span key={line}>{line}</span>
-          ))}
+          {titleContent ??
+            (room.titleLines ?? [room.title]).map((line) => <span key={line}>{line}</span>)}
         </h1>
 
         <div className="re-intro">
-          <p>{room.intro[lang]}</p>
+          <p>{introContent?.[lang] ?? room.intro[lang]}</p>
           <div className="re-tags">
-            {room.tags.map((tag, i) => (
-              <span key={i}>{tag[lang]}</span>
-            ))}
+            {tagsContent?.[lang] ??
+              room.tags.map((tag, i) => <span key={i}>{tag[lang]}</span>)}
           </div>
         </div>
 
