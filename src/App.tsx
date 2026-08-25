@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { Header } from "@/sections/Header";
 import { MainContent } from "@/sections/MainContent";
 import { Footer } from "@/sections/Footer";
@@ -251,18 +251,28 @@ const AppShell = () => {
       />
       <Routes>
         <Route path="/" element={<MainContent />} />
-        <Route path="/suite" element={<FamilySuitePage />} />
+        <Route path="/suite" element={<Navigate to="/suite/family" replace />} />
         <Route path="/suite/family" element={<FamilySuitePage />} />
         <Route path="/suite/comfort" element={<ComfortSuitePage />} />
         <Route path="/suite/basic" element={<BasicRoomPage />} />
-        <Route path="/family-suite" element={<FamilySuitePage />} />
-        <Route path="/comfort-suite" element={<ComfortSuitePage />} />
-        <Route path="/basic-room" element={<BasicRoomPage />} />
+        <Route
+          path="/family-suite"
+          element={<Navigate to="/suite/family" replace />}
+        />
+        <Route
+          path="/comfort-suite"
+          element={<Navigate to="/suite/comfort" replace />}
+        />
+        <Route
+          path="/basic-room"
+          element={<Navigate to="/suite/basic" replace />}
+        />
         <Route path="/la-villa" element={<LaVillaPage />} />
         <Route path="/consigli" element={<ConsigliPage />} />
         <Route path="/contatti" element={<ContattiPage />} />
         <Route path="*" element={<MainContent />} />
       </Routes>
+
       <Footer />
       <MobileOverlay isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
       <HiddenAssets
