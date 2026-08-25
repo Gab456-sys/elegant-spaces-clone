@@ -74,6 +74,7 @@ export const SuiteTemplate = ({
           </figure>
         </div>
       </section>
+      )}
 
       <section
         data-header-theme="dark"
