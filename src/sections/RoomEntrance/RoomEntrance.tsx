@@ -33,7 +33,7 @@ export const RoomEntrance = ({ room, ctaTarget = "#suite-booking-embed" }: Props
   const { language } = useLanguage();
   const lang = language === "en" ? "en" : "it";
 
-  const sectionRef = useRef<HTMLSectionElement | null>(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
   const stageRef = useRef<HTMLDivElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
   const amenitiesRef = useRef<HTMLDivElement | null>(null);
