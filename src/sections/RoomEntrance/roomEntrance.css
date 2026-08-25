@@ -1,0 +1,516 @@
+/* ---------------------------------------------------------------
+   RoomEntrance — scena d'ingresso in camera.
+   Tutte le custom properties sono scritte dal JS su .re-stage
+   (non su :root), così più istanze non si pestano i piedi.
+   Palette e spigoli allineati a src/sections/* (stone / Beausite).
+   --------------------------------------------------------------- */
+
+.re-scroll {
+  position: relative;
+  height: calc(100svh + 2600px);
+  background: #ece5da;
+}
+
+.re-stage {
+  --mx: 0;
+  --my: 0;
+
+  --room-scale: 1.02;
+  --room-x: 0px;
+  --room-y: 0px;
+  --room-blur: 0px;
+  --room-brightness: 1;
+
+  --door-drift: 0;
+  --door-opacity: 1;
+  --door-scale: 1;
+
+  --detail-opacity: 0;
+  --detail-scale: 1.04;
+
+  --shade-top: 0;
+  --shade-mid: 0;
+  --shade-bottom: 0;
+  --shade-tint: 246, 242, 235;
+
+  --title-y: 0px;
+  --title-scale: 1;
+  --title-opacity: 1;
+
+  --intro-y: 0px;
+  --intro-opacity: 1;
+
+  --panel-bed-opacity: 0;
+  --panel-bed-y: 58px;
+  --panel-svc-opacity: 0;
+  --panel-svc-y: 58px;
+
+  --am-opacity: 0;
+  --am-x: 60vw;
+  --am-controls-opacity: 0;
+  --am-shift: 0px;
+
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  min-height: 620px;
+  overflow: hidden;
+  isolation: isolate;
+  background: #ece5da;
+  perspective: 1500px;
+  perspective-origin: 50% 46%;
+  color: #1c1917;
+}
+
+/* --- Layer fotografici ------------------------------------------------ */
+
+.re-layer {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.re-room {
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate3d(var(--room-x), var(--room-y), 0) scale(var(--room-scale));
+  transform-origin: 50% 52%;
+  filter: blur(var(--room-blur)) brightness(var(--room-brightness));
+  will-change: transform, filter;
+}
+
+.re-detail {
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: min(120vw, 2000px);
+  height: auto;
+  opacity: var(--detail-opacity);
+  transform: translate3d(-50%, -50%, 0) scale(var(--detail-scale));
+  transform-origin: 50% 48%;
+  will-change: transform, opacity;
+}
+
+/*
+  Le ante sono due copie della stessa foto della soglia, tagliate a metà
+  con clip-path. Non servono PNG scontornati: è questo che rende l'effetto
+  realizzabile con foto piatte.
+*/
+.re-door {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  overflow: hidden;
+  opacity: var(--door-opacity);
+  pointer-events: none;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+.re-door img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.re-door-left {
+  clip-path: inset(0 50% 0 0);
+  transform-origin: 0% 50%;
+  transform: translate3d(calc(var(--door-drift) * -34vw + var(--mx) * 14px), 0, 0)
+    rotateY(calc(var(--door-drift) * 26deg)) scale(var(--door-scale));
+}
+
+.re-door-right {
+  clip-path: inset(0 0 0 50%);
+  transform-origin: 100% 50%;
+  transform: translate3d(calc(var(--door-drift) * 34vw + var(--mx) * 14px), 0, 0)
+    rotateY(calc(var(--door-drift) * -26deg)) scale(var(--door-scale));
+}
+
+/* Fessura di luce al centro, mentre le ante si separano. */
+.re-door::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 252, 245, calc(var(--door-drift) * 0.55)) 50%,
+    transparent 100%
+  );
+  opacity: calc(1 - var(--door-drift));
+}
+
+.re-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(var(--shade-tint), var(--shade-top)) 0%,
+    rgba(var(--shade-tint), var(--shade-mid)) 48%,
+    rgba(var(--shade-tint), var(--shade-bottom)) 100%
+  );
+}
+
+/* --- Titolo e intro --------------------------------------------------- */
+
+.re-title {
+  position: absolute;
+  z-index: 6;
+  left: 50%;
+  top: clamp(96px, 15vh, 190px);
+  width: min(94vw, 1500px);
+  margin: 0;
+  font-family: "Beausite Classic", ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(3.4rem, 11vw, 9.2rem);
+  font-weight: 400;
+  line-height: 0.86;
+  letter-spacing: -0.03em;
+  text-align: center;
+  color: #f8f5ef;
+  transform: translate3d(-50%, var(--title-y), 0) scale(var(--title-scale));
+  opacity: var(--title-opacity);
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+.re-title span {
+  display: block;
+}
+
+.re-intro {
+  position: absolute;
+  z-index: 6;
+  left: 50%;
+  bottom: clamp(56px, 16vh, 200px);
+  width: min(560px, calc(100vw - 40px));
+  text-align: center;
+  transform: translate3d(-50%, var(--intro-y), 0);
+  opacity: var(--intro-opacity);
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+.re-intro p {
+  margin: 0 auto;
+  max-width: 46ch;
+  color: #f8f5ef;
+  font-size: clamp(1rem, 1.15vw, 1.18rem);
+  line-height: 1.45;
+}
+
+.re-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.re-tags span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 18px;
+  border: 1px solid rgba(248, 245, 239, 0.65);
+  border-radius: 0;
+  color: #f8f5ef;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+/* --- Pannelli narrativi ----------------------------------------------- */
+
+.re-panel {
+  position: absolute;
+  z-index: 7;
+  left: 50%;
+  width: min(720px, calc(100vw - 42px));
+  text-align: center;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.re-panel h2 {
+  margin: 0;
+  font-family: "Beausite Classic", ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(2.2rem, 4.4vw, 4rem);
+  font-weight: 400;
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+  color: #1c1917;
+}
+
+.re-panel p {
+  width: min(520px, 100%);
+  margin: 22px auto 0;
+  color: rgba(28, 25, 23, 0.9);
+  font-size: clamp(1rem, 1.1vw, 1.12rem);
+  line-height: 1.5;
+}
+
+.re-panel-bed {
+  top: 58%;
+  opacity: var(--panel-bed-opacity);
+  transform: translate3d(-50%, calc(-50% + var(--panel-bed-y)), 0);
+}
+
+.re-panel-services {
+  top: 32%;
+  opacity: var(--panel-svc-opacity);
+  transform: translate3d(-50%, calc(-50% + var(--panel-svc-y)), 0);
+}
+
+.re-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(20px, 5vw, 72px);
+  width: min(470px, 100%);
+  margin: clamp(32px, 5vh, 64px) auto 0;
+}
+
+.re-facts dt {
+  font-family: "Beausite Classic", ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(2.1rem, 4vw, 3.6rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  color: #1c1917;
+}
+
+.re-facts dd {
+  margin: 12px 0 0;
+  color: #57534e;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.re-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  margin-top: 26px;
+  padding: 0 28px;
+  border: 1px solid #1c1917;
+  border-radius: 0;
+  background: transparent;
+  color: #1c1917;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+.re-cta:hover {
+  background: #1c1917;
+  color: #f8f5ef;
+}
+
+/* --- Slider dotazioni -------------------------------------------------- */
+
+.re-amenities {
+  position: absolute;
+  z-index: 8;
+  left: 0;
+  right: 0;
+  bottom: clamp(104px, 15vh, 168px);
+  opacity: var(--am-opacity);
+  transform: translate3d(var(--am-x), 0, 0);
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+.re-amenities.is-ready {
+  pointer-events: auto;
+}
+
+.re-track {
+  display: flex;
+  align-items: stretch;
+  gap: clamp(12px, 1.1vw, 22px);
+  padding-left: clamp(24px, 6vw, 96px);
+  transform: translate3d(var(--am-shift), 0, 0);
+  transition: transform 700ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+}
+
+.re-track.is-jumping {
+  transition: none;
+}
+
+.re-card {
+  position: relative;
+  flex: 0 0 clamp(268px, 22vw, 360px);
+  height: 196px;
+  padding: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(214, 211, 209, 0.7);
+  border-radius: 0;
+  background: #f6f2eb;
+  color: #1c1917;
+  text-align: left;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+.re-card.is-active {
+  border-color: #1c1917;
+}
+
+.re-card:focus-visible {
+  outline: 1px solid #1c1917;
+  outline-offset: 3px;
+}
+
+.re-card-kicker {
+  display: block;
+  color: #57534e;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.re-card h3 {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 78px;
+  margin: 0;
+  font-family: "Beausite Classic", ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+}
+
+.re-card p {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 22px;
+  margin: 0;
+  color: rgba(28, 25, 23, 0.78);
+  font-size: 0.9rem;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.re-controls {
+  position: absolute;
+  z-index: 9;
+  left: clamp(24px, 6vw, 96px);
+  bottom: clamp(48px, 7vh, 84px);
+  display: flex;
+  gap: 10px;
+  opacity: var(--am-controls-opacity);
+  pointer-events: none;
+}
+
+.re-controls.is-ready {
+  pointer-events: auto;
+}
+
+.re-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #1c1917;
+  border-radius: 0;
+  background: rgba(246, 242, 235, 0.92);
+  color: #1c1917;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+.re-nav:hover {
+  background: #1c1917;
+  color: #f8f5ef;
+}
+
+/* --- Responsive -------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .re-scroll {
+    height: calc(100svh + 2000px);
+  }
+  .re-panel-bed {
+    top: 56%;
+  }
+  .re-panel-services {
+    top: 30%;
+  }
+  .re-amenities {
+    bottom: clamp(92px, 14vh, 140px);
+  }
+  .re-card {
+    flex-basis: min(78vw, 300px);
+    height: 184px;
+  }
+}
+
+/*
+  Reduced motion: niente scrubbing, niente parallasse. La scena si presenta
+  già "aperta" — porta spalancata, camera visibile, testi leggibili — e le
+  card diventano una fila scorrevole normale.
+*/
+@media (prefers-reduced-motion: reduce) {
+  .re-scroll {
+    height: auto;
+  }
+  .re-stage {
+    position: relative;
+    height: 78svh;
+  }
+  .re-door,
+  .re-detail {
+    display: none;
+  }
+  .re-title,
+  .re-intro,
+  .re-amenities,
+  .re-controls {
+    opacity: 1;
+    transform: translate3d(-50%, 0, 0);
+  }
+  .re-amenities,
+  .re-controls {
+    transform: none;
+    pointer-events: auto;
+  }
+  .re-panel {
+    display: none;
+  }
+  .re-track {
+    transition: none;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+}
