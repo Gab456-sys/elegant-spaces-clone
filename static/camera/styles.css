@@ -29,11 +29,11 @@
   --bed-bottom: 5vh;
   --bed-width: 67.2vw;
   --bed-scale: 1.02;
-  --door-left-x: -50%;
+  --door-left-x: -100%;
   --door-left-y: 0px;
   --door-left-scale: 1;
   --door-left-rot: 0deg;
-  --door-right-x: -50%;
+  --door-right-x: 0%;
   --door-right-y: 0px;
   --door-right-scale: 1;
   --door-right-rot: 0deg;
@@ -399,7 +399,7 @@ button {
 
 /* ---------- hero ---------- */
 .hero-title {
-  z-index: 3;
+  z-index: 7;
   left: 50%;
   top: clamp(122px, 19vh, 205px);
   width: min(94vw, 1780px);
@@ -432,9 +432,10 @@ button {
 .door-img {
   z-index: 6;
   left: 50%;
-  bottom: -2vh;
-  width: min(118vw, 2240px);
-  height: auto;
+  bottom: 0;
+  width: min(60vw, 1120px);
+  height: 100%;
+  object-fit: cover;
   pointer-events: none;
   backface-visibility: hidden;
 }
@@ -610,6 +611,8 @@ button {
   line-height: 1;
 }
 
+.is-embedded .site-header { display: none; }
+
 /* ---------- media queries ---------- */
 @media (max-width: 1500px) {
   .hero-title {
@@ -627,6 +630,9 @@ button {
   }
   .bed-img {
     width: 138vw;
+  }
+  .door-img {
+    width: 62vw;
   }
   .detail-img {
     width: 132vw;

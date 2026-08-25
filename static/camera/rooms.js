@@ -44,8 +44,8 @@ const BASE_LAYERS = {
   back: U("photo-1631049307264-da0ec9d70304"),
   lightwash: U("photo-1505692952047-1a78307da8f2", 1400),
   furniture: U("photo-1600607687939-ce8a6c25118c"),
-  doorLeft: U("photo-1600585154340-be6161a56a0c"),
-  doorRight: U("photo-1600585154340-be6161a56a0c"),
+  doorLeft: U("photo-1513694203232-719a280e022f", 1200),
+  doorRight: U("photo-1513694203232-719a280e022f", 1200),
   bed: U("photo-1616594039964-3d0f2d4e7ce0"),
   detail: U("photo-1620626011761-996317b8d101"),
 };

@@ -1,5 +1,6 @@
 /* Motore scena cinematica — vanilla, un solo requestAnimationFrame loop. */
 (function () {
+  if (window.top !== window.self) document.body.classList.add("is-embedded");
   const params = new URLSearchParams(window.location.search);
   const slug = params.get("room") || "basic";
   const ROOM = (window.ROOMS && (window.ROOMS[slug] || window.ROOMS.basic)) || null;
@@ -234,7 +235,7 @@
     const doorScale = (1 + sharedHeroScale + doorPhase.enter * 0.74).toFixed(4);
     set(
       "--door-left-x",
-      "calc(-50% + " +
+      "calc(-100% + " +
         (-doorDrift * 34).toFixed(3) +
         "vw + " +
         (mouseX * 22).toFixed(2) +
@@ -245,7 +246,7 @@
     set("--door-left-rot", (doorDrift * 26).toFixed(3) + "deg");
     set(
       "--door-right-x",
-      "calc(-50% + " +
+      "calc(0% + " +
         (doorDrift * 34).toFixed(3) +
         "vw + " +
         (mouseX * 22).toFixed(2) +
