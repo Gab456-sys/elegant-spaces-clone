@@ -134,6 +134,31 @@
   backface-visibility: hidden;
 }
 
+/*
+  ANTE DISEGNATE (nessuna foto di soglia).
+  Pannelli scuri con venatura verticale: il buio è ciò che rende l'apertura
+  leggibile come ingresso. Una foto d'interni chiara al loro posto fa
+  sembrare che sia la camera stessa a spaccarsi in due.
+*/
+.re-door--drawn {
+  background-color: #221c16;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.028) 0 2px,
+      transparent 2px 7px
+    ),
+    linear-gradient(180deg, #2b241c 0%, #1a1511 100%);
+}
+
+.re-door-left.re-door--drawn {
+  box-shadow: inset -22px 0 34px -18px rgba(0, 0, 0, 0.75);
+}
+
+.re-door-right.re-door--drawn {
+  box-shadow: inset 22px 0 34px -18px rgba(0, 0, 0, 0.75);
+}
+
 .re-door img {
   position: absolute;
   inset: 0;

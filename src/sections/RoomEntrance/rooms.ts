@@ -9,13 +9,17 @@ export type RoomEntranceData = {
   slug: string;
   images: {
     /**
-     * FOTO DELLA SOGLIA. Scattata dal corridoio, in piedi sulla porta,
-     * inquadrando lo stipite. Viene tagliata a metà e le due ante si aprono:
-     * senza una simmetria centrale credibile l'effetto non legge.
-     * Deve essere DIVERSA da `room`, altrimenti le ante rivelano ciò che
-     * già mostrano.
+     * FOTO DELLA SOGLIA — opzionale, e da usare solo se ce l'hai davvero:
+     * scura, stretta, chiusa (uno stipite, un corridoio, un'anta di legno),
+     * scattata frontalmente e simmetrica rispetto al centro.
+     *
+     * Se manca, le ante vengono DISEGNATE in CSS: due pannelli scuri con
+     * venatura e bordo smussato. Quasi sempre è la scelta giusta, perché
+     * l'ingresso lo racconta il contrasto buio→luce, non il realismo del
+     * legno. Una foto d'interni chiara qui produce l'effetto peggiore:
+     * la camera che si spacca in due invece di una porta che si apre.
      */
-    doorway: string;
+    doorway?: string;
     /** La camera, full bleed. Zooma fino a ~1.38: serve almeno 2400px. */
     room: string;
     /** Dettaglio ravvicinato: bagno, poltrona, scrittoio. */
@@ -55,7 +59,6 @@ export const roomEntrances: Record<string, RoomEntranceData> = {
   family: {
     slug: "family",
     images: {
-      doorway: u("photo-1617104551722-3b2d51366400"),
       room: u("photo-1631049307264-da0ec9d70304", 2400),
       detail: u("photo-1616047006789-b7af5afb8c20", 1800),
     },
@@ -63,7 +66,6 @@ export const roomEntrances: Record<string, RoomEntranceData> = {
   comfort: {
     slug: "comfort",
     images: {
-      doorway: u("photo-1590490360182-c33d57733427"),
       room: u("photo-1600607687939-ce8a6c25118c", 2400),
       detail: u("photo-1620626011761-996317b8d101", 1800),
     },
@@ -71,7 +73,6 @@ export const roomEntrances: Record<string, RoomEntranceData> = {
   basic: {
     slug: "basic",
     images: {
-      doorway: u("photo-1616594039964-3d0f2d4e7ce0"),
       room: u("photo-1616047006789-b7af5afb8c20", 2400),
       detail: u("photo-1620626011761-996317b8d101", 1800),
     },
