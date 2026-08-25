@@ -53,6 +53,7 @@ export type RoomEntranceData = {
 
 const u = (id: string, w = 2200) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
+void u;
 
 export const roomEntrances: Record<string, RoomEntranceData> = {
   family: {
