@@ -204,6 +204,9 @@ export const RoomEntrance = ({
 
       amenities.classList.toggle("is-ready", amEnter > 0.98);
       controls.classList.toggle("is-ready", amControls > 0.98);
+      stage.classList.toggle("is-intro-active", introExit < 0.95);
+      stage.classList.toggle("is-bed-panel-active", door.active > 0.05 && door.exit < 0.95);
+      stage.classList.toggle("is-services-panel-active", detail.active > 0.05 && detail.exit < 0.95);
 
       const moving =
         Math.abs(smoothScroll - targetScroll) > 0.08 ||
