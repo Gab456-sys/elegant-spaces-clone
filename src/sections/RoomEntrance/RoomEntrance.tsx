@@ -33,11 +33,11 @@ export const RoomEntrance = ({ room, ctaTarget = "#suite-booking-embed" }: Props
   const { language } = useLanguage();
   const lang = language === "en" ? "en" : "it";
 
-  const sectionRef = useRef(null);
-  const stageRef = useRef(null);
-  const trackRef = useRef(null);
-  const amenitiesRef = useRef(null);
-  const controlsRef = useRef(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const stageRef = useRef<HTMLElement | null>(null);
+  const trackRef = useRef<HTMLElement | null>(null);
+  const amenitiesRef = useRef<HTMLElement | null>(null);
+  const controlsRef = useRef<HTMLElement | null>(null);
 
   /** Le card sono triplicate per il loop infinito; si parte dal set centrale. */
   const loopCards = useMemo(
