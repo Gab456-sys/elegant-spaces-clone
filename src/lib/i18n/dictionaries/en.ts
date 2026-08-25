@@ -174,4 +174,22 @@ export const en: Record<TranslationKey, string> = {
   "faq.q15": "Do you offer restaurant services?",
   "faq.a15":
     "The property does not have an internal kitchen, but Villa Sesto has vending machines for snacks and hot and cold drinks, available for guests.",
+  // Suite page
+  "suite.meta.studio": "Studio / Horizon Atelier",
+  "suite.meta.category": "Category / Hospitality",
+  "suite.meta.location": "Location / Tuscany",
+  "suite.meta.year": "Year / 2026",
+  "suite.gallery.viewAll": "View all photos",
+  "suite.image.roomAlt": "Room interior",
+  "suite.booking.eyebrow": "Booking",
+  "suite.booking.title": "Reserve your stay",
+  "suite.booking.copy":
+    "Select your dates and the number of guests to check your suite's availability. You'll receive a quick, personalized confirmation to plan your stay with complete peace of mind.",
+  "suite.booking.arrival": "Arrival",
+  "suite.booking.departure": "Departure",
+  "suite.booking.guests": "Guests",
+  "suite.booking.guests2": "2 guests",
+  "suite.booking.guests3": "3 guests",
+  "suite.booking.guests4": "4 guests",
+  "suite.booking.cta": "Check availability",
 };
