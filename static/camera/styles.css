@@ -254,7 +254,7 @@ button {
 
 /* ---------- amenities slider ---------- */
 .amenities-slider {
-  z-index: 2;
+  z-index: 4;
   left: 0;
   right: 0;
   top: var(--am-top);
