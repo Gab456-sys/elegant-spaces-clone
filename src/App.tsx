@@ -12,6 +12,7 @@ import { BasicRoomPage } from "@/sections/BasicRoomPage";
 import { LaVillaPage } from "@/sections/LaVillaPage";
 import { ConsigliPage } from "@/sections/ConsigliPage";
 import { ContattiPage } from "@/sections/ContattiPage";
+import { CameraScrollPage } from "@/sections/CameraScrollPage";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 
 const AppShell = () => {
@@ -258,6 +259,8 @@ const AppShell = () => {
         <Route path="/family-suite" element={<FamilySuitePage />} />
         <Route path="/comfort-suite" element={<ComfortSuitePage />} />
         <Route path="/basic-room" element={<BasicRoomPage />} />
+        <Route path="/camera" element={<CameraScrollPage />} />
+        <Route path="/camera/:slug" element={<CameraScrollPage />} />
         <Route path="/la-villa" element={<LaVillaPage />} />
         <Route path="/consigli" element={<ConsigliPage />} />
         <Route path="/contatti" element={<ContattiPage />} />
