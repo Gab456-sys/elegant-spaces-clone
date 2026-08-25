@@ -52,15 +52,16 @@ export const RoomEntrance = ({ room, ctaTarget = "#suite-booking-embed" }: Props
   const applyShift = () => {
     const track = trackRef.current;
     if (!track) return;
-    const card = track.querySelector(".re-card");
+    const card = track.querySelector(".re-card") as HTMLElement | null;
     if (!card) return;
     const gap = parseFloat(getComputedStyle(track).columnGap || "0") || 0;
     const step = card.offsetWidth + gap;
     track.style.setProperty("--am-shift", `${-step * activeRef.current}px`);
 
     track.querySelectorAll(".re-card").forEach((el, i) => {
-      el.classList.toggle("is-active", i === activeRef.current);
-      el.setAttribute("aria-current", i === activeRef.current ? "true" : "false");
+      const node = el as HTMLElement;
+      node.classList.toggle("is-active", i === activeRef.current);
+      node.setAttribute("aria-current", i === activeRef.current ? "true" : "false");
     });
   };
 
