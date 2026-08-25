@@ -87,7 +87,7 @@
 .re-detail {
   left: 50%;
   top: 50%;
-  z-index: 3;
+  z-index: 1;
   width: min(120vw, 2000px);
   height: auto;
   opacity: var(--detail-opacity);
@@ -97,66 +97,19 @@
 }
 
 /*
-  IL PROTAGONISTA IN PRIMO PIANO.
-  PNG scontornato ancorato in basso al centro: sta DIETRO le ante (z 4) e
-  DAVANTI alla camera (z 0). Resta fermo mentre le ante si aprono, poi passa
-  sopra lo spettatore. Senza, l'apertura rivela una foto piatta.
-*/
-.re-foreground {
-  left: 50%;
-  bottom: var(--fg-bottom);
-  z-index: 4;
-  width: min(var(--fg-width), 2140px);
-  height: auto;
-  opacity: var(--fg-opacity);
-  transform: translate3d(calc(-50% + var(--mx) * 18px), var(--fg-y), 0)
-    scale(var(--fg-scale));
-  transform-origin: 50% 48%;
-  /* Ombra di contatto: senza, il ritaglio galleggia invece di stare nella stanza. */
-  filter: drop-shadow(0 26px 44px rgba(28, 25, 23, 0.3));
-  will-change: transform, opacity;
-}
-
-/*
   Le ante sono due copie della stessa foto della soglia, tagliate a metà
-  con una mask sfumata sul bordo interno. Non servono PNG scontornati per le
-  ante: solo il layer .re-foreground vuole un ritaglio. È questo che rende
+  con clip-path. Non servono PNG scontornati: è questo che rende l'effetto
   realizzabile con foto piatte.
 */
 .re-door {
   position: absolute;
   inset: 0;
-  z-index: 5;
+  z-index: 4;
   overflow: hidden;
   opacity: var(--door-opacity);
   pointer-events: none;
   will-change: transform, opacity;
   backface-visibility: hidden;
-}
-
-/*
-  ANTE DISEGNATE (nessuna foto di soglia).
-  Pannelli scuri con venatura verticale: il buio è ciò che rende l'apertura
-  leggibile come ingresso. Una foto d'interni chiara al loro posto fa
-  sembrare che sia la camera stessa a spaccarsi in due.
-*/
-.re-door--drawn {
-  background-color: #221c16;
-  background-image:
-    repeating-linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.028) 0 2px,
-      transparent 2px 7px
-    ),
-    linear-gradient(180deg, #2b241c 0%, #1a1511 100%);
-}
-
-.re-door-left.re-door--drawn {
-  box-shadow: inset -22px 0 34px -18px rgba(0, 0, 0, 0.75);
-}
-
-.re-door-right.re-door--drawn {
-  box-shadow: inset 22px 0 34px -18px rgba(0, 0, 0, 0.75);
 }
 
 .re-door img {
@@ -169,20 +122,14 @@
 }
 
 .re-door-left {
-  -webkit-mask-image: linear-gradient(
-    90deg, #000 0 calc(50% - var(--door-feather)), transparent calc(50% + 8px));
-  mask-image: linear-gradient(
-    90deg, #000 0 calc(50% - var(--door-feather)), transparent calc(50% + 8px));
+  clip-path: inset(0 50% 0 0);
   transform-origin: 0% 50%;
   transform: translate3d(calc(var(--door-drift) * -34vw + var(--mx) * 14px), 0, 0)
     rotateY(calc(var(--door-drift) * 26deg)) scale(var(--door-scale));
 }
 
 .re-door-right {
-  -webkit-mask-image: linear-gradient(
-    270deg, #000 0 calc(50% - var(--door-feather)), transparent calc(50% + 8px));
-  mask-image: linear-gradient(
-    270deg, #000 0 calc(50% - var(--door-feather)), transparent calc(50% + 8px));
+  clip-path: inset(0 0 0 50%);
   transform-origin: 100% 50%;
   transform: translate3d(calc(var(--door-drift) * 34vw + var(--mx) * 14px), 0, 0)
     rotateY(calc(var(--door-drift) * -26deg)) scale(var(--door-scale));
@@ -202,14 +149,10 @@
   opacity: calc(1 - var(--door-drift));
 }
 
-/*
-  Il velo sta SOTTO primo piano, dettaglio e ante: serve a sfondare la
-  profondità, non a lavare ciò che deve restare nitido.
-*/
 .re-shade {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 5;
   pointer-events: none;
   background: linear-gradient(
     180deg,
@@ -541,9 +484,6 @@
     flex-basis: min(78vw, 300px);
     height: 184px;
   }
-  .re-stage {
-    --door-feather: 20px;
-  }
 }
 
 /*
@@ -562,10 +502,6 @@
   .re-door,
   .re-detail {
     display: none;
-  }
-  .re-foreground {
-    opacity: 1;
-    transform: translate3d(-50%, 0, 0);
   }
   .re-title,
   .re-intro,
