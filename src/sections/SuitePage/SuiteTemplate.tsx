@@ -31,8 +31,7 @@ export const SuiteTemplate = ({
   title: string;
   showHero?: boolean;
 }) => {
-  const { language } = useLanguage();
-  const isEn = language === "en";
+  const { t } = useLanguage();
 
   return (
     <main className="bg-[#f5f1ea] text-stone-900">
@@ -44,10 +43,10 @@ export const SuiteTemplate = ({
         <div className="mx-auto grid w-full max-w-[1680px] grid-cols-1 gap-y-12 px-6 pb-14 pt-28 md:grid-cols-12 md:gap-y-16 md:px-10 md:pt-40 lg:px-16">
           <div className="reveal reveal-editorial md:col-span-12">
             <ul className="m-0 mb-6 hidden list-none flex-wrap gap-x-5 gap-y-2 p-0 text-[10px] uppercase tracking-[0.24em] text-stone-700/90 md:flex md:justify-center">
-              <li>{isEn ? "Studio / Horizon Atelier" : "Studio / Horizon Atelier"}</li>
-              <li>{isEn ? "Category / Hospitality" : "Categoria / Ospitalità"}</li>
-              <li>{isEn ? "Location / Tuscany" : "Luogo / Toscana"}</li>
-              <li>{isEn ? "Year / 2026" : "Anno / 2026"}</li>
+              <li>{t("suite.meta.studio")}</li>
+              <li>{t("suite.meta.category")}</li>
+              <li>{t("suite.meta.location")}</li>
+              <li>{t("suite.meta.year")}</li>
             </ul>
             <h1 className="m-0 font-beausite_classic text-[56px] leading-[0.9] tracking-[-0.03em] text-stone-900 sm:text-[72px] md:text-center md:text-[108px] lg:text-[138px]">
               {title}
@@ -56,10 +55,10 @@ export const SuiteTemplate = ({
 
           <div className="reveal reveal-editorial md:col-span-3 md:row-start-2">
             <ul className="m-0 flex list-none flex-wrap gap-x-5 gap-y-2 p-0 text-[10px] uppercase tracking-[0.24em] text-stone-700/90 md:hidden">
-              <li>Studio / Horizon Atelier</li>
-              <li>{isEn ? "Category / Hospitality" : "Categoria / Ospitalità"}</li>
-              <li>{isEn ? "Location / Tuscany" : "Luogo / Toscana"}</li>
-              <li>{isEn ? "Year / 2026" : "Anno / 2026"}</li>
+              <li>{t("suite.meta.studio")}</li>
+              <li>{t("suite.meta.category")}</li>
+              <li>{t("suite.meta.location")}</li>
+              <li>{t("suite.meta.year")}</li>
             </ul>
           </div>
 
@@ -124,7 +123,7 @@ export const SuiteTemplate = ({
                       type="button"
                       className="absolute bottom-4 right-4 bg-white px-4 py-2 text-sm text-black transition-opacity duration-300 hover:opacity-90"
                     >
-                      {isEn ? "View all photos" : "Vedi tutte le foto"}
+                      {t("suite.gallery.viewAll")}
                     </button>
                   </figure>
                 </div>
@@ -144,7 +143,7 @@ export const SuiteTemplate = ({
               <div className="h-full overflow-hidden">
                 <img
                   src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1600&q=80"
-                  alt={isEn ? "Room interior" : "Interno camera"}
+                  alt={t("suite.image.roomAlt")}
                   className="reveal-media-inner block h-[52svh] w-full object-cover md:h-full md:min-h-[640px]"
                 />
               </div>
@@ -153,15 +152,13 @@ export const SuiteTemplate = ({
             <div className="order-1 md:order-2 md:col-span-6 md:col-start-7">
               <div className="reveal reveal-editorial mb-10 md:mb-12">
                 <p className="m-0 text-[10px] uppercase tracking-[0.24em] text-stone-600">
-                  {isEn ? "Booking" : "Prenotazione"}
+                  {t("suite.booking.eyebrow")}
                 </p>
                 <h2 className="m-0 mt-5 max-w-[12ch] font-beausite_classic text-[42px] leading-[0.94] tracking-[-0.02em] text-stone-900 sm:text-[52px] md:max-w-none md:text-[64px]">
-                  {isEn ? "Reserve your stay" : "Prenota il tuo soggiorno"}
+                  {t("suite.booking.title")}
                 </h2>
                 <p className="m-0 mt-7 max-w-[42ch] text-[16px] leading-[1.55] tracking-[-0.004em] text-stone-800/95">
-                  {isEn
-                    ? "Select your dates and the number of guests to check your suite's availability. You'll receive a quick, personalized confirmation to plan your stay with complete peace of mind."
-                    : "Seleziona le date e il numero di ospiti per verificare la disponibilità della tua suite. Riceverai una conferma rapida e personalizzata per pianificare il tuo soggiorno in completa tranquillità."}
+                  {t("suite.booking.copy")}
                 </p>
               </div>
 
@@ -174,7 +171,7 @@ export const SuiteTemplate = ({
                   >
                     <form className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
                       <label className="flex flex-col gap-1.5 text-[10px] uppercase tracking-[0.2em] text-stone-600">
-                        {isEn ? "Arrival" : "Arrivo"}
+                        {t("suite.booking.arrival")}
                         <input
                           type="date"
                           className="h-11 border border-stone-300/80 bg-[#f8f5ef] px-3 text-[14px] uppercase tracking-[0.03em] text-stone-900 outline-none transition-colors focus:border-stone-500"
@@ -182,7 +179,7 @@ export const SuiteTemplate = ({
                       </label>
 
                       <label className="flex flex-col gap-1.5 text-[10px] uppercase tracking-[0.2em] text-stone-600">
-                        {isEn ? "Departure" : "Partenza"}
+                        {t("suite.booking.departure")}
                         <input
                           type="date"
                           className="h-11 border border-stone-300/80 bg-[#f8f5ef] px-3 text-[14px] uppercase tracking-[0.03em] text-stone-900 outline-none transition-colors focus:border-stone-500"
@@ -190,11 +187,11 @@ export const SuiteTemplate = ({
                       </label>
 
                       <label className="flex flex-col gap-1.5 text-[10px] uppercase tracking-[0.2em] text-stone-600 md:col-span-2">
-                        {isEn ? "Guests" : "Ospiti"}
+                        {t("suite.booking.guests")}
                         <select className="h-11 border border-stone-300/80 bg-[#f8f5ef] px-3 text-[14px] text-stone-900 outline-none transition-colors focus:border-stone-500">
-                          <option>{isEn ? "2 guests" : "2 ospiti"}</option>
-                          <option>{isEn ? "3 guests" : "3 ospiti"}</option>
-                          <option>{isEn ? "4 guests" : "4 ospiti"}</option>
+                          <option>{t("suite.booking.guests2")}</option>
+                          <option>{t("suite.booking.guests3")}</option>
+                          <option>{t("suite.booking.guests4")}</option>
                         </select>
                       </label>
 
@@ -202,7 +199,7 @@ export const SuiteTemplate = ({
                         type="button"
                         className="inline-flex h-9 items-center justify-center justify-self-center whitespace-nowrap border border-stone-900 px-8 text-center text-[9px] uppercase tracking-[0.2em] text-stone-900 transition-colors hover:bg-stone-900 hover:text-[#f8f5ef] md:col-span-2"
                       >
-                        {isEn ? "Check availability" : "Verifica disponibilità"}
+                        {t("suite.booking.cta")}
                       </button>
                     </form>
                   </div>
