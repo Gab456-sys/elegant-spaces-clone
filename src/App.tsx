@@ -12,6 +12,7 @@ import { BasicRoomPage } from "@/sections/BasicRoomPage";
 import { LaVillaPage } from "@/sections/LaVillaPage";
 import { ConsigliPage } from "@/sections/ConsigliPage";
 import { ContattiPage } from "@/sections/ContattiPage";
+import { MostarPage } from "@/sections/MostarPage";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 
 const AppShell = () => {
@@ -261,6 +262,7 @@ const AppShell = () => {
         <Route path="/la-villa" element={<LaVillaPage />} />
         <Route path="/consigli" element={<ConsigliPage />} />
         <Route path="/contatti" element={<ContattiPage />} />
+        <Route path="/mostar" element={<MostarPage />} />
         <Route path="*" element={<MainContent />} />
       </Routes>
       <Footer />
