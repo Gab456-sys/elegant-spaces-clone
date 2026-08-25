@@ -27,8 +27,8 @@ type Props = {
   room: RoomEntranceData;
   /** Contenuti iniziali espliciti, così restano modificabili dall'editor visivo. */
   titleContent?: ReactNode;
-  introContent?: ReactNode;
-  tagsContent?: ReactNode;
+  introContent?: { it: ReactNode; en: ReactNode };
+  tagsContent?: { it: ReactNode; en: ReactNode };
   /** Selettore del target della CTA. Default: il form di prenotazione. */
   ctaTarget?: string;
 };
@@ -272,9 +272,9 @@ export const RoomEntrance = ({
         </h1>
 
         <div className="re-intro">
-          <p>{introContent ?? room.intro[lang]}</p>
+          <p>{introContent?.[lang] ?? room.intro[lang]}</p>
           <div className="re-tags">
-            {tagsContent ??
+            {tagsContent?.[lang] ??
               room.tags.map((tag, i) => <span key={i}>{tag[lang]}</span>)}
           </div>
         </div>
