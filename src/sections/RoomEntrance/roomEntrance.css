@@ -87,7 +87,7 @@
 .re-detail {
   left: 50%;
   top: 50%;
-  z-index: 1;
+  z-index: 3;
   width: min(120vw, 2000px);
   height: auto;
   opacity: var(--detail-opacity);
@@ -105,13 +105,15 @@
 .re-foreground {
   left: 50%;
   bottom: var(--fg-bottom);
-  z-index: 3;
+  z-index: 4;
   width: min(var(--fg-width), 2140px);
   height: auto;
   opacity: var(--fg-opacity);
   transform: translate3d(calc(-50% + var(--mx) * 18px), var(--fg-y), 0)
     scale(var(--fg-scale));
   transform-origin: 50% 48%;
+  /* Ombra di contatto: senza, il ritaglio galleggia invece di stare nella stanza. */
+  filter: drop-shadow(0 26px 44px rgba(28, 25, 23, 0.3));
   will-change: transform, opacity;
 }
 
@@ -124,7 +126,7 @@
 .re-door {
   position: absolute;
   inset: 0;
-  z-index: 4;
+  z-index: 5;
   overflow: hidden;
   opacity: var(--door-opacity);
   pointer-events: none;
@@ -175,10 +177,14 @@
   opacity: calc(1 - var(--door-drift));
 }
 
+/*
+  Il velo sta SOTTO primo piano, dettaglio e ante: serve a sfondare la
+  profondità, non a lavare ciò che deve restare nitido.
+*/
 .re-shade {
   position: absolute;
   inset: 0;
-  z-index: 5;
+  z-index: 2;
   pointer-events: none;
   background: linear-gradient(
     180deg,
