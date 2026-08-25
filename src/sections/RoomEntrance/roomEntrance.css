@@ -181,7 +181,7 @@
   transform: translate3d(-50%, var(--title-y), 0) scale(var(--title-scale));
   opacity: var(--title-opacity);
   will-change: transform, opacity;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 .re-title span {
@@ -198,7 +198,7 @@
   transform: translate3d(-50%, var(--intro-y), 0);
   opacity: var(--intro-opacity);
   will-change: transform, opacity;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 .re-intro p {
@@ -241,6 +241,16 @@
   text-align: center;
   pointer-events: none;
   will-change: transform, opacity;
+}
+
+.re-stage.is-bed-panel-active .re-panel-bed,
+.re-stage.is-services-panel-active .re-panel-services {
+  pointer-events: auto;
+}
+
+.re-stage:not(.is-intro-active) .re-title,
+.re-stage:not(.is-intro-active) .re-intro {
+  pointer-events: none;
 }
 
 .re-panel h2 {
