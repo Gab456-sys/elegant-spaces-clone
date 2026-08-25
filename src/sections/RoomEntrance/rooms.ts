@@ -53,28 +53,37 @@ export type RoomEntranceData = {
 
 const u = (id: string, w = 2200) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
+void u;
 
-/** Segnaposto Unsplash: da sostituire con le foto reali delle camere. */
 export const roomEntrances: Record<string, RoomEntranceData> = {
   family: {
     slug: "family",
     images: {
-      room: u("photo-1631049307264-da0ec9d70304", 2400),
-      detail: u("photo-1616047006789-b7af5afb8c20", 1800),
+      doorway: "/img/doorway.png",
+      room: "/img/room.png",
+      detail: "/img/detail-armchair.png",
+      foreground: "/img/foreground-bed.png",
     },
+    foregroundFit: { width: 62, grow: 34, bottom: -2, lift: 9 },
   },
   comfort: {
     slug: "comfort",
     images: {
-      room: u("photo-1600607687939-ce8a6c25118c", 2400),
-      detail: u("photo-1620626011761-996317b8d101", 1800),
+      doorway: "/img/doorway.png",
+      room: "/img/room.png",
+      detail: "/img/detail-armchair.png",
+      foreground: "/img/foreground-bed.png",
     },
+    foregroundFit: { width: 62, grow: 34, bottom: -2, lift: 9 },
   },
   basic: {
     slug: "basic",
     images: {
-      room: u("photo-1616047006789-b7af5afb8c20", 2400),
-      detail: u("photo-1620626011761-996317b8d101", 1800),
+      doorway: "/img/doorway.png",
+      room: "/img/room.png",
+      detail: "/img/detail-armchair.png",
+      foreground: "/img/foreground-bed.png",
     },
+    foregroundFit: { width: 62, grow: 34, bottom: -2, lift: 9 },
   },
 };
