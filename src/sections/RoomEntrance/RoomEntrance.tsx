@@ -70,6 +70,12 @@ export const RoomEntrance = ({
   const { language } = useLanguage();
   const lang = language === "en" ? "en" : "it";
 
+  /* Calibrazione del primo piano, con i default del progetto. */
+  const fgWidth = room.foregroundFit?.width ?? 64;
+  const fgGrow = room.foregroundFit?.grow ?? 36;
+  const fgBottom = room.foregroundFit?.bottom ?? 2;
+  const fgLift = room.foregroundFit?.lift ?? 10;
+
   const sectionRef = useRef<HTMLElement | null>(null);
   const stageRef = useRef<HTMLDivElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
@@ -184,9 +190,12 @@ export const RoomEntrance = ({
       set("--room-scale", (1.02 + progress * 0.26 + door.enter * 0.1).toFixed(4));
       set("--room-x", `${(mx * -14).toFixed(2)}px`);
       set("--room-y", `${(my * -8 - progress * 30).toFixed(2)}px`);
-      set("--room-blur", `${(veil * 10).toFixed(2)}px`);
-      /* Whiteout: la luminosità SALE, non scende. */
-      set("--room-brightness", (1 + veil * 0.1).toFixed(4));
+      /*
+        La profondità la fa la SFOCATURA, non il bianco: alzare il velo lava
+        la scena e rende illeggibili i pannelli. Blur deciso, velo discreto.
+      */
+      set("--room-blur", `${(veil * 18).toFixed(2)}px`);
+      set("--room-brightness", (1 + veil * 0.04).toFixed(4));
 
       set("--door-drift", doorDrift.toFixed(4));
       set("--door-opacity", (1 - door.exit).toFixed(4));
@@ -197,8 +206,8 @@ export const RoomEntrance = ({
         poi in uscita sale di -760px scalando +0.5 — passa SOPRA lo spettatore
         invece di allontanarsi. È il movimento che dà profondità alla scena.
       */
-      set("--fg-bottom", `${(2 - door.enter * 10).toFixed(2)}vh`);
-      set("--fg-width", `${(64 + door.enter * 36).toFixed(2)}vw`);
+      set("--fg-bottom", `${(fgBottom - door.enter * fgLift).toFixed(2)}vh`);
+      set("--fg-width", `${(fgWidth + door.enter * fgGrow).toFixed(2)}vw`);
       set("--fg-y", `${(my * 8 - progress * 40 - door.exit * 760).toFixed(2)}px`);
       set("--fg-scale", (1 + progress * 0.18 + door.exit * 0.5).toFixed(4));
       set("--fg-opacity", (1 - detail.enter * 0.85).toFixed(4));
@@ -206,9 +215,9 @@ export const RoomEntrance = ({
       set("--detail-opacity", (detail.active * (1 - detail.exit)).toFixed(4));
       set("--detail-scale", (1.04 + detail.enter * 0.08).toFixed(4));
 
-      set("--shade-top", (veil * 0.46).toFixed(4));
-      set("--shade-mid", (veil * 0.4).toFixed(4));
-      set("--shade-bottom", (veil * 0.52).toFixed(4));
+      set("--shade-top", (veil * 0.3).toFixed(4));
+      set("--shade-mid", (veil * 0.26).toFixed(4));
+      set("--shade-bottom", (veil * 0.34).toFixed(4));
 
       set("--title-y", `${(introExit * -180 + my * 6).toFixed(2)}px`);
       set("--title-scale", (1 - introExit * 0.06).toFixed(4));
@@ -278,7 +287,7 @@ export const RoomEntrance = ({
       track.removeEventListener("transitionend", onTransitionEnd);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [room.slug, originalCount]);
+  }, [room.slug, originalCount, fgWidth, fgGrow, fgBottom, fgLift]);
 
   /* ---------- markup ---------- */
 
