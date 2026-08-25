@@ -29,6 +29,18 @@ type Props = {
   titleContent?: ReactNode;
   introContent?: { it: ReactNode; en: ReactNode };
   tagsContent?: { it: ReactNode; en: ReactNode };
+  panelBedContent?: {
+    it: { heading: ReactNode; body: ReactNode; facts: { dt: ReactNode; dd: ReactNode }[] };
+    en: { heading: ReactNode; body: ReactNode; facts: { dt: ReactNode; dd: ReactNode }[] };
+  };
+  panelServicesContent?: {
+    it: { heading: ReactNode; body: ReactNode; cta: ReactNode };
+    en: { heading: ReactNode; body: ReactNode; cta: ReactNode };
+  };
+  amenitiesContent?: {
+    it: { kicker: ReactNode; title: ReactNode; body: ReactNode }[];
+    en: { kicker: ReactNode; title: ReactNode; body: ReactNode }[];
+  };
   /** Selettore del target della CTA. Default: il form di prenotazione. */
   ctaTarget?: string;
 };
@@ -38,6 +50,9 @@ export const RoomEntrance = ({
   titleContent,
   introContent,
   tagsContent,
+  panelBedContent,
+  panelServicesContent,
+  amenitiesContent,
   ctaTarget = "#suite-booking-embed",
 }: Props) => {
   const { language } = useLanguage();
@@ -280,24 +295,28 @@ export const RoomEntrance = ({
         </div>
 
         <div className="re-panel re-panel-bed">
-          <h2>{room.panelBed.heading[lang]}</h2>
-          <p>{room.panelBed.body[lang]}</p>
+          <h2>{panelBedContent?.[lang].heading ?? room.panelBed.heading[lang]}</h2>
+          <p>{panelBedContent?.[lang].body ?? room.panelBed.body[lang]}</p>
           <dl className="re-facts">
-            {room.panelBed.facts.map((fact, i) => (
+            {(panelBedContent?.[lang].facts ?? room.panelBed.facts.map((fact) => ({
+              dt: fact.dt,
+              dd: fact.dd[lang],
+            }))).map((fact, i) => (
               <div key={i}>
                 <dt>{fact.dt}</dt>
-                <dd>{fact.dd[lang]}</dd>
+                <dd>{fact.dd}</dd>
               </div>
             ))}
           </dl>
         </div>
 
         <div className="re-panel re-panel-services">
-          <h2>{room.panelServices.heading[lang]}</h2>
-          <p>{room.panelServices.body[lang]}</p>
+          <h2>{panelServicesContent?.[lang].heading ?? room.panelServices.heading[lang]}</h2>
+          <p>{panelServicesContent?.[lang].body ?? room.panelServices.body[lang]}</p>
           <button type="button" className="re-cta" onClick={goToCta}>
             <span>↗</span>
-            {lang === "en" ? "Check availability" : "Verifica disponibilità"}
+            {panelServicesContent?.[lang].cta ??
+              (lang === "en" ? "Check availability" : "Verifica disponibilità")}
           </button>
         </div>
 
@@ -317,9 +336,11 @@ export const RoomEntrance = ({
                 tabIndex={0}
                 role="button"
               >
-                <span className="re-card-kicker">{item.kicker[lang]}</span>
-                <h3>{item.title[lang]}</h3>
-                <p>{item.body[lang]}</p>
+                <span className="re-card-kicker">
+                  {amenitiesContent?.[lang][i % originalCount]?.kicker ?? item.kicker[lang]}
+                </span>
+                <h3>{amenitiesContent?.[lang][i % originalCount]?.title ?? item.title[lang]}</h3>
+                <p>{amenitiesContent?.[lang][i % originalCount]?.body ?? item.body[lang]}</p>
               </article>
             ))}
           </div>
