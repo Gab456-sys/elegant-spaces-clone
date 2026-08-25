@@ -306,12 +306,21 @@ export const RoomEntrance = ({
           <img className="re-layer re-foreground" src={room.images.foreground} alt="" />
         )}
 
-        <div className="re-door re-door-left">
-          <img src={room.images.doorway} alt="" />
-        </div>
-        <div className="re-door re-door-right">
-          <img src={room.images.doorway} alt="" />
-        </div>
+        {room.images.doorway ? (
+          <>
+            <div className="re-door re-door-left">
+              <img src={room.images.doorway} alt="" />
+            </div>
+            <div className="re-door re-door-right">
+              <img src={room.images.doorway} alt="" />
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="re-door re-door-left re-door--drawn" />
+            <div className="re-door re-door-right re-door--drawn" />
+          </>
+        )}
 
         <div className="re-layer re-shade" />
 
