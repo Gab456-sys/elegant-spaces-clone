@@ -24,16 +24,23 @@ const suiteSlides: SuiteSlide[] = [
   },
 ];
 
-export const SuiteTemplate = ({ title }: { title: string }) => {
+export const SuiteTemplate = ({
+  title,
+  showHero = true,
+}: {
+  title: string;
+  showHero?: boolean;
+}) => {
   const { language } = useLanguage();
   const isEn = language === "en";
 
   return (
     <main className="bg-[#f5f1ea] text-stone-900">
-      <section
-        data-header-theme="light"
-        className="border-b border-stone-300/70 bg-[#ece5da]"
-      >
+      {showHero && (
+        <section
+          data-header-theme="light"
+          className="border-b border-stone-300/70 bg-[#ece5da]"
+        >
         <div className="mx-auto grid w-full max-w-[1680px] grid-cols-1 gap-y-12 px-6 pb-14 pt-28 md:grid-cols-12 md:gap-y-16 md:px-10 md:pt-40 lg:px-16">
           <div className="reveal reveal-editorial md:col-span-12">
             <ul className="m-0 mb-6 hidden list-none flex-wrap gap-x-5 gap-y-2 p-0 text-[10px] uppercase tracking-[0.24em] text-stone-700/90 md:flex md:justify-center">
