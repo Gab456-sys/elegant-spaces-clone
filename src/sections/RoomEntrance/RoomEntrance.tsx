@@ -1,0 +1,340 @@
+import { useEffect, useMemo, useRef } from "react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import type { RoomEntranceData } from "./rooms";
+import "./roomEntrance.css";
+
+/* ---------- helpers ---------- */
+
+const clamp = (v: number, min = 0, max = 1) => Math.min(max, Math.max(min, v));
+
+const smoothstep = (edge0: number, edge1: number, v: number) => {
+  const x = clamp((v - edge0) / (edge1 - edge0));
+  return x * x * (3 - 2 * x);
+};
+
+const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+
+const segment = (s: number, a: number, b: number, c: number, d: number) => {
+  const enter = smoothstep(a, b, s);
+  const exit = smoothstep(c, d, s);
+  return { enter, exit, active: enter * (1 - exit) };
+};
+
+/** Lunghezza scrollabile della scena, in px. Deve combaciare con il CSS. */
+const SCENE = 2600;
+
+type Props = {
+  room: RoomEntranceData;
+  /** Selettore del target della CTA. Default: il form di prenotazione. */
+  ctaTarget?: string;
+};
+
+export const RoomEntrance = ({ room, ctaTarget = "#suite-booking-embed" }: Props) => {
+  const { language } = useLanguage();
+  const lang = language === "en" ? "en" : "it";
+
+  const sectionRef = useRef(null);
+  const stageRef = useRef(null);
+  const trackRef = useRef(null);
+  const amenitiesRef = useRef(null);
+  const controlsRef = useRef(null);
+
+  /** Le card sono triplicate per il loop infinito; si parte dal set centrale. */
+  const loopCards = useMemo(
+    () => [...room.amenities, ...room.amenities, ...room.amenities],
+    [room.amenities],
+  );
+  const originalCount = room.amenities.length;
+  const activeRef = useRef(originalCount);
+
+  /* ---------- slider ---------- */
+
+  const applyShift = () => {
+    const track = trackRef.current;
+    if (!track) return;
+    const card = track.querySelector(".re-card");
+    if (!card) return;
+    const gap = parseFloat(getComputedStyle(track).columnGap || "0") || 0;
+    const step = card.offsetWidth + gap;
+    track.style.setProperty("--am-shift", `${-step * activeRef.current}px`);
+
+    track.querySelectorAll(".re-card").forEach((el, i) => {
+      el.classList.toggle("is-active", i === activeRef.current);
+      el.setAttribute("aria-current", i === activeRef.current ? "true" : "false");
+    });
+  };
+
+  const jumpTo = (index: number) => {
+    const track = trackRef.current;
+    if (!track) return;
+    track.classList.add("is-jumping");
+    activeRef.current = index;
+    applyShift();
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => track.classList.remove("is-jumping"));
+    });
+  };
+
+  const move = (dir: number) => {
+    activeRef.current += dir;
+    applyShift();
+  };
+
+  const select = (index: number) => {
+    activeRef.current = index;
+    applyShift();
+  };
+
+  /* ---------- motore ---------- */
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const stage = stageRef.current;
+    const track = trackRef.current;
+    const amenities = amenitiesRef.current;
+    const controls = controlsRef.current;
+    if (!section || !stage || !track || !amenities || !controls) return;
+
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    let targetScroll = 0;
+    let smoothScroll = 0;
+    let targetMx = 0;
+    let targetMy = 0;
+    let mx = 0;
+    let my = 0;
+    let started = false;
+    let pending = false;
+    let frame = 0;
+
+    const set = (name: string, value: string) => stage.style.setProperty(name, value);
+
+    const scrollDistance = () =>
+      clamp(-section.getBoundingClientRect().top, 0, section.offsetHeight - window.innerHeight);
+
+    const update = () => {
+      pending = false;
+      targetScroll = scrollDistance();
+
+      if (!started || reduce.matches) {
+        smoothScroll = targetScroll;
+        started = true;
+      } else {
+        smoothScroll = lerp(smoothScroll, targetScroll, 0.14);
+      }
+      if (Math.abs(smoothScroll - targetScroll) < 0.08) smoothScroll = targetScroll;
+
+      mx = reduce.matches ? 0 : lerp(mx, targetMx, 0.12);
+      my = reduce.matches ? 0 : lerp(my, targetMy, 0.12);
+
+      const s = smoothScroll;
+      const progress = clamp(s / SCENE);
+
+      const door = segment(s, 380, 980, 1180, 1520);
+      const detail = segment(s, 1400, 1800, 2050, 2300);
+      const introExit = smoothstep(80, 560, s);
+      const amEnter = Math.pow(smoothstep(2000, 2480, s), 1.4);
+      const amControls = smoothstep(2260, 2520, s);
+      const veil = clamp(door.active + detail.active);
+      const doorDrift = Math.pow(door.enter, 1.5);
+
+      set("--mx", mx.toFixed(4));
+      set("--my", my.toFixed(4));
+
+      /* La camera si avvicina per tutta la scena: è l'ingresso vero e proprio. */
+      set("--room-scale", (1.02 + progress * 0.26 + door.enter * 0.1).toFixed(4));
+      set("--room-x", `${(mx * -14).toFixed(2)}px`);
+      set("--room-y", `${(my * -8 - progress * 30).toFixed(2)}px`);
+      set("--room-blur", `${(veil * 10).toFixed(2)}px`);
+      /* Whiteout: la luminosità SALE, non scende. */
+      set("--room-brightness", (1 + veil * 0.1).toFixed(4));
+
+      set("--door-drift", doorDrift.toFixed(4));
+      set("--door-opacity", (1 - door.exit).toFixed(4));
+      set("--door-scale", (1 + door.enter * 0.5).toFixed(4));
+
+      set("--detail-opacity", (detail.active * (1 - detail.exit)).toFixed(4));
+      set("--detail-scale", (1.04 + detail.enter * 0.08).toFixed(4));
+
+      set("--shade-top", (veil * 0.46).toFixed(4));
+      set("--shade-mid", (veil * 0.4).toFixed(4));
+      set("--shade-bottom", (veil * 0.52).toFixed(4));
+
+      set("--title-y", `${(introExit * -180 + my * 6).toFixed(2)}px`);
+      set("--title-scale", (1 - introExit * 0.06).toFixed(4));
+      set("--title-opacity", (1 - introExit).toFixed(4));
+
+      set("--intro-y", `${(introExit * 80).toFixed(2)}px`);
+      set("--intro-opacity", (1 - introExit).toFixed(4));
+
+      set("--panel-bed-opacity", (door.active * (1 - door.exit)).toFixed(4));
+      set("--panel-bed-y", `${(-door.exit * 80 + (1 - door.enter) * 58).toFixed(2)}px`);
+      set("--panel-svc-opacity", (detail.active * (1 - detail.exit)).toFixed(4));
+      set("--panel-svc-y", `${(-detail.exit * 80 + (1 - detail.enter) * 58).toFixed(2)}px`);
+
+      set("--am-opacity", amEnter.toFixed(4));
+      set("--am-x", `${((1 - amEnter) * 60).toFixed(2)}vw`);
+      set("--am-controls-opacity", amControls.toFixed(4));
+
+      amenities.classList.toggle("is-ready", amEnter > 0.98);
+      controls.classList.toggle("is-ready", amControls > 0.98);
+
+      const moving =
+        Math.abs(smoothScroll - targetScroll) > 0.08 ||
+        Math.abs(mx - targetMx) > 0.001 ||
+        Math.abs(my - targetMy) > 0.001;
+      if (moving) tick();
+    };
+
+    const tick = () => {
+      if (pending) return;
+      pending = true;
+      frame = requestAnimationFrame(update);
+    };
+
+    const onPointerMove = (e: PointerEvent) => {
+      targetMx = e.clientX / window.innerWidth - 0.5;
+      targetMy = e.clientY / window.innerHeight - 0.5;
+      tick();
+    };
+
+    const onResize = () => {
+      applyShift();
+      tick();
+    };
+
+    const onTransitionEnd = () => {
+      const i = activeRef.current;
+      if (i >= originalCount * 2) jumpTo(i - originalCount);
+      else if (i < originalCount) jumpTo(i + originalCount);
+    };
+
+    window.addEventListener("scroll", tick, { passive: true });
+    window.addEventListener("resize", onResize);
+    window.addEventListener("pointermove", onPointerMove, { passive: true });
+    track.addEventListener("transitionend", onTransitionEnd);
+
+    applyShift();
+    tick();
+
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", tick);
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("pointermove", onPointerMove);
+      track.removeEventListener("transitionend", onTransitionEnd);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [room.slug, originalCount]);
+
+  /* ---------- markup ---------- */
+
+  const goToCta = () => {
+    document.querySelector(ctaTarget)?.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+
+  return (
+    <section ref={sectionRef} className="re-scroll">
+      <div ref={stageRef} className="re-stage">
+        <img
+          className="re-layer re-room"
+          src={room.images.room}
+          alt={room.title}
+        />
+        <img
+          className="re-layer re-detail"
+          src={room.images.detail}
+          alt={lang === "en" ? "Room detail" : "Dettaglio camera"}
+        />
+
+        <div className="re-door re-door-left">
+          <img src={room.images.doorway} alt="" />
+        </div>
+        <div className="re-door re-door-right">
+          <img src={room.images.doorway} alt="" />
+        </div>
+        <div className="re-layer re-shade" />
+
+        <h1 className="re-title">
+          {(room.titleLines ?? [room.title]).map((line) => (
+            <span key={line}>{line}</span>
+          ))}
+        </h1>
+
+        <div className="re-intro">
+          <p>{room.intro[lang]}</p>
+          <div className="re-tags">
+            {room.tags.map((tag, i) => (
+              <span key={i}>{tag[lang]}</span>
+            ))}
+          </div>
+        </div>
+
+        <div className="re-panel re-panel-bed">
+          <h2>{room.panelBed.heading[lang]}</h2>
+          <p>{room.panelBed.body[lang]}</p>
+          <dl className="re-facts">
+            {room.panelBed.facts.map((fact, i) => (
+              <div key={i}>
+                <dt>{fact.dt}</dt>
+                <dd>{fact.dd[lang]}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+        <div className="re-panel re-panel-services">
+          <h2>{room.panelServices.heading[lang]}</h2>
+          <p>{room.panelServices.body[lang]}</p>
+          <button type="button" className="re-cta" onClick={goToCta}>
+            <span>↗</span>
+            {lang === "en" ? "Check availability" : "Verifica disponibilità"}
+          </button>
+        </div>
+
+        <div ref={amenitiesRef} className="re-amenities">
+          <div ref={trackRef} className="re-track">
+            {loopCards.map((item, i) => (
+              <article
+                key={i}
+                className="re-card"
+                onClick={() => select(i)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    select(i);
+                  }
+                }}
+                tabIndex={0}
+                role="button"
+              >
+                <span className="re-card-kicker">{item.kicker[lang]}</span>
+                <h3>{item.title[lang]}</h3>
+                <p>{item.body[lang]}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div ref={controlsRef} className="re-controls">
+          <button
+            className="re-nav"
+            type="button"
+            onClick={() => move(-1)}
+            aria-label={lang === "en" ? "Previous" : "Precedente"}
+          >
+            ←
+          </button>
+          <button
+            className="re-nav"
+            type="button"
+            onClick={() => move(1)}
+            aria-label={lang === "en" ? "Next" : "Successiva"}
+          >
+            →
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};
