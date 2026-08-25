@@ -172,6 +172,24 @@ export const it = {
   "faq.q15": "Offrite servizio di ristorazione?",
   "faq.a15":
     "La struttura non dispone di cucina interna, ma all'interno della struttura sono presenti macchinette automatiche per snack e bevande calde e fredde, disponibili per gli ospiti.",
+  // Suite page
+  "suite.meta.studio": "Studio / Horizon Atelier",
+  "suite.meta.category": "Categoria / Ospitalità",
+  "suite.meta.location": "Luogo / Toscana",
+  "suite.meta.year": "Anno / 2026",
+  "suite.gallery.viewAll": "Vedi tutte le foto",
+  "suite.image.roomAlt": "Interno camera",
+  "suite.booking.eyebrow": "Prenotazione",
+  "suite.booking.title": "Prenota il tuo soggiorno",
+  "suite.booking.copy":
+    "Seleziona le date e il numero di ospiti per verificare la disponibilità della tua suite. Riceverai una conferma rapida e personalizzata per pianificare il tuo soggiorno in completa tranquillità.",
+  "suite.booking.arrival": "Arrivo",
+  "suite.booking.departure": "Partenza",
+  "suite.booking.guests": "Ospiti",
+  "suite.booking.guests2": "2 ospiti",
+  "suite.booking.guests3": "3 ospiti",
+  "suite.booking.guests4": "4 ospiti",
+  "suite.booking.cta": "Verifica disponibilità",
 } as const;
 
 export type TranslationKey = keyof typeof it;
