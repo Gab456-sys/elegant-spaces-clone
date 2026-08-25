@@ -270,11 +270,8 @@ export const RoomEntrance = ({
           src={room.images.room}
           alt={room.title}
         />
-        <img
-          className="re-layer re-detail"
-          src={room.images.detail}
-          alt={lang === "en" ? "Room detail" : "Dettaglio camera"}
-        />
+
+
 
         <div className="re-door re-door-left">
           <img src={room.images.doorway} alt="" />
