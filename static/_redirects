@@ -1,1 +1,6 @@
+/family-suite     /suite/family    301
+/comfort-suite    /suite/comfort   301
+/basic-room       /suite/basic     301
+/suite            /suite/family    301
+
 /*    /index.html   200

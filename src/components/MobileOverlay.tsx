@@ -54,14 +54,40 @@ export const MobileOverlay = ({ isOpen, onClose }: MobileOverlayProps) => {
                   </Link>
                 </li>
                 <li className="mb-5">
-                  <Link
-                    to="/suite"
-                    onClick={onClose}
-                    className="box-border caret-transparent block outline-[3px] no-underline"
-                  >
+                  <span className="box-border caret-transparent block outline-[3px] no-underline">
                     Suite
-                  </Link>
+                  </span>
+                  <ul className="mt-3 list-none pl-4 text-[22px] leading-[30px]">
+                    <li className="mb-2">
+                      <Link
+                        to="/suite/family"
+                        onClick={onClose}
+                        className="box-border caret-transparent block outline-[3px] no-underline"
+                      >
+                        Family Suite
+                      </Link>
+                    </li>
+                    <li className="mb-2">
+                      <Link
+                        to="/suite/comfort"
+                        onClick={onClose}
+                        className="box-border caret-transparent block outline-[3px] no-underline"
+                      >
+                        Comfort Suite
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/suite/basic"
+                        onClick={onClose}
+                        className="box-border caret-transparent block outline-[3px] no-underline"
+                      >
+                        Basic Room
+                      </Link>
+                    </li>
+                  </ul>
                 </li>
+
                 <li className="mb-5">
                   <Link
                     to="/consigli"
