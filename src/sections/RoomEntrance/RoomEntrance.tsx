@@ -64,12 +64,13 @@ export const RoomEntrance = ({
   const amenitiesRef = useRef<HTMLDivElement | null>(null);
   const controlsRef = useRef<HTMLDivElement | null>(null);
 
+  const currentAmenities = amenitiesContent[lang];
   /** Le card sono triplicate per il loop infinito; si parte dal set centrale. */
   const loopCards = useMemo(
-    () => [...room.amenities, ...room.amenities, ...room.amenities],
-    [room.amenities],
+    () => [...currentAmenities, ...currentAmenities, ...currentAmenities],
+    [currentAmenities],
   );
-  const originalCount = room.amenities.length;
+  const originalCount = currentAmenities.length;
   const activeRef = useRef(originalCount);
 
   /* ---------- slider ---------- */
