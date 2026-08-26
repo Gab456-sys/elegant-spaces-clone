@@ -1,4 +1,5 @@
 import { RoomEntrance } from "@/sections/RoomEntrance/RoomEntrance";
+import { BedIcon, BathIcon, CoffeeIcon, CarIcon, UserPlusIcon } from "@/sections/RoomEntrance/icons";
 import { roomEntrances } from "@/sections/RoomEntrance/rooms";
 import { SuiteTemplate } from "@/sections/SuitePage/SuiteTemplate";
 
