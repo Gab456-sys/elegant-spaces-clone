@@ -77,46 +77,27 @@ export const RoomEntrance = ({
     [currentAmenities],
   );
   const originalCount = currentAmenities.length;
-  const activeRef = useRef(originalCount);
+  /* ---------- slider a scorrimento continuo ---------- */
 
-  /* ---------- slider ---------- */
+  /** Posizione renderizzata e posizione desiderata, in px (negativa = verso sinistra). */
+  const posRef = useRef(0);
+  const targetRef = useRef(0);
+  const draggingRef = useRef(false);
+  const draggedRef = useRef(false);
 
-  const applyShift = () => {
+  const stepSize = () => {
     const track = trackRef.current;
-    if (!track) return;
+    if (!track) return 0;
     const card = track.querySelector(".re-card") as HTMLElement | null;
-    if (!card) return;
+    if (!card) return 0;
     const gap = parseFloat(getComputedStyle(track).columnGap || "0") || 0;
-    const step = card.offsetWidth + gap;
-    track.style.setProperty("--am-shift", `${-step * activeRef.current}px`);
-
-    track.querySelectorAll(".re-card").forEach((el, i) => {
-      const node = el as HTMLElement;
-      node.classList.toggle("is-active", i === activeRef.current);
-      node.setAttribute("aria-current", i === activeRef.current ? "true" : "false");
-    });
+    return card.offsetWidth + gap;
   };
 
-  const jumpTo = (index: number) => {
-    const track = trackRef.current;
-    if (!track) return;
-    track.classList.add("is-jumping");
-    activeRef.current = index;
-    applyShift();
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => track.classList.remove("is-jumping"));
-    });
+  const nudge = (dir: number) => {
+    targetRef.current -= dir * stepSize();
   };
 
-  const move = (dir: number) => {
-    activeRef.current += dir;
-    applyShift();
-  };
-
-  const select = (index: number) => {
-    activeRef.current = index;
-    applyShift();
-  };
 
   /* ---------- motore ---------- */
 
