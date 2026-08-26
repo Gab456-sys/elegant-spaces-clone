@@ -101,8 +101,7 @@ export const RoomEntrance = ({
     const stage = stageRef.current;
     const track = trackRef.current;
     const amenities = amenitiesRef.current;
-    const controls = controlsRef.current;
-    if (!section || !stage || !track || !amenities || !controls) return;
+    if (!section || !stage || !track || !amenities) return;
 
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
 
