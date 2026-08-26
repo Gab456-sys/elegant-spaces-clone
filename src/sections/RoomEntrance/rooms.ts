@@ -43,9 +43,6 @@ export type RoomEntranceData = {
   foregroundFit?: { width: number; grow: number; bottom: number; lift: number };
 };
 
-const u = (id: string, w = 2200) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
-
 /**
  * NOTA: le immagini qui sotto sono quelle già presenti nel progetto (Unsplash).
  * Sono segnaposto. In particolare `doorway` non è una vera foto di soglia:
