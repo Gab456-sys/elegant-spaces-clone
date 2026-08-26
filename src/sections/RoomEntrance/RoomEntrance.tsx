@@ -93,10 +93,6 @@ export const RoomEntrance = ({
     return card.offsetWidth + gap;
   };
 
-  const nudge = (dir: number) => {
-    targetRef.current -= dir * stepSize();
-  };
-
 
   /* ---------- motore ---------- */
 
