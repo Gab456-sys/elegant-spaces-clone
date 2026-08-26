@@ -77,46 +77,27 @@ export const RoomEntrance = ({
     [currentAmenities],
   );
   const originalCount = currentAmenities.length;
-  const activeRef = useRef(originalCount);
+  /* ---------- slider a scorrimento continuo ---------- */
 
-  /* ---------- slider ---------- */
+  /** Posizione renderizzata e posizione desiderata, in px (negativa = verso sinistra). */
+  const posRef = useRef(0);
+  const targetRef = useRef(0);
+  const draggingRef = useRef(false);
+  const draggedRef = useRef(false);
 
-  const applyShift = () => {
+  const stepSize = () => {
     const track = trackRef.current;
-    if (!track) return;
+    if (!track) return 0;
     const card = track.querySelector(".re-card") as HTMLElement | null;
-    if (!card) return;
+    if (!card) return 0;
     const gap = parseFloat(getComputedStyle(track).columnGap || "0") || 0;
-    const step = card.offsetWidth + gap;
-    track.style.setProperty("--am-shift", `${-step * activeRef.current}px`);
-
-    track.querySelectorAll(".re-card").forEach((el, i) => {
-      const node = el as HTMLElement;
-      node.classList.toggle("is-active", i === activeRef.current);
-      node.setAttribute("aria-current", i === activeRef.current ? "true" : "false");
-    });
+    return card.offsetWidth + gap;
   };
 
-  const jumpTo = (index: number) => {
-    const track = trackRef.current;
-    if (!track) return;
-    track.classList.add("is-jumping");
-    activeRef.current = index;
-    applyShift();
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => track.classList.remove("is-jumping"));
-    });
+  const nudge = (dir: number) => {
+    targetRef.current -= dir * stepSize();
   };
 
-  const move = (dir: number) => {
-    activeRef.current += dir;
-    applyShift();
-  };
-
-  const select = (index: number) => {
-    activeRef.current = index;
-    applyShift();
-  };
 
   /* ---------- motore ---------- */
 
@@ -257,69 +238,111 @@ export const RoomEntrance = ({
     };
 
     const onResize = () => {
-      applyShift();
       tick();
-    };
-
-    const onTransitionEnd = () => {
-      const i = activeRef.current;
-      if (i >= originalCount * 2) jumpTo(i - originalCount);
-      else if (i < originalCount) jumpTo(i + originalCount);
     };
 
     window.addEventListener("scroll", tick, { passive: true });
     window.addEventListener("resize", onResize);
     window.addEventListener("pointermove", onPointerMove, { passive: true });
-    track.addEventListener("transitionend", onTransitionEnd);
 
-    applyShift();
     tick();
 
-    /* autoplay lento delle card */
-    let autoTimer: number | null = null;
-    let autoVisible = false;
-    let autoHover = false;
-    let autoFocus = false;
+    /* ---- marquee continuo + trascinamento ---- */
+    const SPEED = 26; // px al secondo
+    let marqueeFrame = 0;
+    let last = 0;
+    let visible = false;
+    let hover = false;
+    let focused = false;
 
-    const startAuto = () => {
-      if (autoTimer || reduce.matches) return;
-      autoTimer = window.setInterval(() => move(1), 4500);
-    };
-    const stopAuto = () => {
-      if (autoTimer) {
-        window.clearInterval(autoTimer);
-        autoTimer = null;
+    const loopWidth = () => stepSize() * originalCount;
+
+    const wrap = () => {
+      const w = loopWidth();
+      if (w <= 0) return;
+      while (posRef.current <= -w) {
+        posRef.current += w;
+        targetRef.current += w;
       }
+      while (posRef.current > 0) {
+        posRef.current -= w;
+        targetRef.current -= w;
+      }
+    };
+
+    const render = () => {
+      track.style.setProperty("--am-shift", `${posRef.current.toFixed(2)}px`);
+    };
+
+    const loop = (time: number) => {
+      const dt = last ? Math.min((time - last) / 1000, 0.05) : 0;
+      last = time;
+
+      const autoplay = visible && !hover && !focused && !draggingRef.current && !document.hidden;
+      if (autoplay && !reduce.matches) targetRef.current -= SPEED * dt;
+
+      posRef.current = draggingRef.current
+        ? targetRef.current
+        : lerp(posRef.current, targetRef.current, 0.16);
+
+      wrap();
+      render();
+      marqueeFrame = requestAnimationFrame(loop);
+    };
+
+    marqueeFrame = requestAnimationFrame(loop);
+
+    let dragId: number | null = null;
+    let dragX = 0;
+
+    const onDragStart = (e: PointerEvent) => {
+      if (e.button !== 0 && e.pointerType === "mouse") return;
+      draggingRef.current = true;
+      draggedRef.current = false;
+      dragId = e.pointerId;
+      dragX = e.clientX;
+      targetRef.current = posRef.current;
+      track.setPointerCapture(e.pointerId);
+      track.classList.add("is-dragging");
+    };
+
+    const onDragMove = (e: PointerEvent) => {
+      if (!draggingRef.current || e.pointerId !== dragId) return;
+      const dx = e.clientX - dragX;
+      dragX = e.clientX;
+      if (Math.abs(dx) > 1) draggedRef.current = true;
+      targetRef.current += dx;
+    };
+
+    const onDragEnd = (e: PointerEvent) => {
+      if (!draggingRef.current || e.pointerId !== dragId) return;
+      draggingRef.current = false;
+      dragId = null;
+      track.classList.remove("is-dragging");
+      if (track.hasPointerCapture(e.pointerId)) track.releasePointerCapture(e.pointerId);
+      window.setTimeout(() => {
+        draggedRef.current = false;
+      }, 0);
     };
 
     const autoObserver = new IntersectionObserver(
       ([entry]) => {
-        autoVisible = entry.isIntersecting;
-        if (autoVisible && !autoHover && !autoFocus) startAuto();
-        else stopAuto();
+        visible = entry.isIntersecting;
       },
       { threshold: 0.25 }
     );
 
     const onAmEnter = () => {
-      autoHover = true;
-      stopAuto();
+      hover = true;
     };
     const onAmLeave = () => {
-      autoHover = false;
-      if (autoVisible && !autoFocus) startAuto();
+      hover = false;
     };
     const onAmFocusIn = () => {
-      autoFocus = true;
-      stopAuto();
+      focused = true;
     };
     const onAmFocusOut = () => {
-      autoFocus = false;
-      if (autoVisible && !autoHover) startAuto();
-    };
-    const onVisibility = () => {
-      if (document.hidden) stopAuto();
-      else if (autoVisible && !autoHover && !autoFocus) startAuto();
+      focused = false;
     };
 
     autoObserver.observe(amenities);
@@ -327,22 +350,28 @@ export const RoomEntrance = ({
     amenities.addEventListener("pointerleave", onAmLeave);
     amenities.addEventListener("focusin", onAmFocusIn);
     amenities.addEventListener("focusout", onAmFocusOut);
-    document.addEventListener("visibilitychange", onVisibility);
+    track.addEventListener("pointerdown", onDragStart);
+    track.addEventListener("pointermove", onDragMove);
+    track.addEventListener("pointerup", onDragEnd);
+    track.addEventListener("pointercancel", onDragEnd);
 
     return () => {
       cancelAnimationFrame(frame);
+      cancelAnimationFrame(marqueeFrame);
       window.removeEventListener("scroll", tick);
       window.removeEventListener("resize", onResize);
       window.removeEventListener("pointermove", onPointerMove);
-      track.removeEventListener("transitionend", onTransitionEnd);
       autoObserver.disconnect();
       amenities.removeEventListener("pointerenter", onAmEnter);
       amenities.removeEventListener("pointerleave", onAmLeave);
       amenities.removeEventListener("focusin", onAmFocusIn);
       amenities.removeEventListener("focusout", onAmFocusOut);
-      document.removeEventListener("visibilitychange", onVisibility);
-      stopAuto();
+      track.removeEventListener("pointerdown", onDragStart);
+      track.removeEventListener("pointermove", onDragMove);
+      track.removeEventListener("pointerup", onDragEnd);
+      track.removeEventListener("pointercancel", onDragEnd);
     };
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [room.slug, originalCount, fgWidth, fgGrow, fgBottom, fgLift]);
 
@@ -424,19 +453,7 @@ export const RoomEntrance = ({
         <div ref={amenitiesRef} className="re-amenities">
           <div ref={trackRef} className="re-track">
             {loopCards.map((item, i) => (
-              <article
-                key={i}
-                className="re-card"
-                onClick={() => select(i)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    select(i);
-                  }
-                }}
-                tabIndex={0}
-                role="button"
-              >
+              <article key={i} className="re-card">
                 <span className="re-card-kicker">{item.kicker}</span>
                 <h3>{item.title}</h3>
                 <p>{item.body}</p>
@@ -449,7 +466,7 @@ export const RoomEntrance = ({
           <button
             className="re-nav"
             type="button"
-            onClick={() => move(-1)}
+            onClick={() => nudge(-1)}
             aria-label={lang === "en" ? "Previous" : "Precedente"}
           >
             ←
@@ -457,7 +474,8 @@ export const RoomEntrance = ({
           <button
             className="re-nav"
             type="button"
-            onClick={() => move(1)}
+            onClick={() => nudge(1)}
+
             aria-label={lang === "en" ? "Next" : "Successiva"}
           >
             →

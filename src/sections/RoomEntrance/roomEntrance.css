@@ -444,13 +444,15 @@
   gap: clamp(12px, 1.1vw, 22px);
   padding-left: clamp(24px, 6vw, 96px);
   transform: translate3d(var(--am-shift), 0, 0);
-  transition: transform 700ms cubic-bezier(0.22, 0.61, 0.36, 1);
   will-change: transform;
+  cursor: grab;
+  touch-action: pan-y;
 }
 
-.re-track.is-jumping {
-  transition: none;
+.re-track.is-dragging {
+  cursor: grabbing;
 }
+
 
 .re-card {
   position: relative;
@@ -463,7 +465,8 @@
   background: #f6f2eb;
   color: #1c1917;
   text-align: left;
-  cursor: pointer;
+  cursor: inherit;
+
   user-select: none;
   transition: background-color 0.4s ease, border-color 0.4s ease;
 }
