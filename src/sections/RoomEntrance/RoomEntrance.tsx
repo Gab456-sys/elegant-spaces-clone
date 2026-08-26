@@ -142,7 +142,6 @@ export const RoomEntrance = ({
       const detail = segment(s, 1840, 2360, 2680, 3000);
       const introExit = smoothstep(100, 720, s);
       const amEnter = Math.pow(smoothstep(2620, 3240, s), 1.4);
-      const amControls = smoothstep(2960, 3300, s);
       const veil = clamp(door.active + detail.active);
       const doorDrift = Math.pow(door.enter, 1.5);
 
