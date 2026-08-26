@@ -468,9 +468,6 @@
 /* --- Responsive -------------------------------------------------------- */
 
 @media (max-width: 900px) {
-  .re-scroll {
-    height: calc(100svh + 2000px);
-  }
   .re-panel-bed {
     top: 56%;
   }
