@@ -26,18 +26,18 @@ const SCENE = 2600;
 type Props = {
   room: RoomEntranceData;
   /** Contenuti iniziali espliciti, così restano modificabili dall'editor visivo. */
-  titleContent?: ReactNode;
-  introContent?: { it: ReactNode; en: ReactNode };
-  tagsContent?: { it: ReactNode; en: ReactNode };
-  panelBedContent?: {
+  titleContent: ReactNode;
+  introContent: { it: ReactNode; en: ReactNode };
+  tagsContent: { it: ReactNode; en: ReactNode };
+  panelBedContent: {
     it: { heading: ReactNode; body: ReactNode; facts: { dt: ReactNode; dd: ReactNode }[] };
     en: { heading: ReactNode; body: ReactNode; facts: { dt: ReactNode; dd: ReactNode }[] };
   };
-  panelServicesContent?: {
+  panelServicesContent: {
     it: { heading: ReactNode; body: ReactNode; cta: ReactNode };
     en: { heading: ReactNode; body: ReactNode; cta: ReactNode };
   };
-  amenitiesContent?: {
+  amenitiesContent: {
     it: { kicker: ReactNode; title: ReactNode; body: ReactNode }[];
     en: { kicker: ReactNode; title: ReactNode; body: ReactNode }[];
   };
