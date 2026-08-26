@@ -275,12 +275,73 @@ export const RoomEntrance = ({
     applyShift();
     tick();
 
+    /* autoplay lento delle card */
+    let autoTimer: number | null = null;
+    let autoVisible = false;
+    let autoHover = false;
+    let autoFocus = false;
+
+    const startAuto = () => {
+      if (autoTimer || reduce.matches) return;
+      autoTimer = window.setInterval(() => move(1), 4500);
+    };
+    const stopAuto = () => {
+      if (autoTimer) {
+        window.clearInterval(autoTimer);
+        autoTimer = null;
+      }
+    };
+
+    const autoObserver = new IntersectionObserver(
+      ([entry]) => {
+        autoVisible = entry.isIntersecting;
+        if (autoVisible && !autoHover && !autoFocus) startAuto();
+        else stopAuto();
+      },
+      { threshold: 0.25 }
+    );
+
+    const onAmEnter = () => {
+      autoHover = true;
+      stopAuto();
+    };
+    const onAmLeave = () => {
+      autoHover = false;
+      if (autoVisible && !autoFocus) startAuto();
+    };
+    const onAmFocusIn = () => {
+      autoFocus = true;
+      stopAuto();
+    };
+    const onAmFocusOut = () => {
+      autoFocus = false;
+      if (autoVisible && !autoHover) startAuto();
+    };
+    const onVisibility = () => {
+      if (document.hidden) stopAuto();
+      else if (autoVisible && !autoHover && !autoFocus) startAuto();
+    };
+
+    autoObserver.observe(amenities);
+    amenities.addEventListener("pointerenter", onAmEnter);
+    amenities.addEventListener("pointerleave", onAmLeave);
+    amenities.addEventListener("focusin", onAmFocusIn);
+    amenities.addEventListener("focusout", onAmFocusOut);
+    document.addEventListener("visibilitychange", onVisibility);
+
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener("scroll", tick);
       window.removeEventListener("resize", onResize);
       window.removeEventListener("pointermove", onPointerMove);
       track.removeEventListener("transitionend", onTransitionEnd);
+      autoObserver.disconnect();
+      amenities.removeEventListener("pointerenter", onAmEnter);
+      amenities.removeEventListener("pointerleave", onAmLeave);
+      amenities.removeEventListener("focusin", onAmFocusIn);
+      amenities.removeEventListener("focusout", onAmFocusOut);
+      document.removeEventListener("visibilitychange", onVisibility);
+      stopAuto();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [room.slug, originalCount, fgWidth, fgGrow, fgBottom, fgLift]);
