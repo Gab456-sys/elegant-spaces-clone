@@ -68,7 +68,6 @@ export const RoomEntrance = ({
   const stageRef = useRef<HTMLDivElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
   const amenitiesRef = useRef<HTMLDivElement | null>(null);
-  const controlsRef = useRef<HTMLDivElement | null>(null);
 
   const currentAmenities = amenitiesContent[lang];
   /** Le card sono triplicate per il loop infinito; si parte dal set centrale. */
