@@ -517,42 +517,6 @@
   overflow: hidden;
 }
 
-.re-controls {
-  position: absolute;
-  z-index: 9;
-  left: clamp(24px, 6vw, 96px);
-  bottom: clamp(48px, 7vh, 84px);
-  display: flex;
-  gap: 10px;
-  opacity: var(--am-controls-opacity);
-  pointer-events: none;
-}
-
-.re-controls.is-ready {
-  pointer-events: auto;
-}
-
-.re-nav {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border: 1px solid #1c1917;
-  border-radius: 0;
-  background: rgba(246, 242, 235, 0.92);
-  color: #1c1917;
-  font-size: 14px;
-  line-height: 1;
-  cursor: pointer;
-  transition: background-color 0.35s ease, color 0.35s ease;
-}
-
-.re-nav:hover {
-  background: #1c1917;
-  color: #f8f5ef;
-}
-
 /* --- Responsive -------------------------------------------------------- */
 
 @media (max-width: 900px) {
