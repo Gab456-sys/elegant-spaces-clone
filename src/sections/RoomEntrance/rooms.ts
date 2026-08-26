@@ -32,12 +32,15 @@ export type RoomEntranceData = {
      * ante si aprono: se la foto non ha una simmetria centrale credibile
      * l'effetto non regge. È l'unica immagine che vale la pena rifare apposta.
      */
-    doorway: string;
+    doorway?: string;
     /** La camera, full bleed. Zooma per tutta la durata: serve alta risoluzione. */
     room: string;
     /** Dettaglio ravvicinato: bagno, poltrona, scrittoio. */
     detail: string;
+    /** Elemento in primo piano ritagliato (letto). */
+    foreground?: string;
   };
+  foregroundFit?: { width: number; grow: number; bottom: number; lift: number };
 };
 
 const u = (id: string, w = 2200) =>
@@ -127,10 +130,11 @@ export const roomEntrances: Record<string, RoomEntranceData> = {
       },
     ],
     images: {
-      doorway: u("photo-1617104551722-3b2d51366400"),
-      room: u("photo-1631049307264-da0ec9d70304", 2400),
-      detail: u("photo-1616047006789-b7af5afb8c20", 1800),
+      room: "/img/room.png",
+      detail: "/img/detail.png",
+      foreground: "/img/foreground-bed.png",
     },
+    foregroundFit: { width: 34, grow: 30, bottom: 1, lift: 9 },
   },
 
   comfort: {
@@ -207,10 +211,11 @@ export const roomEntrances: Record<string, RoomEntranceData> = {
       },
     ],
     images: {
-      doorway: u("photo-1590490360182-c33d57733427"),
-      room: u("photo-1600607687939-ce8a6c25118c", 2400),
-      detail: u("photo-1620626011761-996317b8d101", 1800),
+      room: "/img/room.png",
+      detail: "/img/detail.png",
+      foreground: "/img/foreground-bed.png",
     },
+    foregroundFit: { width: 34, grow: 30, bottom: 1, lift: 9 },
   },
 
   basic: {
@@ -287,9 +292,10 @@ export const roomEntrances: Record<string, RoomEntranceData> = {
       },
     ],
     images: {
-      doorway: u("photo-1616594039964-3d0f2d4e7ce0"),
-      room: u("photo-1616047006789-b7af5afb8c20", 2400),
-      detail: u("photo-1620626011761-996317b8d101", 1800),
+      room: "/img/room.png",
+      detail: "/img/detail.png",
+      foreground: "/img/foreground-bed.png",
     },
+    foregroundFit: { width: 34, grow: 30, bottom: 1, lift: 9 },
   },
 };
