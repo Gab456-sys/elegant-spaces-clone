@@ -453,19 +453,7 @@ export const RoomEntrance = ({
         <div ref={amenitiesRef} className="re-amenities">
           <div ref={trackRef} className="re-track">
             {loopCards.map((item, i) => (
-              <article
-                key={i}
-                className="re-card"
-                onClick={() => select(i)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    select(i);
-                  }
-                }}
-                tabIndex={0}
-                role="button"
-              >
+              <article key={i} className="re-card">
                 <span className="re-card-kicker">{item.kicker}</span>
                 <h3>{item.title}</h3>
                 <p>{item.body}</p>
@@ -478,7 +466,7 @@ export const RoomEntrance = ({
           <button
             className="re-nav"
             type="button"
-            onClick={() => move(-1)}
+            onClick={() => nudge(-1)}
             aria-label={lang === "en" ? "Previous" : "Precedente"}
           >
             ←
@@ -486,7 +474,8 @@ export const RoomEntrance = ({
           <button
             className="re-nav"
             type="button"
-            onClick={() => move(1)}
+            onClick={() => nudge(1)}
+
             aria-label={lang === "en" ? "Next" : "Successiva"}
           >
             →
