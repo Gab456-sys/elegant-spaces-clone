@@ -38,8 +38,8 @@ type Props = {
     en: { heading: ReactNode; body: ReactNode; cta: ReactNode };
   };
   amenitiesContent: {
-    it: { kicker: ReactNode; title: ReactNode; body: ReactNode }[];
-    en: { kicker: ReactNode; title: ReactNode; body: ReactNode }[];
+    it: { kicker: ReactNode; title: ReactNode; body: ReactNode; icon?: ReactNode }[];
+    en: { kicker: ReactNode; title: ReactNode; body: ReactNode; icon?: ReactNode }[];
   };
   /** Selettore del target della CTA. Default: il form di prenotazione. */
   ctaTarget?: string;
@@ -445,6 +445,7 @@ export const RoomEntrance = ({
           <div ref={trackRef} className="re-track">
             {loopCards.map((item, i) => (
               <article key={i} className="re-card">
+                {item.icon && <div className="re-card-icon">{item.icon}</div>}
                 <span className="re-card-kicker">{item.kicker}</span>
                 <h3>{item.title}</h3>
                 <p>{item.body}</p>

@@ -456,7 +456,7 @@
 .re-card {
   position: relative;
   flex: 0 0 clamp(268px, 22vw, 360px);
-  height: 196px;
+  height: 220px;
   padding: 22px;
   overflow: hidden;
   border: 1px solid rgba(214, 211, 209, 0.7);
@@ -468,6 +468,16 @@
 
   user-select: none;
   transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+.re-card-icon {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  width: 28px;
+  height: 28px;
+  color: #57534e;
+  pointer-events: none;
 }
 
 .re-card.is-active {

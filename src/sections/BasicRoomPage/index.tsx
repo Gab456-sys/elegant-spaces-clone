@@ -1,4 +1,5 @@
 import { RoomEntrance } from "@/sections/RoomEntrance/RoomEntrance";
+import { BedIcon, BathIcon, CoffeeIcon, WifiIcon, CarIcon } from "@/sections/RoomEntrance/icons";
 import { roomEntrances } from "@/sections/RoomEntrance/rooms";
 import { SuiteTemplate } from "@/sections/SuitePage/SuiteTemplate";
 
@@ -30,18 +31,18 @@ export const BasicRoomPage = () => (
       }}
       amenitiesContent={{
         it: [
-          { kicker: <>Riposo</>, title: <>Matrimoniale 140</>, body: <>Materasso in memory, biancheria in lino lavato, cambio ogni tre giorni.</> },
-          { kicker: <>Privato</>, title: <>Bagno con doccia</>, body: <>Interno alla camera, doccia walk-in, set cortesia e asciugacapelli.</> },
-          { kicker: <>Inclusa</>, title: <>Colazione servita</>, body: <>Prodotti del forno vicino e frutta di stagione, dalle 8 alle 10.30.</> },
-          { kicker: <>Comfort</>, title: <>Wi-Fi e smart TV</>, body: <>Fibra dedicata, smart TV con i tuoi account, scrivania e prese USB.</> },
-          { kicker: <>Servizi</>, title: <>Parcheggio interno</>, body: <>Posto auto riservato nel cortile, senza costi aggiuntivi.</> },
+          { icon: <BedIcon />, kicker: <>Riposo</>, title: <>Matrimoniale 140</>, body: <>Materasso in memory, biancheria in lino lavato, cambio ogni tre giorni.</> },
+          { icon: <BathIcon />, kicker: <>Privato</>, title: <>Bagno con doccia</>, body: <>Interno alla camera, doccia walk-in, set cortesia e asciugacapelli.</> },
+          { icon: <CoffeeIcon />, kicker: <>Inclusa</>, title: <>Colazione servita</>, body: <>Prodotti del forno vicino e frutta di stagione, dalle 8 alle 10.30.</> },
+          { icon: <WifiIcon />, kicker: <>Comfort</>, title: <>Wi-Fi e smart TV</>, body: <>Fibra dedicata, smart TV con i tuoi account, scrivania e prese USB.</> },
+          { icon: <CarIcon />, kicker: <>Servizi</>, title: <>Parcheggio interno</>, body: <>Posto auto riservato nel cortile, senza costi aggiuntivi.</> },
         ],
         en: [
-          { kicker: <>Sleep</>, title: <>140 double bed</>, body: <>Memory foam mattress, washed linen, changed every three days.</> },
-          { kicker: <>Private</>, title: <>Bathroom with shower</>, body: <>En suite, walk-in shower, courtesy set and hairdryer.</> },
-          { kicker: <>Included</>, title: <>Breakfast served</>, body: <>Pastries from the bakery nearby and seasonal fruit, 8 to 10.30.</> },
-          { kicker: <>Comfort</>, title: <>Wi-Fi and smart TV</>, body: <>Dedicated fibre, smart TV with your own accounts, desk and USB sockets.</> },
-          { kicker: <>Services</>, title: <>Private parking</>, body: <>Reserved space in the courtyard, at no extra cost.</> },
+          { icon: <BedIcon />, kicker: <>Sleep</>, title: <>140 double bed</>, body: <>Memory foam mattress, washed linen, changed every three days.</> },
+          { icon: <BathIcon />, kicker: <>Private</>, title: <>Bathroom with shower</>, body: <>En suite, walk-in shower, courtesy set and hairdryer.</> },
+          { icon: <CoffeeIcon />, kicker: <>Included</>, title: <>Breakfast served</>, body: <>Pastries from the bakery nearby and seasonal fruit, 8 to 10.30.</> },
+          { icon: <WifiIcon />, kicker: <>Comfort</>, title: <>Wi-Fi and smart TV</>, body: <>Dedicated fibre, smart TV with your own accounts, desk and USB sockets.</> },
+          { icon: <CarIcon />, kicker: <>Services</>, title: <>Private parking</>, body: <>Reserved space in the courtyard, at no extra cost.</> },
         ],
       }}
     />
