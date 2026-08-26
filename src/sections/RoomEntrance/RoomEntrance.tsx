@@ -21,7 +21,7 @@ const segment = (s: number, a: number, b: number, c: number, d: number) => {
 };
 
 /** Lunghezza scrollabile della scena, in px. Deve combaciare con il CSS. */
-const SCENE = 2600;
+const SCENE = 3400;
 
 type Props = {
   room: RoomEntranceData;
@@ -57,6 +57,12 @@ export const RoomEntrance = ({
 }: Props) => {
   const { language } = useLanguage();
   const lang = language === "en" ? "en" : "it";
+
+  /* Calibrazione del primo piano, con i default del progetto. */
+  const fgWidth = room.foregroundFit?.width ?? 64;
+  const fgGrow = room.foregroundFit?.grow ?? 36;
+  const fgBottom = room.foregroundFit?.bottom ?? 2;
+  const fgLift = room.foregroundFit?.lift ?? 10;
 
   const sectionRef = useRef<HTMLElement | null>(null);
   const stageRef = useRef<HTMLDivElement | null>(null);
@@ -157,11 +163,11 @@ export const RoomEntrance = ({
       const s = smoothScroll;
       const progress = clamp(s / SCENE);
 
-      const door = segment(s, 380, 980, 1180, 1520);
-      const detail = segment(s, 1400, 1800, 2050, 2300);
-      const introExit = smoothstep(80, 560, s);
-      const amEnter = Math.pow(smoothstep(2000, 2480, s), 1.4);
-      const amControls = smoothstep(2260, 2520, s);
+      const door = segment(s, 480, 1240, 1520, 1980);
+      const detail = segment(s, 1840, 2360, 2680, 3000);
+      const introExit = smoothstep(100, 720, s);
+      const amEnter = Math.pow(smoothstep(2620, 3240, s), 1.4);
+      const amControls = smoothstep(2960, 3300, s);
       const veil = clamp(door.active + detail.active);
       const doorDrift = Math.pow(door.enter, 1.5);
 
@@ -172,20 +178,42 @@ export const RoomEntrance = ({
       set("--room-scale", (1.02 + progress * 0.26 + door.enter * 0.1).toFixed(4));
       set("--room-x", `${(mx * -14).toFixed(2)}px`);
       set("--room-y", `${(my * -8 - progress * 30).toFixed(2)}px`);
-      set("--room-blur", `${(veil * 10).toFixed(2)}px`);
-      /* Whiteout: la luminosità SALE, non scende. */
-      set("--room-brightness", (1 + veil * 0.1).toFixed(4));
+      /*
+        La profondità la fa la SFOCATURA, non il bianco: alzare il velo lava
+        la scena e rende illeggibili i pannelli. Blur deciso, velo discreto.
+      */
+      set("--room-blur", `${(veil * 8).toFixed(2)}px`);
+      set("--room-brightness", (1 + veil * 0.04).toFixed(4));
 
       set("--door-drift", doorDrift.toFixed(4));
       set("--door-opacity", (1 - door.exit).toFixed(4));
       set("--door-scale", (1 + door.enter * 0.5).toFixed(4));
 
+      /*
+        Tre velocità diverse = profondità. Il fondale scala di 0.26, il layer
+        intermedio di 0.44, il primo piano ancora di più: è il differenziale,
+        non il numero di immagini, a far leggere gli strati come sovrapposti.
+      */
+      set("--mid-scale", (1 + progress * 0.44 + door.enter * 0.12).toFixed(4));
+      set("--mid-y", `${(my * 5 - progress * 46).toFixed(2)}px`);
+
+      /*
+        Primo piano scontornato: ancorato in basso mentre le ante si aprono,
+        poi in uscita sale di -760px scalando +0.5 — passa SOPRA lo spettatore
+        invece di allontanarsi.
+      */
+      set("--fg-bottom", `${(fgBottom - door.enter * fgLift).toFixed(2)}vh`);
+      set("--fg-width", `${(fgWidth + door.enter * fgGrow).toFixed(2)}vw`);
+      set("--fg-y", `${(my * 8 - progress * 40 - door.exit * 760).toFixed(2)}px`);
+      set("--fg-scale", (1 + progress * 0.18 + door.exit * 0.5).toFixed(4));
+      set("--fg-opacity", (1 - detail.enter * 0.85).toFixed(4));
+
       set("--detail-opacity", (detail.active * (1 - detail.exit)).toFixed(4));
       set("--detail-scale", (1.04 + detail.enter * 0.08).toFixed(4));
 
-      set("--shade-top", (veil * 0.46).toFixed(4));
-      set("--shade-mid", (veil * 0.4).toFixed(4));
-      set("--shade-bottom", (veil * 0.52).toFixed(4));
+      set("--shade-top", (veil * 0.3).toFixed(4));
+      set("--shade-mid", (veil * 0.26).toFixed(4));
+      set("--shade-bottom", (veil * 0.34).toFixed(4));
 
       set("--title-y", `${(introExit * -180 + my * 6).toFixed(2)}px`);
       set("--title-scale", (1 - introExit * 0.06).toFixed(4));
@@ -255,7 +283,7 @@ export const RoomEntrance = ({
       track.removeEventListener("transitionend", onTransitionEnd);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [room.slug, originalCount]);
+  }, [room.slug, originalCount, fgWidth, fgGrow, fgBottom, fgLift]);
 
   /* ---------- markup ---------- */
 
@@ -277,16 +305,30 @@ export const RoomEntrance = ({
           alt={lang === "en" ? "Room detail" : "Dettaglio camera"}
         />
 
-        {room.images.doorway && (
-          <>
-            <div className="re-door re-door-left">
-              <img src={room.images.doorway} alt="" />
-            </div>
-            <div className="re-door re-door-right">
-              <img src={room.images.doorway} alt="" />
-            </div>
-          </>
+        {room.images.mid && (
+          <img className="re-layer re-mid" src={room.images.mid} alt="" aria-hidden="true" />
         )}
+
+        {room.images.foreground && (
+          <img
+            className="re-layer re-foreground"
+            src={room.images.foreground}
+            alt=""
+            aria-hidden="true"
+          />
+        )}
+
+        <div
+          className={`re-door re-door-left${room.images.doorway ? "" : " re-door--drawn"}`}
+        >
+          {room.images.doorway && <img src={room.images.doorway} alt="" />}
+        </div>
+        <div
+          className={`re-door re-door-right${room.images.doorway ? "" : " re-door--drawn"}`}
+        >
+          {room.images.doorway && <img src={room.images.doorway} alt="" />}
+        </div>
+
         <div className="re-layer re-shade" />
 
         <h1 className="re-title">{titleContent}</h1>
