@@ -472,10 +472,10 @@
 
 .re-card-icon {
   position: absolute;
-  top: 24px;
+  top: 22px;
   left: 50%;
-  width: 52px;
-  height: 52px;
+  width: 68px;
+  height: 68px;
   color: #57534e;
   pointer-events: none;
   transform: translateX(-50%);
