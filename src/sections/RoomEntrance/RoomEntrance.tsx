@@ -38,8 +38,8 @@ type Props = {
     en: { heading: ReactNode; body: ReactNode; cta: ReactNode };
   };
   amenitiesContent: {
-    it: { kicker: ReactNode; title: ReactNode; body: ReactNode }[];
-    en: { kicker: ReactNode; title: ReactNode; body: ReactNode }[];
+    it: { kicker: ReactNode; title: ReactNode; body: ReactNode; icon?: ReactNode }[];
+    en: { kicker: ReactNode; title: ReactNode; body: ReactNode; icon?: ReactNode }[];
   };
   /** Selettore del target della CTA. Default: il form di prenotazione. */
   ctaTarget?: string;
