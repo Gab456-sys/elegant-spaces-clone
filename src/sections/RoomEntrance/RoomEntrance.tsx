@@ -68,7 +68,6 @@ export const RoomEntrance = ({
   const stageRef = useRef<HTMLDivElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
   const amenitiesRef = useRef<HTMLDivElement | null>(null);
-  const controlsRef = useRef<HTMLDivElement | null>(null);
 
   const currentAmenities = amenitiesContent[lang];
   /** Le card sono triplicate per il loop infinito; si parte dal set centrale. */
@@ -94,10 +93,6 @@ export const RoomEntrance = ({
     return card.offsetWidth + gap;
   };
 
-  const nudge = (dir: number) => {
-    targetRef.current -= dir * stepSize();
-  };
-
 
   /* ---------- motore ---------- */
 
@@ -106,8 +101,7 @@ export const RoomEntrance = ({
     const stage = stageRef.current;
     const track = trackRef.current;
     const amenities = amenitiesRef.current;
-    const controls = controlsRef.current;
-    if (!section || !stage || !track || !amenities || !controls) return;
+    if (!section || !stage || !track || !amenities) return;
 
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -148,7 +142,6 @@ export const RoomEntrance = ({
       const detail = segment(s, 1840, 2360, 2680, 3000);
       const introExit = smoothstep(100, 720, s);
       const amEnter = Math.pow(smoothstep(2620, 3240, s), 1.4);
-      const amControls = smoothstep(2960, 3300, s);
       const veil = clamp(door.active + detail.active);
       const doorDrift = Math.pow(door.enter, 1.5);
 
@@ -210,10 +203,8 @@ export const RoomEntrance = ({
 
       set("--am-opacity", amEnter.toFixed(4));
       set("--am-x", `${((1 - amEnter) * 60).toFixed(2)}vw`);
-      set("--am-controls-opacity", amControls.toFixed(4));
 
       amenities.classList.toggle("is-ready", amEnter > 0.98);
-      controls.classList.toggle("is-ready", amControls > 0.98);
       stage.classList.toggle("is-intro-active", introExit < 0.95);
       stage.classList.toggle("is-bed-panel-active", door.active > 0.05 && door.exit < 0.95);
       stage.classList.toggle("is-services-panel-active", detail.active > 0.05 && detail.exit < 0.95);
@@ -462,25 +453,6 @@ export const RoomEntrance = ({
           </div>
         </div>
 
-        <div ref={controlsRef} className="re-controls">
-          <button
-            className="re-nav"
-            type="button"
-            onClick={() => nudge(-1)}
-            aria-label={lang === "en" ? "Previous" : "Precedente"}
-          >
-            ←
-          </button>
-          <button
-            className="re-nav"
-            type="button"
-            onClick={() => nudge(1)}
-
-            aria-label={lang === "en" ? "Next" : "Successiva"}
-          >
-            →
-          </button>
-        </div>
       </div>
     </section>
   );
