@@ -453,25 +453,6 @@ export const RoomEntrance = ({
           </div>
         </div>
 
-        <div ref={controlsRef} className="re-controls">
-          <button
-            className="re-nav"
-            type="button"
-            onClick={() => nudge(-1)}
-            aria-label={lang === "en" ? "Previous" : "Precedente"}
-          >
-            ←
-          </button>
-          <button
-            className="re-nav"
-            type="button"
-            onClick={() => nudge(1)}
-
-            aria-label={lang === "en" ? "Next" : "Successiva"}
-          >
-            →
-          </button>
-        </div>
       </div>
     </section>
   );
