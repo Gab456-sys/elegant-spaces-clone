@@ -263,7 +263,7 @@ export const RoomEntrance = ({
   };
 
   return (
-    <section ref={sectionRef} className="re-scroll">
+    <section ref={sectionRef} className="re-scroll" data-header-theme="light">
       <div ref={stageRef} className="re-stage">
         <img
           className="re-layer re-room"
