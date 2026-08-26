@@ -269,7 +269,7 @@ export const RoomEntrance = ({
         <img
           className="re-layer re-room"
           src={room.images.room}
-          alt={room.title}
+          alt={lang === "en" ? "Room" : "Camera"}
         />
         <img
           className="re-layer re-detail"
@@ -277,35 +277,30 @@ export const RoomEntrance = ({
           alt={lang === "en" ? "Room detail" : "Dettaglio camera"}
         />
 
-        <div className="re-door re-door-left">
-          <img src={room.images.doorway} alt="" />
-        </div>
-        <div className="re-door re-door-right">
-          <img src={room.images.doorway} alt="" />
-        </div>
+        {room.images.doorway && (
+          <>
+            <div className="re-door re-door-left">
+              <img src={room.images.doorway} alt="" />
+            </div>
+            <div className="re-door re-door-right">
+              <img src={room.images.doorway} alt="" />
+            </div>
+          </>
+        )}
         <div className="re-layer re-shade" />
 
-        <h1 className="re-title">
-          {titleContent ??
-            (room.titleLines ?? [room.title]).map((line) => <span key={line}>{line}</span>)}
-        </h1>
+        <h1 className="re-title">{titleContent}</h1>
 
         <div className="re-intro">
-          <p>{introContent?.[lang] ?? room.intro[lang]}</p>
-          <div className="re-tags">
-            {tagsContent?.[lang] ??
-              room.tags.map((tag, i) => <span key={i}>{tag[lang]}</span>)}
-          </div>
+          <p>{introContent[lang]}</p>
+          <div className="re-tags">{tagsContent[lang]}</div>
         </div>
 
         <div className="re-panel re-panel-bed">
-          <h2>{panelBedContent?.[lang].heading ?? room.panelBed.heading[lang]}</h2>
-          <p>{panelBedContent?.[lang].body ?? room.panelBed.body[lang]}</p>
+          <h2>{panelBedContent[lang].heading}</h2>
+          <p>{panelBedContent[lang].body}</p>
           <dl className="re-facts">
-            {(panelBedContent?.[lang].facts ?? room.panelBed.facts.map((fact) => ({
-              dt: fact.dt,
-              dd: fact.dd[lang],
-            }))).map((fact, i) => (
+            {panelBedContent[lang].facts.map((fact, i) => (
               <div key={i}>
                 <dt>{fact.dt}</dt>
                 <dd>{fact.dd}</dd>
@@ -315,12 +310,11 @@ export const RoomEntrance = ({
         </div>
 
         <div className="re-panel re-panel-services">
-          <h2>{panelServicesContent?.[lang].heading ?? room.panelServices.heading[lang]}</h2>
-          <p>{panelServicesContent?.[lang].body ?? room.panelServices.body[lang]}</p>
+          <h2>{panelServicesContent[lang].heading}</h2>
+          <p>{panelServicesContent[lang].body}</p>
           <button type="button" className="re-cta" onClick={goToCta}>
             <span>↗</span>
-            {panelServicesContent?.[lang].cta ??
-              (lang === "en" ? "Check availability" : "Verifica disponibilità")}
+            {panelServicesContent[lang].cta}
           </button>
         </div>
 
@@ -340,11 +334,9 @@ export const RoomEntrance = ({
                 tabIndex={0}
                 role="button"
               >
-                <span className="re-card-kicker">
-                  {amenitiesContent?.[lang][i % originalCount]?.kicker ?? item.kicker[lang]}
-                </span>
-                <h3>{amenitiesContent?.[lang][i % originalCount]?.title ?? item.title[lang]}</h3>
-                <p>{amenitiesContent?.[lang][i % originalCount]?.body ?? item.body[lang]}</p>
+                <span className="re-card-kicker">{item.kicker}</span>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
               </article>
             ))}
           </div>
