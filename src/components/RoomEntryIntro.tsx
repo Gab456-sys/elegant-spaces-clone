@@ -384,7 +384,7 @@ export function RoomEntryIntro({
             src={layers.interior.src}
             alt=""
             draggable={false}
-            fetchPriority="high"
+            {...({ fetchpriority: "high" } as Record<string, string>)}
           />
           <div className="rei-back-stack">
             {layers.lightBloom ? (
@@ -447,14 +447,14 @@ export function RoomEntryIntro({
             src={jambLeftSrc}
             alt=""
             draggable={false}
-            fetchPriority="high"
+            {...({ fetchpriority: "high" } as Record<string, string>)}
           />
           <img
             className="rei-scene rei-jamb rei-jamb-right"
             src={jambRightSrc}
             alt=""
             draggable={false}
-            fetchPriority="high"
+            {...({ fetchpriority: "high" } as Record<string, string>)}
             onLoad={onLayerLoad}
           />
           <img
@@ -462,7 +462,7 @@ export function RoomEntryIntro({
             src={layers.door.src}
             alt=""
             draggable={false}
-            fetchPriority="high"
+            {...({ fetchpriority: "high" } as Record<string, string>)}
             onLoad={onLayerLoad}
           />
           <img
