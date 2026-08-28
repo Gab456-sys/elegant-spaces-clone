@@ -61,9 +61,18 @@ export const it = {
   "footerSec.link.email": "Email",
   "footerSec.link.phone": "Telefono",
   "footerSec.link.directions": "Come arrivare",
+  "footerSec.checkin": "Check-in 15:00 – 20:00 / Check-out entro le 10:30",
   "footerSec.copyright": "Copyright © 2026 Villa Sesto.",
   "footerSec.rights": "Tutti i diritti riservati",
   "footerSec.privacy": "Privacy Policy",
+  "footerSec.cookie": "Cookie Policy",
+  "footerSec.terms": "Termini e condizioni",
+  "footerSec.cookiePrefs": "Preferenze cookie",
+  "footerSec.legal.title": "Dati struttura",
+  "footerSec.legal.vat": "P. IVA",
+  "footerSec.legal.cin": "CIN",
+  "footerSec.legal.cir": "CIR",
+
 
   // Rooms
   "room.family.name": "Family Suite",

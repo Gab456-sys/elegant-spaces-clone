@@ -12,7 +12,9 @@ import { BasicRoomPage } from "@/sections/BasicRoomPage";
 import { LaVillaPage } from "@/sections/LaVillaPage";
 import { ConsigliPage } from "@/sections/ConsigliPage";
 import { ContattiPage } from "@/sections/ContattiPage";
+import { LegalPage } from "@/sections/LegalPage";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
+
 
 const AppShell = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -270,7 +272,44 @@ const AppShell = () => {
         <Route path="/la-villa" element={<LaVillaPage />} />
         <Route path="/consigli" element={<ConsigliPage />} />
         <Route path="/contatti" element={<ContattiPage />} />
+        <Route
+          path="/privacy-policy"
+          element={
+            <LegalPage
+              eyebrow="Note legali"
+              title="Privacy Policy"
+              body={[
+                "Sostituisci questo testo con l'informativa privacy generata dalla tua CMP o redatta dal tuo consulente.",
+              ]}
+            />
+          }
+        />
+        <Route
+          path="/cookie-policy"
+          element={
+            <LegalPage
+              eyebrow="Note legali"
+              title="Cookie Policy"
+              body={[
+                "Sostituisci questo testo con la cookie policy, con l'elenco dei cookie utilizzati e le finalità.",
+              ]}
+            />
+          }
+        />
+        <Route
+          path="/termini"
+          element={
+            <LegalPage
+              eyebrow="Note legali"
+              title="Termini e condizioni"
+              body={[
+                "Condizioni di prenotazione, modalità di pagamento, politica di cancellazione e no-show, tassa di soggiorno, regolamento della struttura.",
+              ]}
+            />
+          }
+        />
         <Route path="*" element={<MainContent />} />
+
       </Routes>
 
       <Footer />

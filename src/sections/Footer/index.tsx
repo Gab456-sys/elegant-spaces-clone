@@ -3,7 +3,9 @@ import { FooterIntro } from "@/sections/Footer/components/FooterIntro";
 import { FooterNavigation } from "@/sections/Footer/components/FooterNavigation";
 import { FooterContact } from "@/sections/Footer/components/FooterContact";
 import { FooterSocial } from "@/sections/Footer/components/FooterSocial";
+import { FooterLegal } from "@/sections/Footer/components/FooterLegal";
 import { FooterCopyright } from "@/sections/Footer/components/FooterCopyright";
+
 
 export const Footer = () => {
   return (
@@ -25,7 +27,9 @@ export const Footer = () => {
             </div>
           </div>
         </div>
+        <FooterLegal />
         <FooterCopyright />
+
       </div>
     </footer>
   );
