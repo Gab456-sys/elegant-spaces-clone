@@ -75,8 +75,17 @@ export function RoomEntryIntro({
 
   const onLayerLoad = useCallback(() => {
     loadedRef.current += 1;
-    if (loadedRef.current >= 3) stageRef.current?.classList.add("is-ready");
+    if (loadedRef.current >= 2) stageRef.current?.classList.add("is-ready");
   }, []);
+
+  useEffect(() => {
+    const timer = window.setTimeout(
+      () => stageRef.current?.classList.add("is-ready"),
+      1200,
+    );
+    return () => window.clearTimeout(timer);
+  }, []);
+
 
   const updateSlider = useCallback(() => {
     const track = trackRef.current;
