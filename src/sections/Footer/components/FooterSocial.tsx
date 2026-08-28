@@ -11,7 +11,7 @@ export const FooterSocial = () => {
         {t("footerSec.follow")}
       </h5>
       <div className="box-border caret-transparent flex flex-wrap outline-[3px] gap-y-1.5 no-underline md:gap-y-[8.22222px]">
-        {["Instagram", "Facebook", "Pinterest"].map((label) => (
+        {["Instagram", "Pinterest"].map((label) => (
           <a
             key={label}
             href="#"
