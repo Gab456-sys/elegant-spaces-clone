@@ -63,9 +63,18 @@ export const en: Record<TranslationKey, string> = {
   "footerSec.link.email": "Email",
   "footerSec.link.phone": "Phone",
   "footerSec.link.directions": "How to reach us",
+  "footerSec.checkin": "Check-in 3:00 – 8:00 pm / Check-out by 10:30 am",
   "footerSec.copyright": "Copyright © 2026 Villa Sesto.",
   "footerSec.rights": "All Rights Reserved",
   "footerSec.privacy": "Privacy Policy",
+  "footerSec.cookie": "Cookie Policy",
+  "footerSec.terms": "Terms & Conditions",
+  "footerSec.cookiePrefs": "Cookie preferences",
+  "footerSec.legal.title": "Property details",
+  "footerSec.legal.vat": "VAT",
+  "footerSec.legal.cin": "CIN",
+  "footerSec.legal.cir": "CIR",
+
 
   // Rooms
   "room.family.name": "Family Suite",
