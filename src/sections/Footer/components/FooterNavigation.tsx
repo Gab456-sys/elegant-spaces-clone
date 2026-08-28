@@ -20,15 +20,6 @@ export const FooterNavigation = () => {
           ]}
         />
         <FooterRegion
-          regionName={t("footerSec.region.experiences")}
-          regionClassName="min-h-[auto] min-w-[auto] md:w-[22.625%]"
-          links={[
-            { href: "/consigli", label: t("footerSec.link.itineraries") },
-            { href: "/consigli", label: t("footerSec.link.restaurants") },
-            { href: "/consigli", label: t("footerSec.link.wellness") },
-          ]}
-        />
-        <FooterRegion
           regionName={t("footerSec.region.contact")}
           regionClassName="hidden min-h-0 min-w-0 md:block md:min-h-[auto] md:min-w-[auto] md:w-[22.625%]"
           links={[
