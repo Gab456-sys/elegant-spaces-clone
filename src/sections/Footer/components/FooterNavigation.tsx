@@ -11,7 +11,7 @@ export const FooterNavigation = () => {
       <ul className="border-b-stone-50 border-l-stone-50 border-r-stone-50 border-t-stone-50 box-border caret-transparent flex flex-wrap justify-between list-none outline-[3px] relative no-underline pl-0 border-b-0 md:border-b-stone-50/20 md:flex-nowrap md:border-b">
         <FooterRegion
           regionName={t("footerSec.region.villa")}
-          regionClassName="min-h-[auto] min-w-[auto] md:w-[22.625%]"
+          regionClassName="min-h-[auto] min-w-[auto] md:flex-[3] md:w-auto"
           links={[
             { href: "/la-villa", label: t("footerSec.link.villa") },
             { href: "/#suite", label: t("footerSec.link.suite") },
@@ -21,7 +21,7 @@ export const FooterNavigation = () => {
         />
         <FooterRegion
           regionName={t("footerSec.region.contact")}
-          regionClassName="list-item min-h-[auto] min-w-[auto] md:hidden md:min-h-0 md:min-w-0 md:w-[9.5%]"
+          regionClassName="min-h-[auto] min-w-[auto] md:flex-1 md:w-auto"
           links={[
             { href: "/contatti", label: t("footerSec.link.email") },
             { href: "/contatti", label: t("footerSec.link.phone") },
