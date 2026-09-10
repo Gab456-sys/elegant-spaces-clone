@@ -46,6 +46,31 @@ export const LaVillaPage = () => {
   const { language } = useLanguage();
   const isEn = language === "en";
 
+  const suites = [
+    {
+      href: "/suite/family",
+      name: "Family Suite",
+      desc: isEn
+        ? "The largest room, with space for four guests and a separate sleeping area for children."
+        : "La camera più ampia, con spazio per quattro ospiti e una zona notte separata per i bambini.",
+    },
+    {
+      href: "/suite/comfort",
+      name: "Comfort Suite",
+      desc: isEn
+        ? "A double room with a sitting corner and a bright bathroom, ideal for longer stays."
+        : "Una camera matrimoniale con angolo salotto e bagno luminoso, ideale per soggiorni lunghi.",
+    },
+    {
+      href: "/suite/basic",
+      name: "Basic Room",
+      desc: isEn
+        ? "Essential and quiet, thought for one or two guests who spend the day out in the city."
+        : "Essenziale e silenziosa, pensata per una o due persone che passano la giornata in città.",
+    },
+  ];
+
+
   const spaces = [
     {
       src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80",
