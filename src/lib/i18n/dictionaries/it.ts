@@ -48,10 +48,8 @@ export const it = {
   "footerSec.region.stay": "Soggiorno",
   "footerSec.region.experiences": "Esperienze",
   "footerSec.region.contact": "Contatti",
-  "footerSec.cta.label": "Scopri",
-  "footerSec.cta.title":
-    "Esplora la struttura e le sue camere, dalla Family Suite alla Basic Room, per trovare lo spazio più adatto al tuo soggiorno.",
-  "footerSec.cta.button": "Scopri la struttura",
+  "footerSec.region.rooms": "Camere",
+  "footerSec.link.home": "Home",
   "footerSec.link.villa": "La Struttura",
   "footerSec.link.suite": "Suite",
   "footerSec.link.tips": "I nostri consigli",
