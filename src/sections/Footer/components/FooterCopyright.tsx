@@ -39,14 +39,6 @@ export const FooterCopyright = () => {
               </Link>
             </span>
           ))}
-          <Divider />
-          <button
-            type="button"
-            onClick={openCookiePreferences}
-            className={linkClassName}
-          >
-            {t("footerSec.cookiePrefs")}
-          </button>
         </p>
       </div>
     </div>
