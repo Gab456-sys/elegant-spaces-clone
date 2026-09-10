@@ -1,5 +1,5 @@
 import { useLanguage } from "@/lib/i18n/LanguageContext";
-import { useLanguage } from "@/lib/i18n/LanguageContext";
+
 
 const IconWifi = () => (
   <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.4">
