@@ -48,6 +48,9 @@ export const it = {
   "footerSec.region.stay": "Soggiorno",
   "footerSec.region.experiences": "Esperienze",
   "footerSec.region.contact": "Contatti",
+  "footerSec.cta.label": "Prenota",
+  "footerSec.cta.title":
+    "Pianifica il tuo soggiorno: scegli la camera e verifica la disponibilità in pochi passi.",
   "footerSec.link.villa": "La Struttura",
   "footerSec.link.suite": "Suite",
   "footerSec.link.tips": "I nostri consigli",
