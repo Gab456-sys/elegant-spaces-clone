@@ -28,10 +28,10 @@ export const FooterNavigation = () => {
             {t("footerSec.cta.title")}
           </p>
           <Link
-            to="/contatti"
+            to="/la-villa"
             className="mt-6 inline-block border border-stone-50/60 rounded-full px-7 py-3 text-sm tracking-[1.5px] uppercase transition-colors duration-200 hover:bg-stone-50 hover:text-stone-900"
           >
-            {t("suite.booking.cta")}
+            {t("footerSec.cta.button")}
           </Link>
         </li>
         <FooterRegion

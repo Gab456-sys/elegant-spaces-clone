@@ -50,9 +50,10 @@ export const en: Record<TranslationKey, string> = {
   "footerSec.region.stay": "Stay",
   "footerSec.region.experiences": "Experiences",
   "footerSec.region.contact": "Contact",
-  "footerSec.cta.label": "Book",
+  "footerSec.cta.label": "Explore",
   "footerSec.cta.title":
-    "Plan your stay: pick your room and check availability in a few steps.",
+    "Discover the property and its rooms, from the Family Suite to the Basic Room, and find the space that best suits your stay.",
+  "footerSec.cta.button": "Discover the property",
   "footerSec.link.villa": "The Property",
   "footerSec.link.suite": "Suite",
   "footerSec.link.tips": "Our tips",
