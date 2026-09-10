@@ -1,4 +1,4 @@
-import { SectionCta } from "@/components/SectionCta";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const IconWifi = () => (
