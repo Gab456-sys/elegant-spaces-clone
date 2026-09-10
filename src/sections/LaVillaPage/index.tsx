@@ -311,32 +311,51 @@ export const LaVillaPage = () => {
       </section>
 
       {/* Suites */}
-      <section className="bg-[#f6f2eb]">
-        <div className="mx-auto w-full max-w-[1680px] px-6 py-24 md:px-10 md:py-32 lg:px-16">
-          <p className="reveal reveal-editorial-tight m-0 text-[11px] uppercase tracking-[0.24em] text-stone-600">
-            {isEn ? "Keep exploring" : "Continua a scoprire"}
-          </p>
-          <h2 className="reveal reveal-editorial m-0 mt-6 max-w-[20ch] overflow-visible pb-2 font-beausite_classic text-[40px] leading-[1.1] tracking-[-0.02em] text-stone-900 sm:text-[52px] md:text-[60px] md:leading-[1.05]">
-            {isEn ? "The rooms of the property" : "Le camere della struttura"}
-          </h2>
+      <section
+        data-header-theme="dark"
+        className="border-b border-stone-300/70 bg-[#f6f2eb]"
+      >
+        <div className="mx-auto w-full max-w-[1680px] px-6 py-20 md:px-10 md:py-28 lg:px-16">
+          <div className="reveal reveal-editorial mb-14 md:mb-20 md:text-center">
+            <p className="m-0 text-[11px] uppercase tracking-[0.24em] text-stone-600">
+              {isEn ? "Keep exploring" : "Continua a scoprire"}
+            </p>
+            <h2 className="m-0 mt-5 font-beausite_classic text-[40px] leading-[0.98] tracking-[-0.02em] text-stone-900 sm:text-[52px] md:text-[64px]">
+              {isEn ? "The rooms of the property" : "Le camere della struttura"}
+            </h2>
+          </div>
 
-          <div className="mt-14 flex flex-col">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 md:gap-6">
             {suites.map((suite, index) => (
               <a
                 key={suite.href}
                 href={suite.href}
                 data-reveal-order={index}
-                className="reveal reveal-editorial group grid grid-cols-1 gap-3 border-t border-stone-400/50 py-8 no-underline md:grid-cols-[minmax(0,22ch)_minmax(0,1fr)_auto] md:items-baseline md:gap-10"
+                className="reveal reveal-editorial group block no-underline"
               >
-                <h3 className="m-0 font-beausite_classic text-[24px] leading-[1.15] tracking-[-0.01em] text-stone-900 md:text-[28px]">
-                  {suite.name}
-                </h3>
-                <p className="m-0 max-w-[60ch] text-[15px] leading-[1.55] text-stone-800/90">
-                  {suite.desc}
-                </p>
-                <span className="text-[11px] uppercase tracking-[0.22em] text-stone-900 transition-opacity group-hover:opacity-60">
-                  {isEn ? "Discover" : "Scopri"} &rarr;
-                </span>
+                <div className="overflow-hidden">
+                  <img
+                    src={suite.image}
+                    alt={suite.name}
+                    className="block h-[46svh] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                </div>
+                <div className="mt-5 flex items-start justify-between gap-4">
+                  <div>
+                    <p className="m-0 text-[10px] uppercase tracking-[0.24em] text-stone-600">
+                      {isEn ? "Room" : "Camera"}
+                    </p>
+                    <h3 className="m-0 mt-2 font-beausite_classic text-[22px] leading-[1.15] tracking-[-0.01em] text-stone-900 md:text-[26px]">
+                      {suite.name}
+                    </h3>
+                    <p className="m-0 mt-3 max-w-[42ch] text-[15px] leading-[1.55] text-stone-800/90">
+                      {suite.desc}
+                    </p>
+                  </div>
+                  <span className="mt-2 shrink-0 text-[11px] uppercase tracking-[0.22em] text-stone-900 transition-opacity group-hover:opacity-60">
+                    &rarr;
+                  </span>
+                </div>
               </a>
             ))}
           </div>
