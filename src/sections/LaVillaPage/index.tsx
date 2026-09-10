@@ -56,7 +56,7 @@ export const LaVillaPage = () => {
     },
     {
       src: "https://upload.wikimedia.org/wikipedia/commons/d/d6/Villa_gamberaia_01.JPG",
-      label: isEn ? "TERRACE AND GARDEN" : "TERRAZZA E GIARDINO",
+      label: isEn ? "TERRACE AND GARDEN" : "TERRAZZA ",
       caption: isEn
         ? "Outdoor spaces immersed in the Tuscan greenery."
         : "Spazi all'aperto immersi nel verde toscano.",
