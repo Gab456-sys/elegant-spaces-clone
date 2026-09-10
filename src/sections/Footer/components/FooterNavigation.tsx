@@ -21,7 +21,7 @@ export const FooterNavigation = () => {
         />
         <FooterRegion
           regionName={t("footerSec.region.contact")}
-          regionClassName="min-h-[auto] min-w-[auto] md:flex-1 md:w-auto"
+          regionClassName="min-h-[auto] min-w-[auto] md:hidden md:min-h-0 md:min-w-0"
           links={[
             { href: "/contatti", label: t("footerSec.link.email") },
             { href: "/contatti", label: t("footerSec.link.phone") },

@@ -19,9 +19,6 @@ const Divider = () => (
 export const FooterCopyright = () => {
   const { t } = useLanguage();
 
-  const openCookiePreferences = () => {
-    window.dispatchEvent(new CustomEvent("cookie-preferences:open"));
-  };
 
   return (
     <div className="reveal box-border caret-transparent flex flex-wrap outline-[3px] no-underline -mx-3 pt-6 md:pt-[65.7778px]">
@@ -39,14 +36,6 @@ export const FooterCopyright = () => {
               </Link>
             </span>
           ))}
-          <Divider />
-          <button
-            type="button"
-            onClick={openCookiePreferences}
-            className={linkClassName}
-          >
-            {t("footerSec.cookiePrefs")}
-          </button>
         </p>
       </div>
     </div>
