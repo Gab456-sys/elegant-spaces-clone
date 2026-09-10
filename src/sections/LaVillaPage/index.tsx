@@ -50,6 +50,8 @@ export const LaVillaPage = () => {
     {
       href: "/suite/family",
       name: "Family Suite",
+      image:
+        "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1400&q=80",
       desc: isEn
         ? "The largest room, with space for four guests and a separate sleeping area for children."
         : "La camera più ampia, con spazio per quattro ospiti e una zona notte separata per i bambini.",
@@ -57,6 +59,8 @@ export const LaVillaPage = () => {
     {
       href: "/suite/comfort",
       name: "Comfort Suite",
+      image:
+        "https://images.unsplash.com/photo-1616594039964-40891a909d99?auto=format&fit=crop&w=1400&q=80",
       desc: isEn
         ? "A double room with a sitting corner and a bright bathroom, ideal for longer stays."
         : "Una camera matrimoniale con angolo salotto e bagno luminoso, ideale per soggiorni lunghi.",
@@ -64,6 +68,8 @@ export const LaVillaPage = () => {
     {
       href: "/suite/basic",
       name: "Basic Room",
+      image:
+        "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=1400&q=80",
       desc: isEn
         ? "Essential and quiet, thought for one or two guests who spend the day out in the city."
         : "Essenziale e silenziosa, pensata per una o due persone che passano la giornata in città.",
