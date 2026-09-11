@@ -60,7 +60,7 @@ export const LaVillaPage = () => {
       href: "/suite/comfort",
       name: "Comfort Suite",
       image:
-        "https://images.unsplash.com/photo-1616594039964-40891a909d99?auto=format&fit=crop&w=1400&q=80",
+        "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1400&q=80",
       desc: isEn
         ? "A double room with a sitting corner and a bright bathroom, ideal for longer stays."
         : "Una camera matrimoniale con angolo salotto e bagno luminoso, ideale per soggiorni lunghi.",
