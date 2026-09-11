@@ -1,23 +1,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  /* @FONTWARNING[{"type":"restricted","family":"Beausite Classic","weight":"400","style":"normal","allowsCrossOrigin":false}] */
-  font-family: "Beausite Classic";
-  src: url("https://hba.com/wp-content/themes/hba/lib/fonts/BeausiteClassicWeb-Clear.woff2")
-    format("woff2");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  /* @FONTWARNING[{"type":"restricted","family":"Beausite Slick","weight":"300","style":"normal","allowsCrossOrigin":false}] */
-  font-family: "Beausite Slick";
-  src: url("https://hba.com/wp-content/themes/hba/lib/fonts/BeausiteSlickWeb-Light.woff2")
-    format("woff2");
-  font-weight: 300;
-  font-style: normal;
-}
 
 @font-face {
   /* @FONTWARNING[{"type":"restricted","family":"gform-icons-orbital","weight":"400","style":"normal","allowsCrossOrigin":false}] */

@@ -69,7 +69,7 @@ export const ContattiPage = () => {
           </p>
           <h1
             data-reveal-order={1}
-            className="reveal reveal-editorial m-0 mt-4 max-w-[14ch] font-beausite_classic text-[56px] leading-[0.95] tracking-[-0.02em] sm:text-[76px] md:text-[104px] lg:text-[128px]"
+            className="reveal reveal-editorial m-0 mt-4 max-w-[14ch] font-beausite_classic text-[56px] leading-[1.02] tracking-[-0.02em] sm:text-[76px] md:text-[104px] lg:text-[128px]"
           >
             {isEn ? "Contact" : "Contatti"}
           </h1>
@@ -283,7 +283,7 @@ export const ContattiPage = () => {
             <p className="m-0 text-[11px] uppercase tracking-[0.24em] text-stone-600">
               {isEn ? "How to reach us" : "Come arrivare"}
             </p>
-            <h2 className="m-0 mt-5 font-beausite_classic text-[40px] leading-[0.98] tracking-[-0.02em] text-stone-900 sm:text-[52px] md:text-[64px]">
+            <h2 className="m-0 mt-5 font-beausite_classic text-[40px] leading-[1.05] tracking-[-0.02em] text-stone-900 sm:text-[52px] md:text-[64px]">
               {isEn ? "Minutes away from everything" : "A pochi minuti da tutto"}
             </h2>
           </div>

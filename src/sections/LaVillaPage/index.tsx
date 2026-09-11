@@ -172,7 +172,7 @@ export const LaVillaPage = () => {
           </p>
           <h1
             data-reveal-order={1}
-            className="reveal reveal-editorial m-0 mt-4 max-w-[14ch] font-beausite_classic text-[56px] leading-[0.95] tracking-[-0.02em] sm:text-[76px] md:text-[104px] lg:text-[128px]"
+            className="reveal reveal-editorial m-0 mt-4 max-w-[14ch] font-beausite_classic text-[56px] leading-[1.02] tracking-[-0.02em] sm:text-[76px] md:text-[104px] lg:text-[128px]"
           >
             {isEn ? "The Property" : "La Struttura"}
           </h1>
@@ -208,7 +208,7 @@ export const LaVillaPage = () => {
             </p>
             <h2
               data-reveal-order={1}
-              className="reveal reveal-editorial m-0 mt-5 max-w-[14ch] font-beausite_classic text-[40px] leading-[0.98] tracking-[-0.02em] text-stone-900 sm:text-[52px] md:text-[64px]"
+              className="reveal reveal-editorial m-0 mt-5 max-w-[14ch] font-beausite_classic text-[40px] leading-[1.05] tracking-[-0.02em] text-stone-900 sm:text-[52px] md:text-[64px]"
             >
               {isEn
                 ? "Authentic hospitality in Sesto Fiorentino"
@@ -244,7 +244,7 @@ export const LaVillaPage = () => {
             <p className="m-0 text-[11px] uppercase tracking-[0.24em] text-stone-600">
               {isEn ? "Our spaces" : "I nostri spazi"}
             </p>
-            <h2 className="m-0 mt-5 font-beausite_classic text-[40px] leading-[0.98] tracking-[-0.02em] text-stone-900 sm:text-[52px] md:text-[64px]">
+            <h2 className="m-0 mt-5 font-beausite_classic text-[40px] leading-[1.05] tracking-[-0.02em] text-stone-900 sm:text-[52px] md:text-[64px]">
               {isEn ? "Spaces designed for wellbeing" : "Ambienti pensati per stare bene"}
             </h2>
           </div>
@@ -286,7 +286,7 @@ export const LaVillaPage = () => {
             <p className="m-0 text-[11px] uppercase tracking-[0.24em] text-stone-600">
               {isEn ? "Included services" : "Servizi inclusi"}
             </p>
-            <h2 className="m-0 mt-5 font-beausite_classic text-[40px] leading-[0.98] tracking-[-0.02em] text-stone-900 sm:text-[52px] md:text-[64px]">
+            <h2 className="m-0 mt-5 font-beausite_classic text-[40px] leading-[1.05] tracking-[-0.02em] text-stone-900 sm:text-[52px] md:text-[64px]">
               {isEn ? "Everything you need" : "Tutto ciò di cui hai bisogno"}
             </h2>
           </div>
@@ -320,7 +320,7 @@ export const LaVillaPage = () => {
             <p className="m-0 text-[11px] uppercase tracking-[0.24em] text-stone-600">
               {isEn ? "Keep exploring" : "Continua a scoprire"}
             </p>
-            <h2 className="m-0 mt-5 font-beausite_classic text-[40px] leading-[0.98] tracking-[-0.02em] text-stone-900 sm:text-[52px] md:text-[64px]">
+            <h2 className="m-0 mt-5 font-beausite_classic text-[40px] leading-[1.05] tracking-[-0.02em] text-stone-900 sm:text-[52px] md:text-[64px]">
               {isEn ? "The rooms of the property" : "Le camere della struttura"}
             </h2>
           </div>
