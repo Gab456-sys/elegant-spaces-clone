@@ -35,7 +35,7 @@ const PlaceGrid = ({
         <p className="m-0 text-[11px] uppercase tracking-[0.24em] text-stone-600">
           {eyebrow}
         </p>
-        <h2 className="m-0 mt-5 max-w-[22ch] font-beausite_classic text-[40px] leading-[0.98] tracking-[-0.02em] text-stone-900 sm:text-[52px] md:text-[64px]">
+        <h2 className="m-0 mt-5 max-w-[22ch] font-beausite_classic text-[40px] leading-[1.05] tracking-[-0.02em] text-stone-900 sm:text-[52px] md:text-[64px]">
           {title}
         </h2>
       </div>

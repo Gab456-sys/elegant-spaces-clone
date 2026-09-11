@@ -48,7 +48,7 @@ export const SuiteTemplate = ({
               <li>{t("suite.meta.location")}</li>
               <li>{t("suite.meta.year")}</li>
             </ul>
-            <h1 className="m-0 font-beausite_classic text-[56px] leading-[0.9] tracking-[-0.03em] text-stone-900 sm:text-[72px] md:text-center md:text-[108px] lg:text-[138px]">
+            <h1 className="m-0 font-beausite_classic text-[56px] leading-[1.0] tracking-[-0.03em] text-stone-900 sm:text-[72px] md:text-center md:text-[108px] lg:text-[138px]">
               {title}
             </h1>
           </div>
@@ -154,7 +154,7 @@ export const SuiteTemplate = ({
                 <p className="m-0 text-[10px] uppercase tracking-[0.24em] text-stone-600">
                   {t("suite.booking.eyebrow")}
                 </p>
-                <h2 className="m-0 mt-5 max-w-[12ch] font-beausite_classic text-[42px] leading-[0.94] tracking-[-0.02em] text-stone-900 sm:text-[52px] md:max-w-none md:text-[64px]">
+                <h2 className="m-0 mt-5 max-w-[12ch] font-beausite_classic text-[42px] leading-[1.05] tracking-[-0.02em] text-stone-900 sm:text-[52px] md:max-w-none md:text-[64px]">
                   {t("suite.booking.title")}
                 </h2>
                 <p className="m-0 mt-7 max-w-[42ch] text-[16px] leading-[1.55] tracking-[-0.004em] text-stone-800/95">
