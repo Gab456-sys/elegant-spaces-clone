@@ -217,7 +217,7 @@ const AppShell = () => {
     return () => {
       observer.disconnect();
     };
-  }, [pathname]);
+  }, [pathname, language]);
 
   useEffect(() => {
     if (!isMenuOpen) {
