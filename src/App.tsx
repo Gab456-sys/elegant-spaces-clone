@@ -246,7 +246,7 @@ const AppShell = () => {
   }, [pathname]);
 
   return (
-    <div className="accent-auto bg-transparent box-border caret-transparent text-gray-900 block text-base not-italic normal-nums font-normal tracking-[normal] leading-6 list-outside list-disc outline-[3px] pointer-events-auto text-start no-underline indent-[0px] normal-case visible border-separate font-beausite_classic min-h-screen w-full md:bg-stone-100 md:text-stone-50">
+    <div className="accent-auto bg-transparent box-border caret-transparent text-gray-900 block text-base not-italic normal-nums font-normal tracking-[normal] leading-6 list-outside list-disc outline-[3px] pointer-events-auto text-start no-underline indent-[0px] normal-case visible border-separate font-beausite_slick min-h-screen w-full md:bg-stone-100 md:text-stone-50">
       <Header />
       <MobileMenuButton
         isOpen={isMenuOpen}
