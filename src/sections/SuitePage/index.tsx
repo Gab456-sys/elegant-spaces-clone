@@ -47,7 +47,7 @@ export const SuitePage = () => {
               <li>Location / Tuscany</li>
               <li>Year / 2026</li>
             </ul>
-            <h1 className="m-0 font-beausite_classic text-[56px] leading-[1.0] tracking-[-0.03em] text-stone-900 sm:text-[72px] md:text-center md:text-[108px] lg:text-[138px]">
+            <h1 className="m-0 font-beausite_classic text-[56px] leading-[1.1] tracking-[-0.03em] text-stone-900 sm:text-[72px] md:text-center md:text-[108px] lg:text-[138px]">
               FAMILY SUITE
             </h1>
           </div>
@@ -237,7 +237,7 @@ export const SuitePage = () => {
             <p className="m-0 text-[10px] uppercase tracking-[0.24em] text-stone-600">
               Booking
             </p>
-            <h2 className="m-0 mt-5 max-w-[10ch] font-beausite_classic text-[42px] leading-[1.05] tracking-[-0.02em] text-stone-900 sm:text-[52px] md:text-[64px]">
+            <h2 className="m-0 mt-5 max-w-[10ch] font-beausite_classic text-[42px] leading-[1.15] tracking-[-0.02em] text-stone-900 sm:text-[52px] md:text-[64px]">
               Reserve your stay
             </h2>
             <p className="m-0 mt-7 max-w-[34ch] text-[16px] leading-[1.55] tracking-[-0.004em] text-stone-800/95">
