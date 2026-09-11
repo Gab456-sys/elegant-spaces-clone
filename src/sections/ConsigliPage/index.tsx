@@ -35,7 +35,7 @@ const PlaceGrid = ({
         <p className="m-0 text-[11px] uppercase tracking-[0.24em] text-stone-600">
           {eyebrow}
         </p>
-        <h2 className="m-0 mt-5 max-w-[22ch] font-beausite_classic text-[40px] leading-[1.05] tracking-[-0.02em] text-stone-900 sm:text-[52px] md:text-[64px]">
+        <h2 className="m-0 mt-5 max-w-[22ch] font-beausite_classic text-[40px] leading-[1.15] tracking-[-0.02em] text-stone-900 sm:text-[52px] md:text-[64px]">
           {title}
         </h2>
       </div>
@@ -63,7 +63,7 @@ const PlaceGrid = ({
                 <p className="m-0 text-[10px] uppercase tracking-[0.24em] text-stone-600">
                   {place.meta}
                 </p>
-                <h3 className="m-0 mt-2 font-beausite_classic text-[26px] leading-[1.05] tracking-[-0.01em] text-stone-900 md:text-[30px]">
+                <h3 className="m-0 mt-2 font-beausite_classic text-[26px] leading-[1.15] tracking-[-0.01em] text-stone-900 md:text-[30px]">
                   {place.name}
                 </h3>
                 <p className="m-0 mt-3 text-[15px] leading-[1.55] text-stone-800/90">
@@ -160,7 +160,7 @@ const PlaceModal = ({
           <p className="m-0 text-[10px] uppercase tracking-[0.24em] text-stone-600">
             {labels.distance}: {place.meta}
           </p>
-          <h3 className="m-0 mt-3 font-beausite_classic text-[30px] leading-[1.05] tracking-[-0.01em] text-stone-900 md:text-[40px]">
+          <h3 className="m-0 mt-3 font-beausite_classic text-[30px] leading-[1.15] tracking-[-0.01em] text-stone-900 md:text-[40px]">
             {place.name}
           </h3>
           <p className="m-0 mt-5 text-[15px] leading-[1.65] text-stone-800/90 md:text-[16px]">
@@ -402,7 +402,7 @@ export const ConsigliPage = () => {
           <p className="reveal reveal-editorial-tight m-0 text-[11px] uppercase tracking-[0.24em] text-stone-600">
             {isEn ? "Ready to go" : "Pronto a partire"}
           </p>
-          <h2 className="reveal reveal-editorial m-0 max-w-[18ch] overflow-visible pb-2 font-beausite_classic text-[40px] leading-[1.02] tracking-[-0.02em] text-stone-900 sm:text-[52px] md:text-[60px]">
+          <h2 className="reveal reveal-editorial m-0 max-w-[18ch] overflow-visible pb-2 font-beausite_classic text-[40px] leading-[1.15] tracking-[-0.02em] text-stone-900 sm:text-[52px] md:text-[60px]">
             {isEn ? "Book your stay at Villa Sesto" : "Prenota il tuo soggiorno a Villa Sesto"}
           </h2>
           <SectionCta href="/contatti" label={isEn ? "Book your stay" : "Prenota il tuo soggiorno"} />
