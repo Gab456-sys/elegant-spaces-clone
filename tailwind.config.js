@@ -62,9 +62,9 @@ module.exports = {
           "serif",
         ],
         beausite_slick: [
-          "Cormorant Garamond",
-          "Georgia",
-          "serif",
+          "ui-sans-serif",
+          "system-ui",
+          "sans-serif",
         ],
         gform_icons_orbital: [
           "gform-icons-orbital",
