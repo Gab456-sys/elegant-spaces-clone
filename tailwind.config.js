@@ -57,8 +57,8 @@ module.exports = {
           '"Noto Color Emoji"',
         ],
         beausite_classic: [
-          "DM Serif Display",
           "Georgia",
+          "Times New Roman",
           "serif",
         ],
         beausite_slick: [
