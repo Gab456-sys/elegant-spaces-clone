@@ -13,12 +13,13 @@ import { LaVillaPage } from "@/sections/LaVillaPage";
 import { ConsigliPage } from "@/sections/ConsigliPage";
 import { ContattiPage } from "@/sections/ContattiPage";
 import { LegalPage } from "@/sections/LegalPage";
-import { LanguageProvider } from "@/lib/i18n/LanguageContext";
+import { LanguageProvider, useLanguage } from "@/lib/i18n/LanguageContext";
 
 
 const AppShell = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { pathname } = useLocation();
+  const { language } = useLanguage();
 
   useEffect(() => {
     if (pathname !== "/") {
